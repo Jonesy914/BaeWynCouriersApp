@@ -35,7 +35,50 @@ namespace BaeWynCouriersApp
 
         private void Main_Load(object sender, EventArgs e)
         {
-            lblCurrentUser.Text = currentUser.Name;
+            lblCurrentUser.Text = lblCurrentUser.Text + " " + currentUser.Name;
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            switch (lstMenu.SelectedItem)
+            {
+                case "Clients":
+                    grpClients.Visible = true;
+                    break;
+                case "Deliveries":
+                    grpDeliveries.Visible = true;
+                    break;
+                case "Reports":
+                    grpReports.Visible = true;
+                    break;
+            }
+        }
+
+        private void lstMenu_Click(object sender, EventArgs e)
+        {
+            grpClients.Visible = false;
+            grpDeliveries.Visible = false;
+            grpReports.Visible = false;
+
+            switch (lstMenu.SelectedItem)
+            {
+                case "Clients":
+                    grpClients.Visible = true;
+                    break;
+                case "Deliveries":
+                    grpDeliveries.Visible = true;
+                    break;
+                case "Reports":
+                    grpReports.Visible = true;
+                    break;
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            var loginForm = (Login)Tag;   //Set Main form as variable mainForm.
+            loginForm.Show();            //Opens Main form.
+            Close();                    //Close current form.
         }
     }
 }

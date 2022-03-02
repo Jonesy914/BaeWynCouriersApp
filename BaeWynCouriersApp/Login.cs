@@ -40,10 +40,11 @@ namespace BaeWynCouriersApp
                 currentUser.Password = txtPassword.Text;
 
                 if (currentUser.Login())
-                {
-                    this.Hide();
+                {                    
                     Main mainForm = new Main(currentUser);
-                    mainForm.Show();
+                    mainForm.Tag = this;
+                    mainForm.Show(this);
+                    Hide();
                 }
                 else
                 {
@@ -83,6 +84,6 @@ namespace BaeWynCouriersApp
                 // Console app
                 System.Environment.Exit(1);
             }
-        }        
+        }
     }
 }

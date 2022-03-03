@@ -44,7 +44,7 @@ namespace BaeWynCouriersApp
                     SqlDr.Read();
                     UserId = (int)SqlDr[0];
                     Name = SqlDr[1].ToString();
-                    Password = SqlDr[2].ToString();
+                    //Password = SqlDr[2].ToString();
                     PhoneNumber = SqlDr[3].ToString();
                     EmailAddress = SqlDr[4].ToString();
                     AccessLevel = (int)SqlDr[5];
@@ -53,6 +53,43 @@ namespace BaeWynCouriersApp
                 mySQLCon.Close();            
             
                 return userCheck;
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public List<MenuItem> GetMenuItemsByAccessLevel()
+        {
+
+            DataSet ds = new DataSet();
+            List<MenuItem> lstMenuItems = new List<MenuItem>();
+
+            try
+            {
+                using (SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB")))
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = mySQLCon;
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "Select * From MenuItems Where AccessLevel >= " + AccessLevel;
+                    using (SqlDataAdapter SqlDa = new SqlDataAdapter(command))
+                    {
+                        SqlDa.Fill(ds);
+                        if(ds != null)
+                        {
+                            lstMenuItems = ds.Tables[0].AsEnumerable().Select(
+                                dataRow => new MenuItem
+                                {
+                                    MenuItemId = dataRow.Field<int>("MenuItemId"),
+                                    Name = dataRow.Field<string>("Name"),
+                                    AccessLevel = dataRow.Field<int>("AccessLevel")
+                                }).ToList();
+                        }
+                    }
+                }
+                return lstMenuItems;
             }
             catch (Exception)
             {

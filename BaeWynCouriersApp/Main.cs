@@ -36,21 +36,24 @@ namespace BaeWynCouriersApp
         private void Main_Load(object sender, EventArgs e)
         {
             lblCurrentUser.Text = lblCurrentUser.Text + " " + currentUser.Name;
-        }
 
-        private void btnSelect_Click(object sender, EventArgs e)
-        {
-            switch (lstMenu.SelectedItem)
+            try
             {
-                case "Clients":
-                    grpClients.Visible = true;
-                    break;
-                case "Deliveries":
-                    grpDeliveries.Visible = true;
-                    break;
-                case "Reports":
-                    grpReports.Visible = true;
-                    break;
+                List<MenuItem> menuItems = currentUser.GetMenuItemsByAccessLevel();        //Use web service method to get all available festivals and store as a dataset.
+                lstMenu.DataSource = menuItems;   //Sets the data source for cmbFestivalID combobox as this dataset.
+                lstMenu.DisplayMember = "Name";       //Sets the display text for the combobox as the FestivalName field.
+                lstMenu.ValueMember = "MenuItemId";           //Sets the value of combo box as the FestivalId field.
+            }
+            catch (Exception ex)
+            {
+                //Any errors thrown further down the stack are caught here.
+                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
+
+                //If user selected yes or no for more info.
+                if (msgErr == DialogResult.Yes)
+                {
+                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
+                }
             }
         }
 
@@ -76,8 +79,8 @@ namespace BaeWynCouriersApp
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            var loginForm = (Login)Tag;   //Set Main form as variable mainForm.
-            loginForm.Show();            //Opens Main form.
+            var loginForm = (Login)Tag; //Set Login form as variable loginForm.
+            loginForm.Show();           //Opens Login form.
             Close();                    //Close current form.
         }
     }

@@ -73,9 +73,9 @@ namespace BaeWynCouriersApp
             // grpClients
             // 
             this.grpClients.Controls.Add(this.label1);
-            this.grpClients.Location = new System.Drawing.Point(264, 202);
+            this.grpClients.Location = new System.Drawing.Point(241, 29);
             this.grpClients.Name = "grpClients";
-            this.grpClients.Size = new System.Drawing.Size(296, 154);
+            this.grpClients.Size = new System.Drawing.Size(719, 370);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
@@ -92,9 +92,9 @@ namespace BaeWynCouriersApp
             // 
             // grpReports
             // 
-            this.grpReports.Location = new System.Drawing.Point(593, 38);
+            this.grpReports.Location = new System.Drawing.Point(111, 11);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(278, 192);
+            this.grpReports.Size = new System.Drawing.Size(22, 31);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
@@ -102,9 +102,9 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
-            this.grpDeliveries.Location = new System.Drawing.Point(264, 12);
+            this.grpDeliveries.Location = new System.Drawing.Point(139, 16);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(210, 156);
+            this.grpDeliveries.Size = new System.Drawing.Size(16, 26);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -124,7 +124,7 @@ namespace BaeWynCouriersApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 436);
+            this.ClientSize = new System.Drawing.Size(1000, 421);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.grpReports);
             this.Controls.Add(this.grpClients);

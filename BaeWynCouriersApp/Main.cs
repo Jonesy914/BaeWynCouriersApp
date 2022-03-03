@@ -83,5 +83,12 @@ namespace BaeWynCouriersApp
             loginForm.Show();           //Opens Login form.
             Close();                    //Close current form.
         }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            DataAccess db = new DataAccess();
+
+            db.AddClient(txtBusinessName.Text, txtAddress.Text, txtPhoneNumber.Text, txtEmail.Text, txtNotes.Text, chkContracted.Checked);
+        }
     }
 }

@@ -33,24 +33,24 @@ namespace BaeWynCouriersApp
             this.btnExit = new System.Windows.Forms.Button();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.grpClients = new System.Windows.Forms.GroupBox();
+            this.btnUpdateClient = new System.Windows.Forms.Button();
+            this.btnAddClient = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chkContracted = new System.Windows.Forms.CheckBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.txtBusinessName = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtNotes = new System.Windows.Forms.TextBox();
-            this.chkContracted = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAddClient = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +91,7 @@ namespace BaeWynCouriersApp
             // 
             // grpClients
             // 
-            this.grpClients.Controls.Add(this.button1);
+            this.grpClients.Controls.Add(this.btnUpdateClient);
             this.grpClients.Controls.Add(this.btnAddClient);
             this.grpClients.Controls.Add(this.dataGridView1);
             this.grpClients.Controls.Add(this.label7);
@@ -114,7 +114,138 @@ namespace BaeWynCouriersApp
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
-            this.grpClients.Visible = false;
+            // 
+            // btnUpdateClient
+            // 
+            this.btnUpdateClient.Location = new System.Drawing.Point(174, 164);
+            this.btnUpdateClient.Name = "btnUpdateClient";
+            this.btnUpdateClient.Size = new System.Drawing.Size(138, 34);
+            this.btnUpdateClient.TabIndex = 16;
+            this.btnUpdateClient.Text = "Update Client";
+            this.btnUpdateClient.UseVisualStyleBackColor = true;
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Location = new System.Drawing.Point(22, 164);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(138, 34);
+            this.btnAddClient.TabIndex = 15;
+            this.btnAddClient.Text = "Add Client";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(22, 214);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
+            this.dataGridView1.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(52, 133);
+            this.label7.Name = "label7";
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label7.Size = new System.Drawing.Size(83, 16);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Contracted";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(361, 26);
+            this.label6.Name = "label6";
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label6.Size = new System.Drawing.Size(49, 16);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Notes";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(88, 110);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(47, 16);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Email";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 82);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label4.Size = new System.Drawing.Size(110, 16);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Phone Number";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(69, 54);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label3.Size = new System.Drawing.Size(66, 16);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Address";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 26);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label2.Size = new System.Drawing.Size(116, 16);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Business Name";
+            // 
+            // chkContracted
+            // 
+            this.chkContracted.AutoSize = true;
+            this.chkContracted.Location = new System.Drawing.Point(141, 135);
+            this.chkContracted.Name = "chkContracted";
+            this.chkContracted.Size = new System.Drawing.Size(15, 14);
+            this.chkContracted.TabIndex = 6;
+            this.chkContracted.UseVisualStyleBackColor = true;
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Location = new System.Drawing.Point(416, 23);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(277, 106);
+            this.txtNotes.TabIndex = 5;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(141, 107);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(193, 22);
+            this.txtEmail.TabIndex = 4;
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Location = new System.Drawing.Point(141, 79);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(193, 22);
+            this.txtPhoneNumber.TabIndex = 3;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(141, 51);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(193, 22);
+            this.txtAddress.TabIndex = 2;
+            // 
+            // txtBusinessName
+            // 
+            this.txtBusinessName.Location = new System.Drawing.Point(141, 23);
+            this.txtBusinessName.Name = "txtBusinessName";
+            this.txtBusinessName.Size = new System.Drawing.Size(193, 22);
+            this.txtBusinessName.TabIndex = 1;
             // 
             // grpReports
             // 
@@ -148,143 +279,12 @@ namespace BaeWynCouriersApp
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // txtBusinessName
-            // 
-            this.txtBusinessName.Location = new System.Drawing.Point(141, 23);
-            this.txtBusinessName.Name = "txtBusinessName";
-            this.txtBusinessName.Size = new System.Drawing.Size(193, 22);
-            this.txtBusinessName.TabIndex = 1;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(141, 51);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(193, 22);
-            this.txtAddress.TabIndex = 2;
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(141, 79);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(193, 22);
-            this.txtPhoneNumber.TabIndex = 3;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(141, 107);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(193, 22);
-            this.txtEmail.TabIndex = 4;
-            // 
-            // txtNotes
-            // 
-            this.txtNotes.Location = new System.Drawing.Point(416, 23);
-            this.txtNotes.Multiline = true;
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(277, 106);
-            this.txtNotes.TabIndex = 5;
-            // 
-            // chkContracted
-            // 
-            this.chkContracted.AutoSize = true;
-            this.chkContracted.Location = new System.Drawing.Point(141, 135);
-            this.chkContracted.Name = "chkContracted";
-            this.chkContracted.Size = new System.Drawing.Size(15, 14);
-            this.chkContracted.TabIndex = 6;
-            this.chkContracted.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 26);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label2.Size = new System.Drawing.Size(116, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Business Name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 54);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(66, 16);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Address";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 82);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label4.Size = new System.Drawing.Size(110, 16);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Phone Number";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 110);
-            this.label5.Name = "label5";
-            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(47, 16);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Email";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(361, 26);
-            this.label6.Name = "label6";
-            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label6.Size = new System.Drawing.Size(49, 16);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Notes";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(52, 133);
-            this.label7.Name = "label7";
-            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label7.Size = new System.Drawing.Size(83, 16);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Contracted";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 214);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
-            this.dataGridView1.TabIndex = 14;
-            // 
-            // btnAddClient
-            // 
-            this.btnAddClient.Location = new System.Drawing.Point(22, 164);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(104, 34);
-            this.btnAddClient.TabIndex = 15;
-            this.btnAddClient.Text = "Add Client";
-            this.btnAddClient.UseVisualStyleBackColor = true;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(150, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 34);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 490);
+            this.ControlBox = false;
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.grpReports);
             this.Controls.Add(this.grpClients);
@@ -293,7 +293,7 @@ namespace BaeWynCouriersApp
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.grpDeliveries);
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "BaeWyn Couriers";
             this.Load += new System.EventHandler(this.Main_Load);
             this.grpClients.ResumeLayout(false);
             this.grpClients.PerformLayout();
@@ -312,7 +312,7 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.GroupBox grpReports;
         private System.Windows.Forms.GroupBox grpDeliveries;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUpdateClient;
         private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label7;

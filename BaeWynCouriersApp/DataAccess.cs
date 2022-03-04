@@ -10,7 +10,8 @@ namespace BaeWynCouriersApp
 {
     class DataAccess
     {
-        public void AddClient(string businessName, string address, string phoneNumber, string email, string notes, bool contracted)
+        //public void AddClient(string businessName, string address, string phoneNumber, string email, string notes, bool contracted)
+        public void AddClient(Client newClient)
         {
             try
             {
@@ -20,9 +21,9 @@ namespace BaeWynCouriersApp
                 SqlCommand command = new SqlCommand();
                 command.Connection = mySQLCon;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Insert Into Client (BusinessName, Address, PhoneNumber, Email, Notes, Contracted) Values ('" + businessName + "', '" + address + "', '" + phoneNumber + "', '" + email + "', '" + notes + "', " + contracted + ")";
+                command.CommandText = "Insert Into Clients (BusinessName, Address, PhoneNumber, Email, Notes, Contracted) Values ('" + newClient.BusinessName + "', '" + newClient.Address + "', '" + newClient.PhoneNumber + "', '" + newClient.Email + "', '" + newClient.Notes + "', '" + newClient.Contracted + "')";
                 command.ExecuteNonQuery();
-
+                
                 mySQLCon.Close();
             }
             catch (Exception)

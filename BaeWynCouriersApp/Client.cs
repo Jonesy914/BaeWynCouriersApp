@@ -19,9 +19,5 @@ namespace BaeWynCouriersApp
         public Client()
         {
         }
-
-        //public void AddClient()
-        //{
-        //}
     }
 }

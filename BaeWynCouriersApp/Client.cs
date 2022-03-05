@@ -16,7 +16,7 @@ namespace BaeWynCouriersApp
         public string Notes { get; set; }
         public bool Contracted { get; set; }
 
-        Client()
+        public Client()
         {
         }
     }

@@ -29,7 +29,6 @@ namespace BaeWynCouriersApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lstMenu = new System.Windows.Forms.ListBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblCurrentUser = new System.Windows.Forms.Label();
@@ -53,20 +52,20 @@ namespace BaeWynCouriersApp
             this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbDelClientId = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dtpDelDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbTimeBlockId = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbDelUserId = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.cmbTimeBlockId = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpDelDate = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbDelClientId = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpDeliveries.SuspendLayout();
@@ -176,14 +175,6 @@ namespace BaeWynCouriersApp
             // dgvClients
             // 
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClients.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClients.Location = new System.Drawing.Point(22, 214);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -338,71 +329,50 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Text = "Deliveries";
             this.grpDeliveries.Visible = false;
             // 
-            // btnLogout
+            // button4
             // 
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.Navy;
-            this.btnLogout.Location = new System.Drawing.Point(130, 427);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 51);
-            this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.button4.Location = new System.Drawing.Point(542, 157);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(147, 34);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Complete Delivery";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // button3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 31);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(47, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Client";
+            this.button3.Location = new System.Drawing.Point(389, 157);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(147, 34);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Accept Delivery";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // cmbDelClientId
+            // button2
             // 
-            this.cmbDelClientId.FormattingEnabled = true;
-            this.cmbDelClientId.Location = new System.Drawing.Point(125, 28);
-            this.cmbDelClientId.Name = "cmbDelClientId";
-            this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
-            this.cmbDelClientId.TabIndex = 11;
+            this.button2.Location = new System.Drawing.Point(174, 157);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 34);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Update Delivery";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // label8
+            // button1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 61);
-            this.label8.Name = "label8";
-            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label8.Size = new System.Drawing.Size(103, 16);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Delivery Date";
+            this.button1.Location = new System.Drawing.Point(30, 157);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 34);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add Delivery";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // dtpDelDate
+            // dataGridView1
             // 
-            this.dtpDelDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelDate.Location = new System.Drawing.Point(125, 58);
-            this.dtpDelDate.Name = "dtpDelDate";
-            this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
-            this.dtpDelDate.TabIndex = 13;
-            // 
-            // cmbTimeBlockId
-            // 
-            this.cmbTimeBlockId.FormattingEnabled = true;
-            this.cmbTimeBlockId.Location = new System.Drawing.Point(125, 86);
-            this.cmbTimeBlockId.Name = "cmbTimeBlockId";
-            this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
-            this.cmbTimeBlockId.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 89);
-            this.label9.Name = "label9";
-            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label9.Size = new System.Drawing.Size(105, 16);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Delivery Time";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 213);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
+            this.dataGridView1.TabIndex = 18;
             // 
             // cmbDelUserId
             // 
@@ -422,50 +392,72 @@ namespace BaeWynCouriersApp
             this.label10.TabIndex = 16;
             this.label10.Text = "Courier";
             // 
-            // dataGridView1
+            // cmbTimeBlockId
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 213);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
-            this.dataGridView1.TabIndex = 18;
+            this.cmbTimeBlockId.FormattingEnabled = true;
+            this.cmbTimeBlockId.Location = new System.Drawing.Point(125, 86);
+            this.cmbTimeBlockId.Name = "cmbTimeBlockId";
+            this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
+            this.cmbTimeBlockId.TabIndex = 15;
             // 
-            // button1
+            // label9
             // 
-            this.button1.Location = new System.Drawing.Point(30, 157);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 34);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add Delivery";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 89);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label9.Size = new System.Drawing.Size(105, 16);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Delivery Time";
             // 
-            // button2
+            // dtpDelDate
             // 
-            this.button2.Location = new System.Drawing.Point(174, 157);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 34);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Update Delivery";
-            this.button2.UseVisualStyleBackColor = true;
+            this.dtpDelDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelDate.Location = new System.Drawing.Point(125, 58);
+            this.dtpDelDate.Name = "dtpDelDate";
+            this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
+            this.dtpDelDate.TabIndex = 13;
+            this.dtpDelDate.ValueChanged += new System.EventHandler(this.dtpDelDate_ValueChanged);
             // 
-            // button3
+            // label8
             // 
-            this.button3.Location = new System.Drawing.Point(389, 157);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(147, 34);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Accept Delivery";
-            this.button3.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 61);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label8.Size = new System.Drawing.Size(103, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Delivery Date";
             // 
-            // button4
+            // cmbDelClientId
             // 
-            this.button4.Location = new System.Drawing.Point(542, 157);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(147, 34);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Complete Delivery";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cmbDelClientId.FormattingEnabled = true;
+            this.cmbDelClientId.Location = new System.Drawing.Point(125, 28);
+            this.cmbDelClientId.Name = "cmbDelClientId";
+            this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
+            this.cmbDelClientId.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(66, 31);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Client";
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.Navy;
+            this.btnLogout.Location = new System.Drawing.Point(130, 427);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(94, 51);
+            this.btnLogout.TabIndex = 6;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // Main
             // 

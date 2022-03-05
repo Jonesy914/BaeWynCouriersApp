@@ -189,5 +189,23 @@ namespace BaeWynCouriersApp
             }
 
         }
+
+        private void dtpDelDate_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dateValue = dtpDelDate.Value.Date;
+
+            string day = dateValue.DayOfWeek.ToString();
+            if (day == "Sunday")
+            {
+                MessageBox.Show("Delivery cannot be on a Sunday.", "Invalid Selection...");
+                dtpDelDate.Value = dtpDelDate.Value.AddDays(1);
+            }
+
+            if (dateValue < DateTime.Now.Date)
+            {
+                MessageBox.Show("Cannot select past dates.", "Invalid Selection...");
+                dtpDelDate.Value = DateTime.Now.Date;
+            }
+        }
     }
 }

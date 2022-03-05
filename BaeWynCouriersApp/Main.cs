@@ -38,6 +38,7 @@ namespace BaeWynCouriersApp
         private void Main_Load(object sender, EventArgs e)
         {            
             lblCurrentUser.Text = lblCurrentUser.Text + " " + currentUser.Name; //Display current user's name.
+            this.Width = 269;
 
             try
             {
@@ -65,15 +66,23 @@ namespace BaeWynCouriersApp
             grpDeliveries.Visible = false;
             grpReports.Visible = false;
 
+            this.Width = 1016;
+
             switch (lstMenu.Text)
             {
                 case "Clients":
+                    grpClients.Location = new Point (241, 29);
+                    grpClients.Size = new Size (719, 449);
                     grpClients.Visible = true;
                     break;
                 case "Deliveries":
+                    grpDeliveries.Location = new Point(241, 29);
+                    grpDeliveries.Size = new Size(719, 449);
                     grpDeliveries.Visible = true;
                     break;
                 case "Reports":
+                    grpReports.Location = new Point(241, 29);
+                    grpReports.Size = new Size(719, 449);
                     grpReports.Visible = true;
                     break;
             }

@@ -29,10 +29,12 @@ namespace BaeWynCouriersApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lstMenu = new System.Windows.Forms.ListBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.grpClients = new System.Windows.Forms.GroupBox();
+            this.txtClientId = new System.Windows.Forms.TextBox();
             this.btnSearchClients = new System.Windows.Forms.Button();
             this.btnUpdateClient = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
@@ -52,9 +54,23 @@ namespace BaeWynCouriersApp
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.txtClientId = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbDelClientId = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtpDelDate = new System.Windows.Forms.DateTimePicker();
+            this.cmbTimeBlockId = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbDelUserId = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
+            this.grpDeliveries.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -112,12 +128,20 @@ namespace BaeWynCouriersApp
             this.grpClients.Controls.Add(this.txtBusinessName);
             this.grpClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
-            this.grpClients.Location = new System.Drawing.Point(241, 29);
+            this.grpClients.Location = new System.Drawing.Point(130, 12);
             this.grpClients.Name = "grpClients";
-            this.grpClients.Size = new System.Drawing.Size(719, 449);
+            this.grpClients.Size = new System.Drawing.Size(22, 21);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
+            // 
+            // txtClientId
+            // 
+            this.txtClientId.Location = new System.Drawing.Point(350, 170);
+            this.txtClientId.Name = "txtClientId";
+            this.txtClientId.Size = new System.Drawing.Size(23, 22);
+            this.txtClientId.TabIndex = 18;
+            this.txtClientId.Visible = false;
             // 
             // btnSearchClients
             // 
@@ -152,6 +176,14 @@ namespace BaeWynCouriersApp
             // dgvClients
             // 
             this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClients.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClients.Location = new System.Drawing.Point(22, 214);
             this.dgvClients.Name = "dgvClients";
             this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -230,6 +262,7 @@ namespace BaeWynCouriersApp
             // 
             // txtNotes
             // 
+            this.txtNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNotes.Location = new System.Drawing.Point(416, 23);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
@@ -238,6 +271,7 @@ namespace BaeWynCouriersApp
             // 
             // txtEmail
             // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(141, 107);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(193, 22);
@@ -245,6 +279,7 @@ namespace BaeWynCouriersApp
             // 
             // txtPhoneNumber
             // 
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.Location = new System.Drawing.Point(141, 79);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(193, 22);
@@ -252,6 +287,7 @@ namespace BaeWynCouriersApp
             // 
             // txtAddress
             // 
+            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(141, 51);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(193, 22);
@@ -259,6 +295,7 @@ namespace BaeWynCouriersApp
             // 
             // txtBusinessName
             // 
+            this.txtBusinessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusinessName.Location = new System.Drawing.Point(141, 23);
             this.txtBusinessName.Name = "txtBusinessName";
             this.txtBusinessName.Size = new System.Drawing.Size(193, 22);
@@ -266,9 +303,11 @@ namespace BaeWynCouriersApp
             // 
             // grpReports
             // 
-            this.grpReports.Location = new System.Drawing.Point(179, 7);
+            this.grpReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpReports.ForeColor = System.Drawing.Color.Navy;
+            this.grpReports.Location = new System.Drawing.Point(158, 7);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(22, 26);
+            this.grpReports.Size = new System.Drawing.Size(16, 26);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
@@ -276,9 +315,24 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
-            this.grpDeliveries.Location = new System.Drawing.Point(207, 7);
+            this.grpDeliveries.Controls.Add(this.button4);
+            this.grpDeliveries.Controls.Add(this.button3);
+            this.grpDeliveries.Controls.Add(this.button2);
+            this.grpDeliveries.Controls.Add(this.button1);
+            this.grpDeliveries.Controls.Add(this.dataGridView1);
+            this.grpDeliveries.Controls.Add(this.cmbDelUserId);
+            this.grpDeliveries.Controls.Add(this.label10);
+            this.grpDeliveries.Controls.Add(this.cmbTimeBlockId);
+            this.grpDeliveries.Controls.Add(this.label9);
+            this.grpDeliveries.Controls.Add(this.dtpDelDate);
+            this.grpDeliveries.Controls.Add(this.label8);
+            this.grpDeliveries.Controls.Add(this.cmbDelClientId);
+            this.grpDeliveries.Controls.Add(this.label1);
+            this.grpDeliveries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDeliveries.ForeColor = System.Drawing.Color.Navy;
+            this.grpDeliveries.Location = new System.Drawing.Point(241, 29);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(16, 26);
+            this.grpDeliveries.Size = new System.Drawing.Size(719, 449);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -296,13 +350,122 @@ namespace BaeWynCouriersApp
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // txtClientId
+            // label1
             // 
-            this.txtClientId.Location = new System.Drawing.Point(350, 170);
-            this.txtClientId.Name = "txtClientId";
-            this.txtClientId.Size = new System.Drawing.Size(23, 22);
-            this.txtClientId.TabIndex = 18;
-            this.txtClientId.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(66, 31);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Client";
+            // 
+            // cmbDelClientId
+            // 
+            this.cmbDelClientId.FormattingEnabled = true;
+            this.cmbDelClientId.Location = new System.Drawing.Point(125, 28);
+            this.cmbDelClientId.Name = "cmbDelClientId";
+            this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
+            this.cmbDelClientId.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 61);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label8.Size = new System.Drawing.Size(103, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Delivery Date";
+            // 
+            // dtpDelDate
+            // 
+            this.dtpDelDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelDate.Location = new System.Drawing.Point(125, 58);
+            this.dtpDelDate.Name = "dtpDelDate";
+            this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
+            this.dtpDelDate.TabIndex = 13;
+            // 
+            // cmbTimeBlockId
+            // 
+            this.cmbTimeBlockId.FormattingEnabled = true;
+            this.cmbTimeBlockId.Location = new System.Drawing.Point(125, 86);
+            this.cmbTimeBlockId.Name = "cmbTimeBlockId";
+            this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
+            this.cmbTimeBlockId.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 89);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label9.Size = new System.Drawing.Size(105, 16);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Delivery Time";
+            // 
+            // cmbDelUserId
+            // 
+            this.cmbDelUserId.FormattingEnabled = true;
+            this.cmbDelUserId.Location = new System.Drawing.Point(125, 116);
+            this.cmbDelUserId.Name = "cmbDelUserId";
+            this.cmbDelUserId.Size = new System.Drawing.Size(227, 24);
+            this.cmbDelUserId.TabIndex = 17;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(55, 119);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label10.Size = new System.Drawing.Size(58, 16);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Courier";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 213);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
+            this.dataGridView1.TabIndex = 18;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(30, 157);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 34);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add Delivery";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(174, 157);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(138, 34);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Update Delivery";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(389, 157);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(147, 34);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "Accept Delivery";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(542, 157);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(147, 34);
+            this.button4.TabIndex = 22;
+            this.button4.Text = "Complete Delivery";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
@@ -323,6 +486,9 @@ namespace BaeWynCouriersApp
             this.grpClients.ResumeLayout(false);
             this.grpClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
+            this.grpDeliveries.ResumeLayout(false);
+            this.grpDeliveries.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +520,18 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.TextBox txtBusinessName;
         private System.Windows.Forms.Button btnSearchClients;
         private System.Windows.Forms.TextBox txtClientId;
+        private System.Windows.Forms.DateTimePicker dtpDelDate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbDelClientId;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox cmbDelUserId;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cmbTimeBlockId;
+        private System.Windows.Forms.Label label9;
     }
 }

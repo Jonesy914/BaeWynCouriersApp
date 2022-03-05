@@ -90,14 +90,14 @@ namespace BaeWynCouriersApp
         {
             try
             {
-                //Create client object from input fields
+                //Create client object from input fields.
                 Client newClient = new Client { BusinessName = txtBusinessName.Text, Address = txtAddress.Text, PhoneNumber = txtPhoneNumber.Text, Email = txtEmail.Text, Notes = txtNotes.Text, Contracted = chkContracted.Checked };
                 
-                db.AddClient(newClient);    //Add client using client object
+                db.AddClient(newClient);    //Add client using client object.
 
-                MessageBox.Show(newClient.BusinessName + " successfully created!", "System Information...");
+                MessageBox.Show(newClient.BusinessName + " successfully created.", "System Information...");
 
-                //Reset text fields (should only happen if successful insert)
+                //Reset client text fields (should only happen if successful insert).
                 txtBusinessName.Clear();
                 txtAddress.Clear();
                 txtPhoneNumber.Clear();
@@ -116,6 +116,69 @@ namespace BaeWynCouriersApp
                     MessageBox.Show(ex.ToString());    //Display error message as a message box.
                 }
             }            
+        }
+
+        private void btnUpdateClient_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Create client object from input fields
+                Client currClient = new Client { ClientId = int.Parse(txtClientId.Text), BusinessName = txtBusinessName.Text, Address = txtAddress.Text, PhoneNumber = txtPhoneNumber.Text, Email = txtEmail.Text, Notes = txtNotes.Text, Contracted = chkContracted.Checked };
+                
+                db.UpdateClient(currClient);    //Update client using client object.
+
+                MessageBox.Show(currClient.BusinessName + " successfully updated.", "System Information...");
+            }
+            catch (Exception ex)
+            {
+                //Any errors thrown further down the stack are caught here.
+                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
+
+                //If user selected yes or no for more info.
+                if (msgErr == DialogResult.Yes)
+                {
+                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
+                }
+            }
+        }
+
+        private void btnSearchClients_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSet dsClients = db.GetAllClients();         //Get all clients set as dataset.
+                dgvClients.DataSource = dsClients.Tables[0];    //Populate gridview with clients dataset
+            }
+            catch (Exception ex)
+            {
+                //Any errors thrown further down the stack are caught here.
+                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
+
+                //If user selected yes or no for more info.
+                if (msgErr == DialogResult.Yes)
+                {
+                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
+                }
+            }
+        }
+
+        private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
+        {            
+            if (!dgvClients.AreAllCellsSelected(true))
+            {
+                txtClientId.Text = dgvClients.SelectedCells[0].Value.ToString();
+                txtBusinessName.Text = dgvClients.SelectedCells[1].Value.ToString();
+                txtAddress.Text = dgvClients.SelectedCells[2].Value.ToString();
+                txtPhoneNumber.Text = dgvClients.SelectedCells[3].Value.ToString();
+                txtEmail.Text = dgvClients.SelectedCells[4].Value.ToString();
+                txtNotes.Text = dgvClients.SelectedCells[5].Value.ToString();
+                chkContracted.Checked = (bool)dgvClients.SelectedCells[6].Value;
+            }
+            else
+            {
+                MessageBox.Show("All cells selected.");
+            }
+
         }
     }
 }

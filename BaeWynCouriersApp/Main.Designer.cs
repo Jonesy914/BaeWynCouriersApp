@@ -33,9 +33,10 @@ namespace BaeWynCouriersApp
             this.btnExit = new System.Windows.Forms.Button();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.grpClients = new System.Windows.Forms.GroupBox();
+            this.btnSearchClients = new System.Windows.Forms.Button();
             this.btnUpdateClient = new System.Windows.Forms.Button();
             this.btnAddClient = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvClients = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,8 +52,9 @@ namespace BaeWynCouriersApp
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.txtClientId = new System.Windows.Forms.TextBox();
             this.grpClients.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -91,9 +93,11 @@ namespace BaeWynCouriersApp
             // 
             // grpClients
             // 
+            this.grpClients.Controls.Add(this.txtClientId);
+            this.grpClients.Controls.Add(this.btnSearchClients);
             this.grpClients.Controls.Add(this.btnUpdateClient);
             this.grpClients.Controls.Add(this.btnAddClient);
-            this.grpClients.Controls.Add(this.dataGridView1);
+            this.grpClients.Controls.Add(this.dgvClients);
             this.grpClients.Controls.Add(this.label7);
             this.grpClients.Controls.Add(this.label6);
             this.grpClients.Controls.Add(this.label5);
@@ -115,6 +119,16 @@ namespace BaeWynCouriersApp
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
             // 
+            // btnSearchClients
+            // 
+            this.btnSearchClients.Location = new System.Drawing.Point(555, 164);
+            this.btnSearchClients.Name = "btnSearchClients";
+            this.btnSearchClients.Size = new System.Drawing.Size(138, 34);
+            this.btnSearchClients.TabIndex = 17;
+            this.btnSearchClients.Text = "Search";
+            this.btnSearchClients.UseVisualStyleBackColor = true;
+            this.btnSearchClients.Click += new System.EventHandler(this.btnSearchClients_Click);
+            // 
             // btnUpdateClient
             // 
             this.btnUpdateClient.Location = new System.Drawing.Point(174, 164);
@@ -123,6 +137,7 @@ namespace BaeWynCouriersApp
             this.btnUpdateClient.TabIndex = 16;
             this.btnUpdateClient.Text = "Update Client";
             this.btnUpdateClient.UseVisualStyleBackColor = true;
+            this.btnUpdateClient.Click += new System.EventHandler(this.btnUpdateClient_Click);
             // 
             // btnAddClient
             // 
@@ -134,13 +149,15 @@ namespace BaeWynCouriersApp
             this.btnAddClient.UseVisualStyleBackColor = true;
             this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
-            // dataGridView1
+            // dgvClients
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 214);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
-            this.dataGridView1.TabIndex = 14;
+            this.dgvClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClients.Location = new System.Drawing.Point(22, 214);
+            this.dgvClients.Name = "dgvClients";
+            this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClients.Size = new System.Drawing.Size(671, 220);
+            this.dgvClients.TabIndex = 14;
+            this.dgvClients.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClients_CellClick);
             // 
             // label7
             // 
@@ -279,6 +296,14 @@ namespace BaeWynCouriersApp
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // txtClientId
+            // 
+            this.txtClientId.Location = new System.Drawing.Point(350, 170);
+            this.txtClientId.Name = "txtClientId";
+            this.txtClientId.Size = new System.Drawing.Size(23, 22);
+            this.txtClientId.TabIndex = 18;
+            this.txtClientId.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,7 +322,7 @@ namespace BaeWynCouriersApp
             this.Load += new System.EventHandler(this.Main_Load);
             this.grpClients.ResumeLayout(false);
             this.grpClients.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,7 +339,7 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnUpdateClient;
         private System.Windows.Forms.Button btnAddClient;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvClients;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -327,5 +352,7 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtBusinessName;
+        private System.Windows.Forms.Button btnSearchClients;
+        private System.Windows.Forms.TextBox txtClientId;
     }
 }

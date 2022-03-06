@@ -68,6 +68,8 @@ namespace BaeWynCouriersApp
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnSearchDeliveries = new System.Windows.Forms.Button();
             this.txtDeliveryId = new System.Windows.Forms.TextBox();
+            this.btnCancelDelivery = new System.Windows.Forms.Button();
+            this.txtDelStatus = new System.Windows.Forms.TextBox();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpDeliveries.SuspendLayout();
@@ -131,7 +133,7 @@ namespace BaeWynCouriersApp
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
             this.grpClients.Location = new System.Drawing.Point(130, 7);
             this.grpClients.Name = "grpClients";
-            this.grpClients.Size = new System.Drawing.Size(22, 21);
+            this.grpClients.Size = new System.Drawing.Size(22, 26);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
@@ -141,9 +143,9 @@ namespace BaeWynCouriersApp
             // 
             this.txtClientId.Location = new System.Drawing.Point(350, 170);
             this.txtClientId.Name = "txtClientId";
+            this.txtClientId.ReadOnly = true;
             this.txtClientId.Size = new System.Drawing.Size(23, 22);
             this.txtClientId.TabIndex = 18;
-            this.txtClientId.Visible = false;
             // 
             // btnSearchClients
             // 
@@ -309,6 +311,8 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
+            this.grpDeliveries.Controls.Add(this.txtDelStatus);
+            this.grpDeliveries.Controls.Add(this.btnCancelDelivery);
             this.grpDeliveries.Controls.Add(this.txtDeliveryId);
             this.grpDeliveries.Controls.Add(this.btnSearchDeliveries);
             this.grpDeliveries.Controls.Add(this.btnCompleteDelivery);
@@ -360,6 +364,7 @@ namespace BaeWynCouriersApp
             this.btnUpdateDelivery.TabIndex = 20;
             this.btnUpdateDelivery.Text = "Update Delivery";
             this.btnUpdateDelivery.UseVisualStyleBackColor = true;
+            this.btnUpdateDelivery.Click += new System.EventHandler(this.btnUpdateDelivery_Click);
             // 
             // btnAddDelivery
             // 
@@ -425,6 +430,7 @@ namespace BaeWynCouriersApp
             this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
             this.dtpDelDate.TabIndex = 13;
             this.dtpDelDate.ValueChanged += new System.EventHandler(this.dtpDelDate_ValueChanged);
+            this.dtpDelDate.Leave += new System.EventHandler(this.dtpDelDate_Leave);
             // 
             // label8
             // 
@@ -480,9 +486,26 @@ namespace BaeWynCouriersApp
             // 
             this.txtDeliveryId.Location = new System.Drawing.Point(358, 28);
             this.txtDeliveryId.Name = "txtDeliveryId";
+            this.txtDeliveryId.ReadOnly = true;
             this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
             this.txtDeliveryId.TabIndex = 24;
-            this.txtDeliveryId.Visible = false;
+            // 
+            // btnCancelDelivery
+            // 
+            this.btnCancelDelivery.Location = new System.Drawing.Point(542, 103);
+            this.btnCancelDelivery.Name = "btnCancelDelivery";
+            this.btnCancelDelivery.Size = new System.Drawing.Size(147, 34);
+            this.btnCancelDelivery.TabIndex = 25;
+            this.btnCancelDelivery.Text = "Cancel Delivery";
+            this.btnCancelDelivery.UseVisualStyleBackColor = true;
+            // 
+            // txtDelStatus
+            // 
+            this.txtDelStatus.Location = new System.Drawing.Point(358, 57);
+            this.txtDelStatus.Name = "txtDelStatus";
+            this.txtDelStatus.ReadOnly = true;
+            this.txtDelStatus.Size = new System.Drawing.Size(23, 22);
+            this.txtDelStatus.TabIndex = 26;
             // 
             // Main
             // 
@@ -552,5 +575,7 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSearchDeliveries;
         private System.Windows.Forms.TextBox txtDeliveryId;
+        private System.Windows.Forms.Button btnCancelDelivery;
+        private System.Windows.Forms.TextBox txtDelStatus;
     }
 }

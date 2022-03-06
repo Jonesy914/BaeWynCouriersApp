@@ -52,10 +52,10 @@ namespace BaeWynCouriersApp
             this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCompleteDelivery = new System.Windows.Forms.Button();
+            this.btnAcceptDelivery = new System.Windows.Forms.Button();
+            this.btnUpdateDelivery = new System.Windows.Forms.Button();
+            this.btnAddDelivery = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cmbDelUserId = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -127,12 +127,13 @@ namespace BaeWynCouriersApp
             this.grpClients.Controls.Add(this.txtBusinessName);
             this.grpClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
-            this.grpClients.Location = new System.Drawing.Point(130, 12);
+            this.grpClients.Location = new System.Drawing.Point(130, 7);
             this.grpClients.Name = "grpClients";
             this.grpClients.Size = new System.Drawing.Size(22, 21);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
+            this.grpClients.Visible = false;
             // 
             // txtClientId
             // 
@@ -306,10 +307,10 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
-            this.grpDeliveries.Controls.Add(this.button4);
-            this.grpDeliveries.Controls.Add(this.button3);
-            this.grpDeliveries.Controls.Add(this.button2);
-            this.grpDeliveries.Controls.Add(this.button1);
+            this.grpDeliveries.Controls.Add(this.btnCompleteDelivery);
+            this.grpDeliveries.Controls.Add(this.btnAcceptDelivery);
+            this.grpDeliveries.Controls.Add(this.btnUpdateDelivery);
+            this.grpDeliveries.Controls.Add(this.btnAddDelivery);
             this.grpDeliveries.Controls.Add(this.dataGridView1);
             this.grpDeliveries.Controls.Add(this.cmbDelUserId);
             this.grpDeliveries.Controls.Add(this.label10);
@@ -329,41 +330,42 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Text = "Deliveries";
             this.grpDeliveries.Visible = false;
             // 
-            // button4
+            // btnCompleteDelivery
             // 
-            this.button4.Location = new System.Drawing.Point(542, 157);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(147, 34);
-            this.button4.TabIndex = 22;
-            this.button4.Text = "Complete Delivery";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnCompleteDelivery.Location = new System.Drawing.Point(542, 157);
+            this.btnCompleteDelivery.Name = "btnCompleteDelivery";
+            this.btnCompleteDelivery.Size = new System.Drawing.Size(147, 34);
+            this.btnCompleteDelivery.TabIndex = 22;
+            this.btnCompleteDelivery.Text = "Complete Delivery";
+            this.btnCompleteDelivery.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnAcceptDelivery
             // 
-            this.button3.Location = new System.Drawing.Point(389, 157);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(147, 34);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "Accept Delivery";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAcceptDelivery.Location = new System.Drawing.Point(389, 157);
+            this.btnAcceptDelivery.Name = "btnAcceptDelivery";
+            this.btnAcceptDelivery.Size = new System.Drawing.Size(147, 34);
+            this.btnAcceptDelivery.TabIndex = 21;
+            this.btnAcceptDelivery.Text = "Accept Delivery";
+            this.btnAcceptDelivery.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnUpdateDelivery
             // 
-            this.button2.Location = new System.Drawing.Point(174, 157);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 34);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Update Delivery";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnUpdateDelivery.Location = new System.Drawing.Point(174, 157);
+            this.btnUpdateDelivery.Name = "btnUpdateDelivery";
+            this.btnUpdateDelivery.Size = new System.Drawing.Size(138, 34);
+            this.btnUpdateDelivery.TabIndex = 20;
+            this.btnUpdateDelivery.Text = "Update Delivery";
+            this.btnUpdateDelivery.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnAddDelivery
             // 
-            this.button1.Location = new System.Drawing.Point(30, 157);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 34);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Add Delivery";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddDelivery.Location = new System.Drawing.Point(30, 157);
+            this.btnAddDelivery.Name = "btnAddDelivery";
+            this.btnAddDelivery.Size = new System.Drawing.Size(138, 34);
+            this.btnAddDelivery.TabIndex = 19;
+            this.btnAddDelivery.Text = "Add Delivery";
+            this.btnAddDelivery.UseVisualStyleBackColor = true;
+            this.btnAddDelivery.Click += new System.EventHandler(this.btnAddDelivery_Click);
             // 
             // dataGridView1
             // 
@@ -516,10 +518,10 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbDelClientId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCompleteDelivery;
+        private System.Windows.Forms.Button btnAcceptDelivery;
+        private System.Windows.Forms.Button btnUpdateDelivery;
+        private System.Windows.Forms.Button btnAddDelivery;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cmbDelUserId;
         private System.Windows.Forms.Label label10;

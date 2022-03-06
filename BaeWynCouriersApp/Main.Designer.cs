@@ -56,7 +56,7 @@ namespace BaeWynCouriersApp
             this.btnAcceptDelivery = new System.Windows.Forms.Button();
             this.btnUpdateDelivery = new System.Windows.Forms.Button();
             this.btnAddDelivery = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.cmbDelUserId = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbTimeBlockId = new System.Windows.Forms.ComboBox();
@@ -66,10 +66,12 @@ namespace BaeWynCouriersApp
             this.cmbDelClientId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnSearchDeliveries = new System.Windows.Forms.Button();
+            this.txtDeliveryId = new System.Windows.Forms.TextBox();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpDeliveries.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -307,11 +309,13 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
+            this.grpDeliveries.Controls.Add(this.txtDeliveryId);
+            this.grpDeliveries.Controls.Add(this.btnSearchDeliveries);
             this.grpDeliveries.Controls.Add(this.btnCompleteDelivery);
             this.grpDeliveries.Controls.Add(this.btnAcceptDelivery);
             this.grpDeliveries.Controls.Add(this.btnUpdateDelivery);
             this.grpDeliveries.Controls.Add(this.btnAddDelivery);
-            this.grpDeliveries.Controls.Add(this.dataGridView1);
+            this.grpDeliveries.Controls.Add(this.dgvDeliveries);
             this.grpDeliveries.Controls.Add(this.cmbDelUserId);
             this.grpDeliveries.Controls.Add(this.label10);
             this.grpDeliveries.Controls.Add(this.cmbTimeBlockId);
@@ -332,7 +336,7 @@ namespace BaeWynCouriersApp
             // 
             // btnCompleteDelivery
             // 
-            this.btnCompleteDelivery.Location = new System.Drawing.Point(542, 157);
+            this.btnCompleteDelivery.Location = new System.Drawing.Point(542, 63);
             this.btnCompleteDelivery.Name = "btnCompleteDelivery";
             this.btnCompleteDelivery.Size = new System.Drawing.Size(147, 34);
             this.btnCompleteDelivery.TabIndex = 22;
@@ -341,7 +345,7 @@ namespace BaeWynCouriersApp
             // 
             // btnAcceptDelivery
             // 
-            this.btnAcceptDelivery.Location = new System.Drawing.Point(389, 157);
+            this.btnAcceptDelivery.Location = new System.Drawing.Point(542, 23);
             this.btnAcceptDelivery.Name = "btnAcceptDelivery";
             this.btnAcceptDelivery.Size = new System.Drawing.Size(147, 34);
             this.btnAcceptDelivery.TabIndex = 21;
@@ -367,14 +371,15 @@ namespace BaeWynCouriersApp
             this.btnAddDelivery.UseVisualStyleBackColor = true;
             this.btnAddDelivery.Click += new System.EventHandler(this.btnAddDelivery_Click);
             // 
-            // dataGridView1
+            // dgvDeliveries
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 213);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(671, 220);
-            this.dataGridView1.TabIndex = 18;
+            this.dgvDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeliveries.Location = new System.Drawing.Point(18, 213);
+            this.dgvDeliveries.Name = "dgvDeliveries";
+            this.dgvDeliveries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDeliveries.Size = new System.Drawing.Size(671, 220);
+            this.dgvDeliveries.TabIndex = 18;
+            this.dgvDeliveries.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeliveries_CellClick);
             // 
             // cmbDelUserId
             // 
@@ -461,6 +466,24 @@ namespace BaeWynCouriersApp
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnSearchDeliveries
+            // 
+            this.btnSearchDeliveries.Location = new System.Drawing.Point(542, 157);
+            this.btnSearchDeliveries.Name = "btnSearchDeliveries";
+            this.btnSearchDeliveries.Size = new System.Drawing.Size(138, 34);
+            this.btnSearchDeliveries.TabIndex = 23;
+            this.btnSearchDeliveries.Text = "Search";
+            this.btnSearchDeliveries.UseVisualStyleBackColor = true;
+            this.btnSearchDeliveries.Click += new System.EventHandler(this.btnSearchDeliveries_Click);
+            // 
+            // txtDeliveryId
+            // 
+            this.txtDeliveryId.Location = new System.Drawing.Point(358, 28);
+            this.txtDeliveryId.Name = "txtDeliveryId";
+            this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
+            this.txtDeliveryId.TabIndex = 24;
+            this.txtDeliveryId.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,7 +505,7 @@ namespace BaeWynCouriersApp
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.grpDeliveries.ResumeLayout(false);
             this.grpDeliveries.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,10 +545,12 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.Button btnAcceptDelivery;
         private System.Windows.Forms.Button btnUpdateDelivery;
         private System.Windows.Forms.Button btnAddDelivery;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDeliveries;
         private System.Windows.Forms.ComboBox cmbDelUserId;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbTimeBlockId;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnSearchDeliveries;
+        private System.Windows.Forms.TextBox txtDeliveryId;
     }
 }

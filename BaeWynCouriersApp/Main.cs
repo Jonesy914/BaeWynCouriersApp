@@ -227,10 +227,10 @@ namespace BaeWynCouriersApp
             Delivery newDelivery = new Delivery { ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue, StatusCodeId = 1 };
 
             //Check user lunch and time block lunch are not the same.
-            if (!db.CheckUserLunch(newDelivery.TimeBlockId, newDelivery.UserId))
+            if (!newDelivery.CheckUserLunch())
             {
                 //Check delivery record with selected date, time slot and users exists.
-                if (!db.CheckDeliveryExists(newDelivery.DeliveryDate, newDelivery.TimeBlockId, newDelivery.UserId))
+                if (!newDelivery.CheckDeliveryExists())
                 {
                     //Add delivery.
                     try
@@ -251,10 +251,37 @@ namespace BaeWynCouriersApp
             }
             else
             {
-                MessageBox.Show(cmbDelUserId.Text + " is on lunch a time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
-            }
+                MessageBox.Show(cmbDelUserId.Text + " is on lunch at time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
+            }            
+        }
 
-            
+        private void btnSearchDeliveries_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSet dsDeliveries = db.ImportDbRecords("Deliveries");  //Get all deliveries set as dataset.
+                dgvDeliveries.DataSource = dsDeliveries.Tables[0];        //Populate gridview with deliveries dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
+
+        private void dgvDeliveries_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!dgvDeliveries.AreAllCellsSelected(true))
+            {
+                txtDeliveryId.Text = dgvDeliveries.SelectedCells[0].Value.ToString();
+                cmbDelClientId.SelectedValue = dgvDeliveries.SelectedCells[1].Value;
+                dtpDelDate.Value = (DateTime)dgvDeliveries.SelectedCells[2].Value;
+                cmbTimeBlockId.SelectedValue = dgvDeliveries.SelectedCells[3].Value;
+                cmbDelUserId.SelectedValue = dgvDeliveries.SelectedCells[4].Value;
+            }
+            else
+            {
+                MessageBox.Show("All cells selected.");
+            }
         }
     }
 }

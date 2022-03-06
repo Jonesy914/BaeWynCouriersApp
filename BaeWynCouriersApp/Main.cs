@@ -12,7 +12,7 @@ namespace BaeWynCouriersApp
 {
     public partial class Main : Form
     {
-        User currentUser = new User();
+        User currentUser = new User();      //Initialise user object.
         DataAccess db = new DataAccess();   //Initialise data access object.
 
         public Main(User currentUserPass)
@@ -42,7 +42,7 @@ namespace BaeWynCouriersApp
 
             try
             {
-                List<MenuItem> menuItems = currentUser.GetMenuItemsByAccessLevel(); //Use web service method to get all available festivals and store as a list.
+                List<MenuItem> menuItems = currentUser.GetMenuItemsByAccessLevel(); //Use method to get menu items bases on AccessLevel and store in a list.
                 lstMenu.DataSource = menuItems;                                     //Sets the data source for the menu list as this list.
                 lstMenu.DisplayMember = "Name";                                     //Sets the display member for the list as the Name field.
                 lstMenu.ValueMember = "MenuItemId";                                 //Sets the value of combo box as the MenuItemId field.
@@ -71,20 +71,50 @@ namespace BaeWynCouriersApp
             switch (lstMenu.Text)
             {
                 case "Clients":
-                    grpClients.Location = new Point (241, 29);
-                    grpClients.Size = new Size (719, 449);
-                    grpClients.Visible = true;
+                    setupGroupBox(grpClients);
                     break;
                 case "Deliveries":
-                    grpDeliveries.Location = new Point(241, 29);
-                    grpDeliveries.Size = new Size(719, 449);
-                    grpDeliveries.Visible = true;
+
+                    DataSet dsClients = db.ImportDbRecords("Clients");
+                    setupComboBox(cmbDelClientId, dsClients, "ClientId", "BusinessName");
+
+                    DataSet dsTimeBlocks = db.ImportDbRecords("TimeBlocks");
+                    setupComboBox(cmbTimeBlockId, dsTimeBlocks, "TimeBlockId", "BlockDetail");
+
+                    DataSet dsUsers = db.GetAllCouriers();
+                    setupComboBox(cmbDelUserId, dsUsers, "UserId", "Name");
+
+                    setupGroupBox(grpDeliveries);
                     break;
                 case "Reports":
-                    grpReports.Location = new Point(241, 29);
-                    grpReports.Size = new Size(719, 449);
-                    grpReports.Visible = true;
+                    setupGroupBox(grpReports);
                     break;
+            }
+        }
+
+        public void setupComboBox(ComboBox combobox, DataSet dataSet, string valueMember, string displayMember)
+        {
+            combobox.DataSource = dataSet.Tables[0];
+            combobox.ValueMember = valueMember;
+            combobox.DisplayMember = displayMember;            
+        }
+
+        public void setupGroupBox(GroupBox groupbox)
+        {
+            groupbox.Location = new Point(241, 29);
+            groupbox.Size = new Size(719, 449);
+            groupbox.Visible = true;
+        }
+
+        public void displayErrorMessage(Exception ex)
+        {
+            //Any errors thrown further down the stack are caught here.
+            DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
+
+            //If user selected yes or no for more info.
+            if (msgErr == DialogResult.Yes)
+            {
+                MessageBox.Show(ex.ToString());    //Display error message as a message box.
             }
         }
 
@@ -94,6 +124,8 @@ namespace BaeWynCouriersApp
             loginForm.Show();           //Opens Login form.
             Close();                    //Close current form.
         }
+
+        //----------------------Clients----------------------//
 
         private void btnAddClient_Click(object sender, EventArgs e)
         {
@@ -116,14 +148,7 @@ namespace BaeWynCouriersApp
             }
             catch (Exception ex)
             {
-                //Any errors thrown further down the stack are caught here.
-                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
-
-                //If user selected yes or no for more info.
-                if (msgErr == DialogResult.Yes)
-                {
-                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
-                }
+                displayErrorMessage(ex);
             }            
         }
 
@@ -140,14 +165,7 @@ namespace BaeWynCouriersApp
             }
             catch (Exception ex)
             {
-                //Any errors thrown further down the stack are caught here.
-                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
-
-                //If user selected yes or no for more info.
-                if (msgErr == DialogResult.Yes)
-                {
-                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
-                }
+                displayErrorMessage(ex);
             }
         }
 
@@ -155,19 +173,12 @@ namespace BaeWynCouriersApp
         {
             try
             {
-                DataSet dsClients = db.GetAllClients();         //Get all clients set as dataset.
-                dgvClients.DataSource = dsClients.Tables[0];    //Populate gridview with clients dataset
+                DataSet dsClients = db.ImportDbRecords("Clients");  //Get all clients set as dataset.
+                dgvClients.DataSource = dsClients.Tables[0];        //Populate gridview with clients dataset
             }
             catch (Exception ex)
             {
-                //Any errors thrown further down the stack are caught here.
-                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
-
-                //If user selected yes or no for more info.
-                if (msgErr == DialogResult.Yes)
-                {
-                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
-                }
+                displayErrorMessage(ex);
             }
         }
 
@@ -190,6 +201,8 @@ namespace BaeWynCouriersApp
 
         }
 
+        //----------------------Deliveries----------------------//
+
         private void dtpDelDate_ValueChanged(object sender, EventArgs e)
         {
             DateTime dateValue = dtpDelDate.Value.Date;
@@ -206,6 +219,42 @@ namespace BaeWynCouriersApp
                 MessageBox.Show("Cannot select past dates.", "Invalid Selection...");
                 dtpDelDate.Value = DateTime.Now.Date;
             }
+        }
+
+        private void btnAddDelivery_Click(object sender, EventArgs e)
+        {
+            //Create delivery object from input fields.
+            Delivery newDelivery = new Delivery { ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue, StatusCodeId = 1 };
+
+            //Check user lunch and time block lunch are not the same.
+            if (!db.CheckUserLunch(newDelivery.TimeBlockId, newDelivery.UserId))
+            {
+                //Check delivery record with selected date, time slot and users exists.
+                if (!db.CheckDeliveryExists(newDelivery.DeliveryDate, newDelivery.TimeBlockId, newDelivery.UserId))
+                {
+                    //Add delivery.
+                    try
+                    {
+                        db.AddDelivery(newDelivery);    //Add client using client object.
+
+                        MessageBox.Show("Delivery successfully created.", "System Information...");
+                    }
+                    catch (Exception ex)
+                    {
+                        displayErrorMessage(ex);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Delivery with this criteria already exists.", "Invalid Selection...");
+                }
+            }
+            else
+            {
+                MessageBox.Show(cmbDelUserId.Text + " is on lunch a time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
+            }
+
+            
         }
     }
 }

@@ -10,7 +10,7 @@ namespace BaeWynCouriersApp
 {
     class DataAccess
     {
-        public DataSet GetAllClients()
+        public DataSet ImportDbRecords(string TableName)
         {
             DataSet ds = new DataSet();
 
@@ -21,7 +21,7 @@ namespace BaeWynCouriersApp
                     SqlCommand command = new SqlCommand();
                     command.Connection = mySQLCon;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "Select * From Clients";
+                    command.CommandText = "Select * From " + TableName;
                     using (SqlDataAdapter SqlDa = new SqlDataAdapter(command))
                     {
                         SqlDa.Fill(ds);
@@ -70,6 +70,112 @@ namespace BaeWynCouriersApp
                 command.ExecuteNonQuery();
 
                 mySQLCon.Close();
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public DataSet GetAllCouriers()
+        {
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB")))
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = mySQLCon;
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "Select * From Users Where AccessLevel = 4";
+                    using (SqlDataAdapter SqlDa = new SqlDataAdapter(command))
+                    {
+                        SqlDa.Fill(ds);
+                    }
+                }
+                return ds;
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public void AddDelivery(Delivery newDelivery)
+        {
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCodeId) Values (" + newDelivery.ClientId + ", '" + newDelivery.DeliveryDate + "', " + newDelivery.TimeBlockId + ", " + newDelivery.UserId + ", '" + newDelivery.StatusCodeId + "')";
+                command.ExecuteNonQuery();
+
+                mySQLCon.Close();
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public bool CheckDeliveryExists(DateTime deliveryDate, int timeBlockId, int userId)
+        {
+            bool check = false;
+
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "Select * From Deliveries Where DeliveryDate = '" + deliveryDate + "' and TimeBlockId = " + timeBlockId + " and UserId = " + userId;
+                SqlDataReader SqlDr = command.ExecuteReader();
+
+                if (SqlDr.HasRows)
+                {
+                    check = true;
+                }
+
+                mySQLCon.Close();
+
+                return check;
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public bool CheckUserLunch(int timeBlockId, int userId)
+        {
+            bool check = false;
+
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "Select * From TimeBlocks As T Inner Join Users As U On T.LunchBlock = U.LunchBlock Where T.TimeBlockId = " + timeBlockId + " and U.UserId = " + userId;
+                SqlDataReader SqlDr = command.ExecuteReader();
+
+                if (SqlDr.HasRows)
+                {
+                    check = true;
+                }
+
+                mySQLCon.Close();
+
+                return check;
             }
             catch (Exception)
             {

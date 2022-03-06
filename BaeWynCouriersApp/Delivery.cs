@@ -15,7 +15,7 @@ namespace BaeWynCouriersApp
         public int UserId { get; set; }
         public int StatusCodeId { get; set; }
 
-        Delivery()
+        public Delivery()
         {
         }
     }

@@ -183,84 +183,137 @@ namespace BaeWynCouriersApp
         }
 
         private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
-        {            
-            if (!dgvClients.AreAllCellsSelected(true))
+        {
+            if (dgvClients.CurrentRow.Index != dgvClients.Rows.Count - 1)   //Check if selected row is not empty. Referenced from: https://stackoverflow.com/questions/8006774/how-to-check-if-a-selected-row-in-a-datagridview-is-emptyhas-no-item-c-sharp
             {
-                txtClientId.Text = dgvClients.SelectedCells[0].Value.ToString();
-                txtBusinessName.Text = dgvClients.SelectedCells[1].Value.ToString();
-                txtAddress.Text = dgvClients.SelectedCells[2].Value.ToString();
-                txtPhoneNumber.Text = dgvClients.SelectedCells[3].Value.ToString();
-                txtEmail.Text = dgvClients.SelectedCells[4].Value.ToString();
-                txtNotes.Text = dgvClients.SelectedCells[5].Value.ToString();
-                chkContracted.Checked = (bool)dgvClients.SelectedCells[6].Value;
+                if (!dgvClients.AreAllCellsSelected(true))
+                {
+                    txtClientId.Text = dgvClients.SelectedCells[0].Value.ToString();
+                    txtBusinessName.Text = dgvClients.SelectedCells[1].Value.ToString();
+                    txtAddress.Text = dgvClients.SelectedCells[2].Value.ToString();
+                    txtPhoneNumber.Text = dgvClients.SelectedCells[3].Value.ToString();
+                    txtEmail.Text = dgvClients.SelectedCells[4].Value.ToString();
+                    txtNotes.Text = dgvClients.SelectedCells[5].Value.ToString();
+                    chkContracted.Checked = (bool)dgvClients.SelectedCells[6].Value;
+                }
             }
-            else
-            {
-                MessageBox.Show("All cells selected.");
-            }
-
         }
 
         //----------------------Deliveries----------------------//
 
-        private void dtpDelDate_ValueChanged(object sender, EventArgs e)
+        private void dtpDelDate_Leave(object sender, EventArgs e)
+        {
+            _ = checkInvalidDate();
+        }
+
+        private bool checkInvalidDate()
         {
             DateTime dateValue = dtpDelDate.Value.Date;
-
             string day = dateValue.DayOfWeek.ToString();
+            bool check = false;
+
             if (day == "Sunday")
             {
                 MessageBox.Show("Delivery cannot be on a Sunday.", "Invalid Selection...");
                 dtpDelDate.Value = dtpDelDate.Value.AddDays(1);
+                check = true;
             }
 
             if (dateValue < DateTime.Now.Date)
             {
                 MessageBox.Show("Cannot select past dates.", "Invalid Selection...");
                 dtpDelDate.Value = DateTime.Now.Date;
+                check = true;
             }
+
+            return check;
         }
 
         private void btnAddDelivery_Click(object sender, EventArgs e)
         {
             //Create delivery object from input fields.
-            Delivery newDelivery = new Delivery { ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue, StatusCodeId = 1 };
+            Delivery newDelivery = new Delivery { ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue, StatusCode = "U" };
 
-            //Check user lunch and time block lunch are not the same.
-            if (!newDelivery.CheckUserLunch())
+            //Check for invalid date selection.
+            if (!checkInvalidDate())
             {
-                //Check delivery record with selected date, time slot and users exists.
-                if (!newDelivery.CheckDeliveryExists())
+                //Check user lunch and time block lunch are not the same.
+                if (!newDelivery.CheckUserLunch())
                 {
-                    //Add delivery.
-                    try
+                    //Check delivery record with selected date, time slot and users exists.
+                    if (!newDelivery.CheckDeliveryExistsAdd())
                     {
-                        db.AddDelivery(newDelivery);    //Add client using client object.
+                        //Add delivery.
+                        try
+                        {
+                            db.AddDelivery(newDelivery);    //Add delivery using delivery object.
 
-                        MessageBox.Show("Delivery successfully created.", "System Information...");
+                            MessageBox.Show("Delivery successfully created.", "System Information...");
+                        }
+                        catch (Exception ex)
+                        {
+                            displayErrorMessage(ex);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        displayErrorMessage(ex);
+                        MessageBox.Show("Delivery with this criteria already exists.", "Invalid Selection...");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Delivery with this criteria already exists.", "Invalid Selection...");
+                    MessageBox.Show(cmbDelUserId.Text + " is on lunch at time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
+                }
+            }                       
+        }
+
+        private void btnUpdateDelivery_Click(object sender, EventArgs e)
+        {
+            //Create delivery object from input fields.
+            Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue };
+
+            if (!checkInvalidDate())
+            {
+                //Check user lunch and time block lunch are not the same.
+                if (!currDelivery.CheckUserLunch())
+                {
+                    //Check delivery record with selected date, time slot and users exists.
+                    if (!currDelivery.CheckDeliveryExistsUpdate())
+                    {
+                        //Update delivery.
+                        try
+                        {
+                            db.UpdateDelivery(currDelivery);    //Update delivery using delivery object.
+
+                            MessageBox.Show("Delivery successfully created.", "System Information...");
+                        }
+                        catch (Exception ex)
+                        {
+                            displayErrorMessage(ex);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delivery with this criteria already exists.", "Invalid Selection...");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(cmbDelUserId.Text + " is on lunch at time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
                 }
             }
-            else
-            {
-                MessageBox.Show(cmbDelUserId.Text + " is on lunch at time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
-            }            
+            
         }
 
         private void btnSearchDeliveries_Click(object sender, EventArgs e)
         {
             try
             {
+                //ToDo: if user not courier
                 DataSet dsDeliveries = db.ImportDbRecords("Deliveries");  //Get all deliveries set as dataset.
                 dgvDeliveries.DataSource = dsDeliveries.Tables[0];        //Populate gridview with deliveries dataset
+
+                //ToDo: else only populate deliveries assigned to current user
             }
             catch (Exception ex)
             {
@@ -270,17 +323,17 @@ namespace BaeWynCouriersApp
 
         private void dgvDeliveries_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!dgvDeliveries.AreAllCellsSelected(true))
+            if (dgvDeliveries.CurrentRow.Index != dgvDeliveries.Rows.Count - 1) //Check if selected row is not empty. Referenced from: https://stackoverflow.com/questions/8006774/how-to-check-if-a-selected-row-in-a-datagridview-is-emptyhas-no-item-c-sharp
             {
-                txtDeliveryId.Text = dgvDeliveries.SelectedCells[0].Value.ToString();
-                cmbDelClientId.SelectedValue = dgvDeliveries.SelectedCells[1].Value;
-                dtpDelDate.Value = (DateTime)dgvDeliveries.SelectedCells[2].Value;
-                cmbTimeBlockId.SelectedValue = dgvDeliveries.SelectedCells[3].Value;
-                cmbDelUserId.SelectedValue = dgvDeliveries.SelectedCells[4].Value;
-            }
-            else
-            {
-                MessageBox.Show("All cells selected.");
+                if (!dgvDeliveries.AreAllCellsSelected(true))
+                {
+                    txtDeliveryId.Text = dgvDeliveries.SelectedCells[0].Value.ToString();
+                    cmbDelClientId.SelectedValue = dgvDeliveries.SelectedCells[1].Value;
+                    dtpDelDate.Value = (DateTime)dgvDeliveries.SelectedCells[2].Value;
+                    cmbTimeBlockId.SelectedValue = dgvDeliveries.SelectedCells[3].Value;
+                    cmbDelUserId.SelectedValue = dgvDeliveries.SelectedCells[4].Value;
+                    txtDelStatus.Text = dgvDeliveries.SelectedCells[5].Value.ToString();
+                }
             }
         }
     }

@@ -112,7 +112,28 @@ namespace BaeWynCouriersApp
                 SqlCommand command = new SqlCommand();
                 command.Connection = mySQLCon;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCodeId) Values (" + newDelivery.ClientId + ", '" + newDelivery.DeliveryDate + "', " + newDelivery.TimeBlockId + ", " + newDelivery.UserId + ", '" + newDelivery.StatusCodeId + "')";
+                command.CommandText = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCode) Values (" + newDelivery.ClientId + ", '" + newDelivery.DeliveryDate + "', " + newDelivery.TimeBlockId + ", " + newDelivery.UserId + ", '" + newDelivery.StatusCode + "')";
+                command.ExecuteNonQuery();
+
+                mySQLCon.Close();
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public void UpdateDelivery(Delivery currDelivery)
+        {
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "Update Deliveries Set ClientId = " + currDelivery.ClientId + ", DeliveryDate = '" + currDelivery.DeliveryDate + "', TimeBlockId = " + currDelivery.TimeBlockId + ", UserId = " + currDelivery.UserId + " Where DeliveryId = " + currDelivery.DeliveryId;
                 command.ExecuteNonQuery();
 
                 mySQLCon.Close();

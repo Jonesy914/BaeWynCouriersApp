@@ -143,5 +143,26 @@ namespace BaeWynCouriersApp
                 throw;  //Any errors are caught and thrown up the stack.
             }
         }
+
+        public void UpdateDeliveryStatus(Delivery currDelivery)
+        {
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "Update Deliveries Set StatusCode = '" + currDelivery.StatusCode + "' Where DeliveryId = " + currDelivery.DeliveryId;
+                command.ExecuteNonQuery();
+
+                mySQLCon.Close();
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
     }
 }

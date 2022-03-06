@@ -171,15 +171,22 @@ namespace BaeWynCouriersApp
 
         private void btnSearchClients_Click(object sender, EventArgs e)
         {
-            try
+            if (!string.IsNullOrEmpty(txtClientId.Text))
             {
-                DataSet dsClients = db.ImportDbRecords("Clients");  //Get all clients set as dataset.
-                dgvClients.DataSource = dsClients.Tables[0];        //Populate gridview with clients dataset
+                try
+                {
+                    DataSet dsClients = db.ImportDbRecords("Clients");  //Get all clients set as dataset.
+                    dgvClients.DataSource = dsClients.Tables[0];        //Populate gridview with clients dataset
+                }
+                catch (Exception ex)
+                {
+                    displayErrorMessage(ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                displayErrorMessage(ex);
-            }
+                MessageBox.Show("Select a Client record from the list to update.", "Invalid Selection...");
+            }            
         }
 
         private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -269,51 +276,59 @@ namespace BaeWynCouriersApp
 
         private void btnUpdateDelivery_Click(object sender, EventArgs e)
         {
-            //Create delivery object from input fields.
-            Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue };
-
-            if (!checkInvalidDate())
+            //Check DeliveryId is not null
+            if (!string.IsNullOrEmpty(txtDeliveryId.Text))
             {
-                //Check user lunch and time block lunch are not the same.
-                if (!currDelivery.CheckUserLunch())
-                {
-                    //Check delivery record with selected date, time slot and users exists.
-                    if (!currDelivery.CheckDeliveryExistsUpdate())
-                    {
-                        //Update delivery.
-                        try
-                        {
-                            db.UpdateDelivery(currDelivery);    //Update delivery using delivery object.
+                //Create delivery object from input fields.
+                Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue };
 
-                            MessageBox.Show("Delivery successfully created.", "System Information...");
-                        }
-                        catch (Exception ex)
+                if (!checkInvalidDate())
+                {
+                    //Check user lunch and time block lunch are not the same.
+                    if (!currDelivery.CheckUserLunch())
+                    {
+                        //Check delivery record with selected date, time slot and users exists.
+                        if (!currDelivery.CheckDeliveryExistsUpdate())
                         {
-                            displayErrorMessage(ex);
+                            //Update delivery.
+                            try
+                            {
+                                db.UpdateDelivery(currDelivery);    //Update delivery using delivery object.
+
+                                MessageBox.Show("Delivery successfully created.", "System Information...");
+                            }
+                            catch (Exception ex)
+                            {
+                                displayErrorMessage(ex);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Delivery with this criteria already exists.", "Invalid Selection...");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Delivery with this criteria already exists.", "Invalid Selection...");
+                        MessageBox.Show(cmbDelUserId.Text + " is on lunch at time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
                     }
                 }
-                else
-                {
-                    MessageBox.Show(cmbDelUserId.Text + " is on lunch at time slot " + cmbTimeBlockId.Text + ".", "Invalid Selection...");
-                }
             }
-            
+            else
+            {
+                MessageBox.Show("Select a Delivery record from the list to update.", "Invalid Selection...");
+            }
         }
 
         private void btnSearchDeliveries_Click(object sender, EventArgs e)
         {
+            //ToDo: extract into method to be called after add and update Delivery.
             try
             {
                 //ToDo: if user not courier
                 DataSet dsDeliveries = db.ImportDbRecords("Deliveries");  //Get all deliveries set as dataset.
                 dgvDeliveries.DataSource = dsDeliveries.Tables[0];        //Populate gridview with deliveries dataset
 
-                //ToDo: else only populate deliveries assigned to current user
+                //ToDo: else only populate deliveries assigned to current user where StatusCode in ('A', 'I')
             }
             catch (Exception ex)
             {
@@ -335,6 +350,42 @@ namespace BaeWynCouriersApp
                     txtDelStatus.Text = dgvDeliveries.SelectedCells[5].Value.ToString();
                 }
             }
+        }
+
+        private void updateDeliveryStatus(string statuscode, string message)
+        {
+            if (!string.IsNullOrEmpty(txtDeliveryId.Text))
+            {
+                try
+                {
+                    Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), StatusCode = statuscode };
+                    db.UpdateDeliveryStatus(currDelivery);
+                    MessageBox.Show(message, "System Information...");
+                }
+                catch (Exception ex)
+                {
+                    displayErrorMessage(ex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select a Delivery record from the list to update.", "Invalid Selection...");
+            }
+        }
+
+        private void btnAcceptDelivery_Click(object sender, EventArgs e)
+        {
+            updateDeliveryStatus("A", "Delivery accepted.");
+        }
+
+        private void btnCompleteDelivery_Click(object sender, EventArgs e)
+        {
+            updateDeliveryStatus("C", "Delivery completed.");
+        }
+
+        private void btnCancelDelivery_Click(object sender, EventArgs e)
+        {
+            updateDeliveryStatus("X", "Delivery cancelled.");
         }
     }
 }

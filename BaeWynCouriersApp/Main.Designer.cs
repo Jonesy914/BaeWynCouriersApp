@@ -33,6 +33,7 @@ namespace BaeWynCouriersApp
             this.btnExit = new System.Windows.Forms.Button();
             this.lblCurrentUser = new System.Windows.Forms.Label();
             this.grpClients = new System.Windows.Forms.GroupBox();
+            this.btnClientClear = new System.Windows.Forms.Button();
             this.txtClientId = new System.Windows.Forms.TextBox();
             this.btnSearchClients = new System.Windows.Forms.Button();
             this.btnUpdateClient = new System.Windows.Forms.Button();
@@ -52,33 +53,32 @@ namespace BaeWynCouriersApp
             this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
-            this.txtDelStatus = new System.Windows.Forms.TextBox();
+            this.pnlDelCourierControl = new System.Windows.Forms.Panel();
+            this.btnAcceptDelivery = new System.Windows.Forms.Button();
+            this.btnCompleteDelivery = new System.Windows.Forms.Button();
+            this.pnlDelAdminControl = new System.Windows.Forms.Panel();
             this.btnCancelDelivery = new System.Windows.Forms.Button();
+            this.btnUpdateDelivery = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbDelClientId = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dtpDelDate = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbTimeBlockId = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnAddDelivery = new System.Windows.Forms.Button();
+            this.cmbDelUserId = new System.Windows.Forms.ComboBox();
+            this.txtDelStatus = new System.Windows.Forms.TextBox();
             this.txtDeliveryId = new System.Windows.Forms.TextBox();
             this.btnSearchDeliveries = new System.Windows.Forms.Button();
-            this.btnCompleteDelivery = new System.Windows.Forms.Button();
-            this.btnAcceptDelivery = new System.Windows.Forms.Button();
-            this.btnUpdateDelivery = new System.Windows.Forms.Button();
-            this.btnAddDelivery = new System.Windows.Forms.Button();
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
-            this.cmbDelUserId = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cmbTimeBlockId = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dtpDelDate = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbDelClientId = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnClientClear = new System.Windows.Forms.Button();
-            this.pnlDelAdminControl = new System.Windows.Forms.Panel();
-            this.pnlDelCourierControl = new System.Windows.Forms.Panel();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpDeliveries.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
-            this.pnlDelAdminControl.SuspendLayout();
             this.pnlDelCourierControl.SuspendLayout();
+            this.pnlDelAdminControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -144,6 +144,16 @@ namespace BaeWynCouriersApp
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
             this.grpClients.Visible = false;
+            // 
+            // btnClientClear
+            // 
+            this.btnClientClear.Location = new System.Drawing.Point(411, 164);
+            this.btnClientClear.Name = "btnClientClear";
+            this.btnClientClear.Size = new System.Drawing.Size(138, 34);
+            this.btnClientClear.TabIndex = 19;
+            this.btnClientClear.Text = "Clear Fields";
+            this.btnClientClear.UseVisualStyleBackColor = true;
+            this.btnClientClear.Click += new System.EventHandler(this.btnClientClear_Click);
             // 
             // txtClientId
             // 
@@ -333,53 +343,15 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Text = "Deliveries";
             this.grpDeliveries.Visible = false;
             // 
-            // txtDelStatus
+            // pnlDelCourierControl
             // 
-            this.txtDelStatus.Location = new System.Drawing.Point(666, 119);
-            this.txtDelStatus.Name = "txtDelStatus";
-            this.txtDelStatus.ReadOnly = true;
-            this.txtDelStatus.Size = new System.Drawing.Size(23, 22);
-            this.txtDelStatus.TabIndex = 26;
-            // 
-            // btnCancelDelivery
-            // 
-            this.btnCancelDelivery.Location = new System.Drawing.Point(310, 136);
-            this.btnCancelDelivery.Name = "btnCancelDelivery";
-            this.btnCancelDelivery.Size = new System.Drawing.Size(138, 34);
-            this.btnCancelDelivery.TabIndex = 25;
-            this.btnCancelDelivery.Tag = "";
-            this.btnCancelDelivery.Text = "Cancel Delivery";
-            this.btnCancelDelivery.UseVisualStyleBackColor = true;
-            this.btnCancelDelivery.Click += new System.EventHandler(this.btnCancelDelivery_Click);
-            // 
-            // txtDeliveryId
-            // 
-            this.txtDeliveryId.Location = new System.Drawing.Point(513, 163);
-            this.txtDeliveryId.Name = "txtDeliveryId";
-            this.txtDeliveryId.ReadOnly = true;
-            this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
-            this.txtDeliveryId.TabIndex = 24;
-            // 
-            // btnSearchDeliveries
-            // 
-            this.btnSearchDeliveries.Location = new System.Drawing.Point(542, 157);
-            this.btnSearchDeliveries.Name = "btnSearchDeliveries";
-            this.btnSearchDeliveries.Size = new System.Drawing.Size(147, 34);
-            this.btnSearchDeliveries.TabIndex = 23;
-            this.btnSearchDeliveries.Text = "Search";
-            this.btnSearchDeliveries.UseVisualStyleBackColor = true;
-            this.btnSearchDeliveries.Click += new System.EventHandler(this.btnSearchDeliveries_Click);
-            // 
-            // btnCompleteDelivery
-            // 
-            this.btnCompleteDelivery.Location = new System.Drawing.Point(0, 40);
-            this.btnCompleteDelivery.Name = "btnCompleteDelivery";
-            this.btnCompleteDelivery.Size = new System.Drawing.Size(147, 34);
-            this.btnCompleteDelivery.TabIndex = 22;
-            this.btnCompleteDelivery.Tag = "";
-            this.btnCompleteDelivery.Text = "Complete Delivery";
-            this.btnCompleteDelivery.UseVisualStyleBackColor = true;
-            this.btnCompleteDelivery.Click += new System.EventHandler(this.btnCompleteDelivery_Click);
+            this.pnlDelCourierControl.Controls.Add(this.btnAcceptDelivery);
+            this.pnlDelCourierControl.Controls.Add(this.btnCompleteDelivery);
+            this.pnlDelCourierControl.Location = new System.Drawing.Point(542, 34);
+            this.pnlDelCourierControl.Name = "pnlDelCourierControl";
+            this.pnlDelCourierControl.Size = new System.Drawing.Size(147, 76);
+            this.pnlDelCourierControl.TabIndex = 28;
+            this.pnlDelCourierControl.Visible = false;
             // 
             // btnAcceptDelivery
             // 
@@ -392,140 +364,16 @@ namespace BaeWynCouriersApp
             this.btnAcceptDelivery.UseVisualStyleBackColor = true;
             this.btnAcceptDelivery.Click += new System.EventHandler(this.btnAcceptDelivery_Click);
             // 
-            // btnUpdateDelivery
+            // btnCompleteDelivery
             // 
-            this.btnUpdateDelivery.Location = new System.Drawing.Point(166, 136);
-            this.btnUpdateDelivery.Name = "btnUpdateDelivery";
-            this.btnUpdateDelivery.Size = new System.Drawing.Size(138, 34);
-            this.btnUpdateDelivery.TabIndex = 20;
-            this.btnUpdateDelivery.Tag = "";
-            this.btnUpdateDelivery.Text = "Update Delivery";
-            this.btnUpdateDelivery.UseVisualStyleBackColor = true;
-            this.btnUpdateDelivery.Click += new System.EventHandler(this.btnUpdateDelivery_Click);
-            // 
-            // btnAddDelivery
-            // 
-            this.btnAddDelivery.Location = new System.Drawing.Point(22, 136);
-            this.btnAddDelivery.Name = "btnAddDelivery";
-            this.btnAddDelivery.Size = new System.Drawing.Size(138, 34);
-            this.btnAddDelivery.TabIndex = 19;
-            this.btnAddDelivery.Tag = "";
-            this.btnAddDelivery.Text = "Add Delivery";
-            this.btnAddDelivery.UseVisualStyleBackColor = true;
-            this.btnAddDelivery.Click += new System.EventHandler(this.btnAddDelivery_Click);
-            // 
-            // dgvDeliveries
-            // 
-            this.dgvDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeliveries.Location = new System.Drawing.Point(18, 213);
-            this.dgvDeliveries.Name = "dgvDeliveries";
-            this.dgvDeliveries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeliveries.Size = new System.Drawing.Size(671, 220);
-            this.dgvDeliveries.TabIndex = 18;
-            this.dgvDeliveries.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeliveries_CellClick);
-            // 
-            // cmbDelUserId
-            // 
-            this.cmbDelUserId.FormattingEnabled = true;
-            this.cmbDelUserId.Location = new System.Drawing.Point(117, 95);
-            this.cmbDelUserId.Name = "cmbDelUserId";
-            this.cmbDelUserId.Size = new System.Drawing.Size(227, 24);
-            this.cmbDelUserId.TabIndex = 17;
-            this.cmbDelUserId.Tag = "";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(47, 98);
-            this.label10.Name = "label10";
-            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label10.Size = new System.Drawing.Size(58, 16);
-            this.label10.TabIndex = 16;
-            this.label10.Tag = "";
-            this.label10.Text = "Courier";
-            // 
-            // cmbTimeBlockId
-            // 
-            this.cmbTimeBlockId.FormattingEnabled = true;
-            this.cmbTimeBlockId.Location = new System.Drawing.Point(117, 65);
-            this.cmbTimeBlockId.Name = "cmbTimeBlockId";
-            this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
-            this.cmbTimeBlockId.TabIndex = 15;
-            this.cmbTimeBlockId.Tag = "";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 68);
-            this.label9.Name = "label9";
-            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label9.Size = new System.Drawing.Size(105, 16);
-            this.label9.TabIndex = 14;
-            this.label9.Tag = "";
-            this.label9.Text = "Delivery Time";
-            // 
-            // dtpDelDate
-            // 
-            this.dtpDelDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelDate.Location = new System.Drawing.Point(117, 37);
-            this.dtpDelDate.Name = "dtpDelDate";
-            this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
-            this.dtpDelDate.TabIndex = 13;
-            this.dtpDelDate.Tag = "";
-            this.dtpDelDate.Leave += new System.EventHandler(this.dtpDelDate_Leave);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 40);
-            this.label8.Name = "label8";
-            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label8.Size = new System.Drawing.Size(103, 16);
-            this.label8.TabIndex = 12;
-            this.label8.Tag = "";
-            this.label8.Text = "Delivery Date";
-            // 
-            // cmbDelClientId
-            // 
-            this.cmbDelClientId.FormattingEnabled = true;
-            this.cmbDelClientId.Location = new System.Drawing.Point(117, 7);
-            this.cmbDelClientId.Name = "cmbDelClientId";
-            this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
-            this.cmbDelClientId.TabIndex = 11;
-            this.cmbDelClientId.Tag = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 10);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(47, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Tag = "";
-            this.label1.Text = "Client";
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.Navy;
-            this.btnLogout.Location = new System.Drawing.Point(130, 427);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(94, 51);
-            this.btnLogout.TabIndex = 6;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnClientClear
-            // 
-            this.btnClientClear.Location = new System.Drawing.Point(411, 164);
-            this.btnClientClear.Name = "btnClientClear";
-            this.btnClientClear.Size = new System.Drawing.Size(138, 34);
-            this.btnClientClear.TabIndex = 19;
-            this.btnClientClear.Text = "Clear Fields";
-            this.btnClientClear.UseVisualStyleBackColor = true;
-            this.btnClientClear.Click += new System.EventHandler(this.btnClientClear_Click);
+            this.btnCompleteDelivery.Location = new System.Drawing.Point(0, 40);
+            this.btnCompleteDelivery.Name = "btnCompleteDelivery";
+            this.btnCompleteDelivery.Size = new System.Drawing.Size(147, 34);
+            this.btnCompleteDelivery.TabIndex = 22;
+            this.btnCompleteDelivery.Tag = "";
+            this.btnCompleteDelivery.Text = "Complete Delivery";
+            this.btnCompleteDelivery.UseVisualStyleBackColor = true;
+            this.btnCompleteDelivery.Click += new System.EventHandler(this.btnCompleteDelivery_Click);
             // 
             // pnlDelAdminControl
             // 
@@ -546,15 +394,167 @@ namespace BaeWynCouriersApp
             this.pnlDelAdminControl.TabIndex = 27;
             this.pnlDelAdminControl.Visible = false;
             // 
-            // pnlDelCourierControl
+            // btnCancelDelivery
             // 
-            this.pnlDelCourierControl.Controls.Add(this.btnAcceptDelivery);
-            this.pnlDelCourierControl.Controls.Add(this.btnCompleteDelivery);
-            this.pnlDelCourierControl.Location = new System.Drawing.Point(542, 34);
-            this.pnlDelCourierControl.Name = "pnlDelCourierControl";
-            this.pnlDelCourierControl.Size = new System.Drawing.Size(147, 76);
-            this.pnlDelCourierControl.TabIndex = 28;
-            this.pnlDelCourierControl.Visible = false;
+            this.btnCancelDelivery.Location = new System.Drawing.Point(310, 136);
+            this.btnCancelDelivery.Name = "btnCancelDelivery";
+            this.btnCancelDelivery.Size = new System.Drawing.Size(138, 34);
+            this.btnCancelDelivery.TabIndex = 25;
+            this.btnCancelDelivery.Tag = "";
+            this.btnCancelDelivery.Text = "Cancel Delivery";
+            this.btnCancelDelivery.UseVisualStyleBackColor = true;
+            this.btnCancelDelivery.Click += new System.EventHandler(this.btnCancelDelivery_Click);
+            // 
+            // btnUpdateDelivery
+            // 
+            this.btnUpdateDelivery.Location = new System.Drawing.Point(166, 136);
+            this.btnUpdateDelivery.Name = "btnUpdateDelivery";
+            this.btnUpdateDelivery.Size = new System.Drawing.Size(138, 34);
+            this.btnUpdateDelivery.TabIndex = 20;
+            this.btnUpdateDelivery.Tag = "";
+            this.btnUpdateDelivery.Text = "Update Delivery";
+            this.btnUpdateDelivery.UseVisualStyleBackColor = true;
+            this.btnUpdateDelivery.Click += new System.EventHandler(this.btnUpdateDelivery_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(58, 10);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Tag = "";
+            this.label1.Text = "Client";
+            // 
+            // cmbDelClientId
+            // 
+            this.cmbDelClientId.FormattingEnabled = true;
+            this.cmbDelClientId.Location = new System.Drawing.Point(117, 7);
+            this.cmbDelClientId.Name = "cmbDelClientId";
+            this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
+            this.cmbDelClientId.TabIndex = 11;
+            this.cmbDelClientId.Tag = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 40);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label8.Size = new System.Drawing.Size(103, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Tag = "";
+            this.label8.Text = "Delivery Date";
+            // 
+            // dtpDelDate
+            // 
+            this.dtpDelDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDelDate.Location = new System.Drawing.Point(117, 37);
+            this.dtpDelDate.Name = "dtpDelDate";
+            this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
+            this.dtpDelDate.TabIndex = 13;
+            this.dtpDelDate.Tag = "";
+            this.dtpDelDate.Leave += new System.EventHandler(this.dtpDelDate_Leave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 68);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label9.Size = new System.Drawing.Size(105, 16);
+            this.label9.TabIndex = 14;
+            this.label9.Tag = "";
+            this.label9.Text = "Delivery Time";
+            // 
+            // cmbTimeBlockId
+            // 
+            this.cmbTimeBlockId.FormattingEnabled = true;
+            this.cmbTimeBlockId.Location = new System.Drawing.Point(117, 65);
+            this.cmbTimeBlockId.Name = "cmbTimeBlockId";
+            this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
+            this.cmbTimeBlockId.TabIndex = 15;
+            this.cmbTimeBlockId.Tag = "";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(47, 98);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label10.Size = new System.Drawing.Size(58, 16);
+            this.label10.TabIndex = 16;
+            this.label10.Tag = "";
+            this.label10.Text = "Courier";
+            // 
+            // btnAddDelivery
+            // 
+            this.btnAddDelivery.Location = new System.Drawing.Point(22, 136);
+            this.btnAddDelivery.Name = "btnAddDelivery";
+            this.btnAddDelivery.Size = new System.Drawing.Size(138, 34);
+            this.btnAddDelivery.TabIndex = 19;
+            this.btnAddDelivery.Tag = "";
+            this.btnAddDelivery.Text = "Add Delivery";
+            this.btnAddDelivery.UseVisualStyleBackColor = true;
+            this.btnAddDelivery.Click += new System.EventHandler(this.btnAddDelivery_Click);
+            // 
+            // cmbDelUserId
+            // 
+            this.cmbDelUserId.FormattingEnabled = true;
+            this.cmbDelUserId.Location = new System.Drawing.Point(117, 95);
+            this.cmbDelUserId.Name = "cmbDelUserId";
+            this.cmbDelUserId.Size = new System.Drawing.Size(227, 24);
+            this.cmbDelUserId.TabIndex = 17;
+            this.cmbDelUserId.Tag = "";
+            // 
+            // txtDelStatus
+            // 
+            this.txtDelStatus.Location = new System.Drawing.Point(666, 119);
+            this.txtDelStatus.Name = "txtDelStatus";
+            this.txtDelStatus.ReadOnly = true;
+            this.txtDelStatus.Size = new System.Drawing.Size(23, 22);
+            this.txtDelStatus.TabIndex = 26;
+            // 
+            // txtDeliveryId
+            // 
+            this.txtDeliveryId.Location = new System.Drawing.Point(513, 163);
+            this.txtDeliveryId.Name = "txtDeliveryId";
+            this.txtDeliveryId.ReadOnly = true;
+            this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
+            this.txtDeliveryId.TabIndex = 24;
+            // 
+            // btnSearchDeliveries
+            // 
+            this.btnSearchDeliveries.Location = new System.Drawing.Point(542, 157);
+            this.btnSearchDeliveries.Name = "btnSearchDeliveries";
+            this.btnSearchDeliveries.Size = new System.Drawing.Size(147, 34);
+            this.btnSearchDeliveries.TabIndex = 23;
+            this.btnSearchDeliveries.Text = "Search";
+            this.btnSearchDeliveries.UseVisualStyleBackColor = true;
+            this.btnSearchDeliveries.Click += new System.EventHandler(this.btnSearchDeliveries_Click);
+            // 
+            // dgvDeliveries
+            // 
+            this.dgvDeliveries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeliveries.Location = new System.Drawing.Point(18, 213);
+            this.dgvDeliveries.Name = "dgvDeliveries";
+            this.dgvDeliveries.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDeliveries.Size = new System.Drawing.Size(671, 220);
+            this.dgvDeliveries.TabIndex = 18;
+            this.dgvDeliveries.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeliveries_CellClick);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.Navy;
+            this.btnLogout.Location = new System.Drawing.Point(130, 427);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(94, 51);
+            this.btnLogout.TabIndex = 6;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // Main
             // 
@@ -570,6 +570,7 @@ namespace BaeWynCouriersApp
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.grpDeliveries);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaeWyn Couriers";
             this.Load += new System.EventHandler(this.Main_Load);
             this.grpClients.ResumeLayout(false);
@@ -577,10 +578,10 @@ namespace BaeWynCouriersApp
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.grpDeliveries.ResumeLayout(false);
             this.grpDeliveries.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
+            this.pnlDelCourierControl.ResumeLayout(false);
             this.pnlDelAdminControl.ResumeLayout(false);
             this.pnlDelAdminControl.PerformLayout();
-            this.pnlDelCourierControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

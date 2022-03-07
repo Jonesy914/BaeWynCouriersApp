@@ -82,7 +82,7 @@ namespace BaeWynCouriersApp
                     DataSet dsTimeBlocks = db.ImportDbRecords("TimeBlocks");
                     setupComboBox(cmbTimeBlockId, dsTimeBlocks, "TimeBlockId", "BlockDetail");
 
-                    DataSet dsUsers = db.GetAllCouriers();
+                    DataSet dsUsers = db.ImportDbRecords("Users", "AccessLevel = 4");
                     setupComboBox(cmbDelUserId, dsUsers, "UserId", "Name");
 
                     //Set which controls are visible to user based on access level.
@@ -274,7 +274,6 @@ namespace BaeWynCouriersApp
 
         private void btnAddDelivery_Click(object sender, EventArgs e)
         {
-            //ToDo: Fix american date issue. Use UTC?
             //Create delivery object from input fields.
             Delivery newDelivery = new Delivery { ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue, StatusCode = "U" };
 
@@ -315,7 +314,6 @@ namespace BaeWynCouriersApp
 
         private void btnUpdateDelivery_Click(object sender, EventArgs e)
         {
-            //ToDo: Fix american date issue. Use UTC?
             //Check DeliveryId is not null
             if (!string.IsNullOrEmpty(txtDeliveryId.Text))
             {
@@ -377,8 +375,9 @@ namespace BaeWynCouriersApp
                 }
                 else
                 {
-                    DataSet dsDeliveries = db.GetCourierDeliveries(currentUser.UserId);  //Get current courier's unaccepted and accepted deliveries set as dataset.
-                    dgvDeliveries.DataSource = dsDeliveries.Tables[0];                   //Populate gridview with deliveries dataset
+                    //Get current courier's unaccepted and accepted deliveries set as dataset.
+                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries", "UserId = " + currentUser.UserId + " and StatusCode In('A', 'U')");
+                    dgvDeliveries.DataSource = dsDeliveries.Tables[0];  //Populate gridview with deliveries dataset
                 }
             }
             catch (Exception ex)

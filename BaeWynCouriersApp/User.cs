@@ -78,7 +78,7 @@ namespace BaeWynCouriersApp
                     {
                         SqlDa.Fill(ds);
                         if(ds != null)
-                        {
+                         {
                             lstMenuItems = ds.Tables[0].AsEnumerable().Select(
                                 dataRow => new MenuItem
                                 {

@@ -24,14 +24,14 @@ namespace BaeWynCouriersApp
         public void AddDelivery()
         {
             DataAccess db = new DataAccess();
-            string str = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCode) Values (" + ClientId + ", '" + DeliveryDate + "', " + TimeBlockId + ", " + UserId + ", '" + StatusCode + "')";
+            string str = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCode) Values (" + ClientId + ", '" + DeliveryDate.ToString("yyyy-MM-dd") + "', " + TimeBlockId + ", " + UserId + ", '" + StatusCode + "')";
             db.UpdateDbRecord(str);
         }
 
         public void UpdateDelivery()
         {
             DataAccess db = new DataAccess();
-            string str = "Update Deliveries Set ClientId = " + ClientId + ", DeliveryDate = '" + DeliveryDate + "', TimeBlockId = " + TimeBlockId + ", UserId = " + UserId + " Where DeliveryId = " + DeliveryId;
+            string str = "Update Deliveries Set ClientId = " + ClientId + ", DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "', TimeBlockId = " + TimeBlockId + ", UserId = " + UserId + " Where DeliveryId = " + DeliveryId;
             db.UpdateDbRecord(str);
         }
 
@@ -45,7 +45,7 @@ namespace BaeWynCouriersApp
         public  bool CheckDeliveryExistsAdd()
         {
             DataAccess db = new DataAccess();
-            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId;
+            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId;
             bool check = db.CheckDbRecord(str);
 
             return check;
@@ -54,7 +54,7 @@ namespace BaeWynCouriersApp
         public bool CheckDeliveryExistsUpdate() //Record needs to not check for itself to allow Client Id to be changed when other criteria stays the same.
         {
             DataAccess db = new DataAccess();
-            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and DeliveryId <> " + DeliveryId;
+            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and DeliveryId <> " + DeliveryId;
             bool check = db.CheckDbRecord(str);
 
             return check;

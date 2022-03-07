@@ -19,5 +19,19 @@ namespace BaeWynCouriersApp
         public Client()
         {
         }
+
+        public void AddClient()
+        {
+            DataAccess db = new DataAccess();
+            string str=  "Insert Into Clients (BusinessName, Address, PhoneNumber, Email, Notes, Contracted) Values ('" + BusinessName + "', '" + Address + "', '" + PhoneNumber + "', '" + Email + "', '" + Notes + "', '" + Contracted + "')";
+            db.UpdateDbRecord(str);
+        }
+
+        public void UpdateClient()
+        {
+            DataAccess db = new DataAccess();
+            string str = "Update Clients Set BusinessName = '" + BusinessName + "', Address = '" + Address + "', PhoneNumber = '" + PhoneNumber + "', Email = '" + Email + "', Notes = '" + Notes + "', Contracted = '" + Contracted + "' Where ClientId = " + ClientId;
+            db.UpdateDbRecord(str);
+        }
     }
 }

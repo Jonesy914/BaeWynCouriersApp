@@ -10,9 +10,15 @@ namespace BaeWynCouriersApp
 {
     class DataAccess
     {
-        public DataSet GetAllClients()
+        public DataSet ImportDbRecords(string TableName, string whereClause = "")
         {
             DataSet ds = new DataSet();
+            string sqlstr = "Select * From " + TableName;
+
+            if (!String.IsNullOrEmpty(whereClause))
+            {
+                sqlstr = sqlstr + " Where " + whereClause;
+            }
 
             try
             {
@@ -21,7 +27,7 @@ namespace BaeWynCouriersApp
                     SqlCommand command = new SqlCommand();
                     command.Connection = mySQLCon;
                     command.CommandType = CommandType.Text;
-                    command.CommandText = "Select * From Clients";
+                    command.CommandText = sqlstr;
                     using (SqlDataAdapter SqlDa = new SqlDataAdapter(command))
                     {
                         SqlDa.Fill(ds);
@@ -35,7 +41,7 @@ namespace BaeWynCouriersApp
             }
         }
 
-        public void AddClient(Client newClient)
+        public void UpdateDbRecord(string sqlstr)
         {
             try
             {
@@ -45,9 +51,9 @@ namespace BaeWynCouriersApp
                 SqlCommand command = new SqlCommand();
                 command.Connection = mySQLCon;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Insert Into Clients (BusinessName, Address, PhoneNumber, Email, Notes, Contracted) Values ('" + newClient.BusinessName + "', '" + newClient.Address + "', '" + newClient.PhoneNumber + "', '" + newClient.Email + "', '" + newClient.Notes + "', '" + newClient.Contracted + "')";
+                command.CommandText = sqlstr;
                 command.ExecuteNonQuery();
-                
+
                 mySQLCon.Close();
             }
             catch (Exception)
@@ -56,8 +62,10 @@ namespace BaeWynCouriersApp
             }
         }
 
-        public void UpdateClient(Client currClient)
+        public bool CheckDbRecord(string sqlstr)
         {
+            bool check = false;
+
             try
             {
                 SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
@@ -66,10 +74,17 @@ namespace BaeWynCouriersApp
                 SqlCommand command = new SqlCommand();
                 command.Connection = mySQLCon;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Update Clients Set BusinessName = '" + currClient.BusinessName + "', Address = '" + currClient.Address + "', PhoneNumber = '" + currClient.PhoneNumber + "', Email = '" + currClient.Email + "', Notes = '" + currClient.Notes + "', Contracted = '" + currClient.Contracted + "' Where ClientId = " + currClient.ClientId;
-                command.ExecuteNonQuery();
+                command.CommandText = sqlstr;
+                SqlDataReader SqlDr = command.ExecuteReader();
+
+                if (SqlDr.HasRows)
+                {
+                    check = true;
+                }
 
                 mySQLCon.Close();
+
+                return check;
             }
             catch (Exception)
             {

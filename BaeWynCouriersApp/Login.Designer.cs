@@ -104,6 +104,7 @@ namespace BaeWynCouriersApp
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnExit);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

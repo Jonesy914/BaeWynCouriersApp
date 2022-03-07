@@ -70,10 +70,15 @@ namespace BaeWynCouriersApp
             this.cmbDelClientId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnClientClear = new System.Windows.Forms.Button();
+            this.pnlDelAdminControl = new System.Windows.Forms.Panel();
+            this.pnlDelCourierControl = new System.Windows.Forms.Panel();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpDeliveries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
+            this.pnlDelAdminControl.SuspendLayout();
+            this.pnlDelCourierControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -112,6 +117,7 @@ namespace BaeWynCouriersApp
             // 
             // grpClients
             // 
+            this.grpClients.Controls.Add(this.btnClientClear);
             this.grpClients.Controls.Add(this.txtClientId);
             this.grpClients.Controls.Add(this.btnSearchClients);
             this.grpClients.Controls.Add(this.btnUpdateClient);
@@ -131,7 +137,7 @@ namespace BaeWynCouriersApp
             this.grpClients.Controls.Add(this.txtBusinessName);
             this.grpClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
-            this.grpClients.Location = new System.Drawing.Point(130, 7);
+            this.grpClients.Location = new System.Drawing.Point(189, 7);
             this.grpClients.Name = "grpClients";
             this.grpClients.Size = new System.Drawing.Size(22, 26);
             this.grpClients.TabIndex = 4;
@@ -159,7 +165,7 @@ namespace BaeWynCouriersApp
             // 
             // btnUpdateClient
             // 
-            this.btnUpdateClient.Location = new System.Drawing.Point(174, 164);
+            this.btnUpdateClient.Location = new System.Drawing.Point(166, 164);
             this.btnUpdateClient.Name = "btnUpdateClient";
             this.btnUpdateClient.Size = new System.Drawing.Size(138, 34);
             this.btnUpdateClient.TabIndex = 16;
@@ -311,28 +317,17 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
+            this.grpDeliveries.Controls.Add(this.pnlDelCourierControl);
+            this.grpDeliveries.Controls.Add(this.pnlDelAdminControl);
             this.grpDeliveries.Controls.Add(this.txtDelStatus);
-            this.grpDeliveries.Controls.Add(this.btnCancelDelivery);
             this.grpDeliveries.Controls.Add(this.txtDeliveryId);
             this.grpDeliveries.Controls.Add(this.btnSearchDeliveries);
-            this.grpDeliveries.Controls.Add(this.btnCompleteDelivery);
-            this.grpDeliveries.Controls.Add(this.btnAcceptDelivery);
-            this.grpDeliveries.Controls.Add(this.btnUpdateDelivery);
-            this.grpDeliveries.Controls.Add(this.btnAddDelivery);
             this.grpDeliveries.Controls.Add(this.dgvDeliveries);
-            this.grpDeliveries.Controls.Add(this.cmbDelUserId);
-            this.grpDeliveries.Controls.Add(this.label10);
-            this.grpDeliveries.Controls.Add(this.cmbTimeBlockId);
-            this.grpDeliveries.Controls.Add(this.label9);
-            this.grpDeliveries.Controls.Add(this.dtpDelDate);
-            this.grpDeliveries.Controls.Add(this.label8);
-            this.grpDeliveries.Controls.Add(this.cmbDelClientId);
-            this.grpDeliveries.Controls.Add(this.label1);
             this.grpDeliveries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDeliveries.ForeColor = System.Drawing.Color.Navy;
-            this.grpDeliveries.Location = new System.Drawing.Point(241, 29);
+            this.grpDeliveries.Location = new System.Drawing.Point(262, 12);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(719, 449);
+            this.grpDeliveries.Size = new System.Drawing.Size(726, 466);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -340,7 +335,7 @@ namespace BaeWynCouriersApp
             // 
             // txtDelStatus
             // 
-            this.txtDelStatus.Location = new System.Drawing.Point(358, 57);
+            this.txtDelStatus.Location = new System.Drawing.Point(371, 57);
             this.txtDelStatus.Name = "txtDelStatus";
             this.txtDelStatus.ReadOnly = true;
             this.txtDelStatus.Size = new System.Drawing.Size(23, 22);
@@ -348,17 +343,18 @@ namespace BaeWynCouriersApp
             // 
             // btnCancelDelivery
             // 
-            this.btnCancelDelivery.Location = new System.Drawing.Point(542, 103);
+            this.btnCancelDelivery.Location = new System.Drawing.Point(0, 80);
             this.btnCancelDelivery.Name = "btnCancelDelivery";
             this.btnCancelDelivery.Size = new System.Drawing.Size(147, 34);
             this.btnCancelDelivery.TabIndex = 25;
+            this.btnCancelDelivery.Tag = "";
             this.btnCancelDelivery.Text = "Cancel Delivery";
             this.btnCancelDelivery.UseVisualStyleBackColor = true;
             this.btnCancelDelivery.Click += new System.EventHandler(this.btnCancelDelivery_Click);
             // 
             // txtDeliveryId
             // 
-            this.txtDeliveryId.Location = new System.Drawing.Point(358, 28);
+            this.txtDeliveryId.Location = new System.Drawing.Point(371, 28);
             this.txtDeliveryId.Name = "txtDeliveryId";
             this.txtDeliveryId.ReadOnly = true;
             this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
@@ -368,7 +364,7 @@ namespace BaeWynCouriersApp
             // 
             this.btnSearchDeliveries.Location = new System.Drawing.Point(542, 157);
             this.btnSearchDeliveries.Name = "btnSearchDeliveries";
-            this.btnSearchDeliveries.Size = new System.Drawing.Size(138, 34);
+            this.btnSearchDeliveries.Size = new System.Drawing.Size(147, 34);
             this.btnSearchDeliveries.TabIndex = 23;
             this.btnSearchDeliveries.Text = "Search";
             this.btnSearchDeliveries.UseVisualStyleBackColor = true;
@@ -376,40 +372,44 @@ namespace BaeWynCouriersApp
             // 
             // btnCompleteDelivery
             // 
-            this.btnCompleteDelivery.Location = new System.Drawing.Point(542, 63);
+            this.btnCompleteDelivery.Location = new System.Drawing.Point(0, 40);
             this.btnCompleteDelivery.Name = "btnCompleteDelivery";
             this.btnCompleteDelivery.Size = new System.Drawing.Size(147, 34);
             this.btnCompleteDelivery.TabIndex = 22;
+            this.btnCompleteDelivery.Tag = "";
             this.btnCompleteDelivery.Text = "Complete Delivery";
             this.btnCompleteDelivery.UseVisualStyleBackColor = true;
             this.btnCompleteDelivery.Click += new System.EventHandler(this.btnCompleteDelivery_Click);
             // 
             // btnAcceptDelivery
             // 
-            this.btnAcceptDelivery.Location = new System.Drawing.Point(542, 23);
+            this.btnAcceptDelivery.Location = new System.Drawing.Point(0, 0);
             this.btnAcceptDelivery.Name = "btnAcceptDelivery";
             this.btnAcceptDelivery.Size = new System.Drawing.Size(147, 34);
             this.btnAcceptDelivery.TabIndex = 21;
+            this.btnAcceptDelivery.Tag = "";
             this.btnAcceptDelivery.Text = "Accept Delivery";
             this.btnAcceptDelivery.UseVisualStyleBackColor = true;
             this.btnAcceptDelivery.Click += new System.EventHandler(this.btnAcceptDelivery_Click);
             // 
             // btnUpdateDelivery
             // 
-            this.btnUpdateDelivery.Location = new System.Drawing.Point(174, 157);
+            this.btnUpdateDelivery.Location = new System.Drawing.Point(166, 136);
             this.btnUpdateDelivery.Name = "btnUpdateDelivery";
             this.btnUpdateDelivery.Size = new System.Drawing.Size(138, 34);
             this.btnUpdateDelivery.TabIndex = 20;
+            this.btnUpdateDelivery.Tag = "";
             this.btnUpdateDelivery.Text = "Update Delivery";
             this.btnUpdateDelivery.UseVisualStyleBackColor = true;
             this.btnUpdateDelivery.Click += new System.EventHandler(this.btnUpdateDelivery_Click);
             // 
             // btnAddDelivery
             // 
-            this.btnAddDelivery.Location = new System.Drawing.Point(30, 157);
+            this.btnAddDelivery.Location = new System.Drawing.Point(22, 136);
             this.btnAddDelivery.Name = "btnAddDelivery";
             this.btnAddDelivery.Size = new System.Drawing.Size(138, 34);
             this.btnAddDelivery.TabIndex = 19;
+            this.btnAddDelivery.Tag = "";
             this.btnAddDelivery.Text = "Add Delivery";
             this.btnAddDelivery.UseVisualStyleBackColor = true;
             this.btnAddDelivery.Click += new System.EventHandler(this.btnAddDelivery_Click);
@@ -427,74 +427,82 @@ namespace BaeWynCouriersApp
             // cmbDelUserId
             // 
             this.cmbDelUserId.FormattingEnabled = true;
-            this.cmbDelUserId.Location = new System.Drawing.Point(125, 116);
+            this.cmbDelUserId.Location = new System.Drawing.Point(117, 95);
             this.cmbDelUserId.Name = "cmbDelUserId";
             this.cmbDelUserId.Size = new System.Drawing.Size(227, 24);
             this.cmbDelUserId.TabIndex = 17;
+            this.cmbDelUserId.Tag = "";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(55, 119);
+            this.label10.Location = new System.Drawing.Point(47, 98);
             this.label10.Name = "label10";
             this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label10.Size = new System.Drawing.Size(58, 16);
             this.label10.TabIndex = 16;
+            this.label10.Tag = "";
             this.label10.Text = "Courier";
             // 
             // cmbTimeBlockId
             // 
             this.cmbTimeBlockId.FormattingEnabled = true;
-            this.cmbTimeBlockId.Location = new System.Drawing.Point(125, 86);
+            this.cmbTimeBlockId.Location = new System.Drawing.Point(117, 65);
             this.cmbTimeBlockId.Name = "cmbTimeBlockId";
             this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
             this.cmbTimeBlockId.TabIndex = 15;
+            this.cmbTimeBlockId.Tag = "";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 89);
+            this.label9.Location = new System.Drawing.Point(6, 68);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label9.Size = new System.Drawing.Size(105, 16);
             this.label9.TabIndex = 14;
+            this.label9.Tag = "";
             this.label9.Text = "Delivery Time";
             // 
             // dtpDelDate
             // 
             this.dtpDelDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDelDate.Location = new System.Drawing.Point(125, 58);
+            this.dtpDelDate.Location = new System.Drawing.Point(117, 37);
             this.dtpDelDate.Name = "dtpDelDate";
             this.dtpDelDate.Size = new System.Drawing.Size(227, 22);
             this.dtpDelDate.TabIndex = 13;
+            this.dtpDelDate.Tag = "";
             this.dtpDelDate.Leave += new System.EventHandler(this.dtpDelDate_Leave);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 61);
+            this.label8.Location = new System.Drawing.Point(8, 40);
             this.label8.Name = "label8";
             this.label8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label8.Size = new System.Drawing.Size(103, 16);
             this.label8.TabIndex = 12;
+            this.label8.Tag = "";
             this.label8.Text = "Delivery Date";
             // 
             // cmbDelClientId
             // 
             this.cmbDelClientId.FormattingEnabled = true;
-            this.cmbDelClientId.Location = new System.Drawing.Point(125, 28);
+            this.cmbDelClientId.Location = new System.Drawing.Point(117, 7);
             this.cmbDelClientId.Name = "cmbDelClientId";
             this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
             this.cmbDelClientId.TabIndex = 11;
+            this.cmbDelClientId.Tag = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 31);
+            this.label1.Location = new System.Drawing.Point(58, 10);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(47, 16);
             this.label1.TabIndex = 10;
+            this.label1.Tag = "";
             this.label1.Text = "Client";
             // 
             // btnLogout
@@ -508,6 +516,45 @@ namespace BaeWynCouriersApp
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnClientClear
+            // 
+            this.btnClientClear.Location = new System.Drawing.Point(411, 164);
+            this.btnClientClear.Name = "btnClientClear";
+            this.btnClientClear.Size = new System.Drawing.Size(138, 34);
+            this.btnClientClear.TabIndex = 19;
+            this.btnClientClear.Text = "Clear Fields";
+            this.btnClientClear.UseVisualStyleBackColor = true;
+            this.btnClientClear.Click += new System.EventHandler(this.btnClientClear_Click);
+            // 
+            // pnlDelAdminControl
+            // 
+            this.pnlDelAdminControl.Controls.Add(this.btnUpdateDelivery);
+            this.pnlDelAdminControl.Controls.Add(this.label1);
+            this.pnlDelAdminControl.Controls.Add(this.cmbDelClientId);
+            this.pnlDelAdminControl.Controls.Add(this.label8);
+            this.pnlDelAdminControl.Controls.Add(this.dtpDelDate);
+            this.pnlDelAdminControl.Controls.Add(this.label9);
+            this.pnlDelAdminControl.Controls.Add(this.cmbTimeBlockId);
+            this.pnlDelAdminControl.Controls.Add(this.label10);
+            this.pnlDelAdminControl.Controls.Add(this.btnAddDelivery);
+            this.pnlDelAdminControl.Controls.Add(this.cmbDelUserId);
+            this.pnlDelAdminControl.Location = new System.Drawing.Point(14, 21);
+            this.pnlDelAdminControl.Name = "pnlDelAdminControl";
+            this.pnlDelAdminControl.Size = new System.Drawing.Size(351, 177);
+            this.pnlDelAdminControl.TabIndex = 27;
+            this.pnlDelAdminControl.Visible = false;
+            // 
+            // pnlDelCourierControl
+            // 
+            this.pnlDelCourierControl.Controls.Add(this.btnCancelDelivery);
+            this.pnlDelCourierControl.Controls.Add(this.btnAcceptDelivery);
+            this.pnlDelCourierControl.Controls.Add(this.btnCompleteDelivery);
+            this.pnlDelCourierControl.Location = new System.Drawing.Point(542, 34);
+            this.pnlDelCourierControl.Name = "pnlDelCourierControl";
+            this.pnlDelCourierControl.Size = new System.Drawing.Size(147, 117);
+            this.pnlDelCourierControl.TabIndex = 28;
+            this.pnlDelCourierControl.Visible = false;
             // 
             // Main
             // 
@@ -531,6 +578,9 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.ResumeLayout(false);
             this.grpDeliveries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
+            this.pnlDelAdminControl.ResumeLayout(false);
+            this.pnlDelAdminControl.PerformLayout();
+            this.pnlDelCourierControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,5 +629,8 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.TextBox txtDeliveryId;
         private System.Windows.Forms.Button btnCancelDelivery;
         private System.Windows.Forms.TextBox txtDelStatus;
+        private System.Windows.Forms.Button btnClientClear;
+        private System.Windows.Forms.Panel pnlDelAdminControl;
+        private System.Windows.Forms.Panel pnlDelCourierControl;
     }
 }

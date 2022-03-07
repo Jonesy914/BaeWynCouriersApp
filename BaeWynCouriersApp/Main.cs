@@ -75,6 +75,7 @@ namespace BaeWynCouriersApp
                     break;
                 case "Deliveries":
 
+                    //Populate combo boxes.
                     DataSet dsClients = db.ImportDbRecords("Clients");
                     setupComboBox(cmbDelClientId, dsClients, "ClientId", "BusinessName");
 
@@ -83,6 +84,16 @@ namespace BaeWynCouriersApp
 
                     DataSet dsUsers = db.GetAllCouriers();
                     setupComboBox(cmbDelUserId, dsUsers, "UserId", "Name");
+
+                    //Set which controls are visible to user based on access level.
+                    if (currentUser.AccessLevel < 4)
+                    {
+                        pnlDelAdminControl.Visible = true;
+                    }
+                    else
+                    {
+                        pnlDelCourierControl.Visible = true;
+                    }
 
                     setupGroupBox(grpDeliveries);
                     break;
@@ -127,56 +138,58 @@ namespace BaeWynCouriersApp
 
         //----------------------Clients----------------------//
 
+        private void clearClientFields()
+        {
+            txtClientId.Clear();
+            txtBusinessName.Clear();
+            txtAddress.Clear();
+            txtPhoneNumber.Clear();
+            txtEmail.Clear();
+            txtNotes.Clear();
+            chkContracted.Checked = false;
+        }
+
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-            try
+            if (!string.IsNullOrEmpty(txtBusinessName.Text))
             {
-                //Create client object from input fields.
-                Client newClient = new Client { BusinessName = txtBusinessName.Text, Address = txtAddress.Text, PhoneNumber = txtPhoneNumber.Text, Email = txtEmail.Text, Notes = txtNotes.Text, Contracted = chkContracted.Checked };
-                
-                db.AddClient(newClient);    //Add client using client object.
+                try
+                {
+                    //Create client object from input fields.
+                    Client newClient = new Client { BusinessName = txtBusinessName.Text, Address = txtAddress.Text, PhoneNumber = txtPhoneNumber.Text, Email = txtEmail.Text, Notes = txtNotes.Text, Contracted = chkContracted.Checked };
 
-                MessageBox.Show(newClient.BusinessName + " successfully created.", "System Information...");
+                    newClient.AddClient();    //Add client using client object.
 
-                //Reset client text fields (should only happen if successful insert).
-                txtBusinessName.Clear();
-                txtAddress.Clear();
-                txtPhoneNumber.Clear();
-                txtEmail.Clear();
-                txtNotes.Clear();
-                chkContracted.Checked = false;
+                    MessageBox.Show(newClient.BusinessName + " successfully created.", "System Information...");
+
+                    clearClientFields();    //Reset client text fields (should only happen if successful insert).
+                    searchClients();        //Refresh data grid.
+                }
+                catch (Exception ex)
+                {
+                    displayErrorMessage(ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                displayErrorMessage(ex);
-            }            
+                MessageBox.Show("'Business Name' is a required field.", "Invalid Selection...");
+            }
         }
 
         private void btnUpdateClient_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //Create client object from input fields
-                Client currClient = new Client { ClientId = int.Parse(txtClientId.Text), BusinessName = txtBusinessName.Text, Address = txtAddress.Text, PhoneNumber = txtPhoneNumber.Text, Email = txtEmail.Text, Notes = txtNotes.Text, Contracted = chkContracted.Checked };
-                
-                db.UpdateClient(currClient);    //Update client using client object.
-
-                MessageBox.Show(currClient.BusinessName + " successfully updated.", "System Information...");
-            }
-            catch (Exception ex)
-            {
-                displayErrorMessage(ex);
-            }
-        }
-
-        private void btnSearchClients_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtClientId.Text))
             {
                 try
                 {
-                    DataSet dsClients = db.ImportDbRecords("Clients");  //Get all clients set as dataset.
-                    dgvClients.DataSource = dsClients.Tables[0];        //Populate gridview with clients dataset
+                    //Create client object from input fields
+                    Client currClient = new Client { ClientId = int.Parse(txtClientId.Text), BusinessName = txtBusinessName.Text, Address = txtAddress.Text, PhoneNumber = txtPhoneNumber.Text, Email = txtEmail.Text, Notes = txtNotes.Text, Contracted = chkContracted.Checked };
+ 
+                    currClient.UpdateClient();  //Update client using client object.
+
+                    MessageBox.Show(currClient.BusinessName + " successfully updated.", "System Information...");
+
+                    searchClients();    //Refresh data grid.
                 }
                 catch (Exception ex)
                 {
@@ -186,7 +199,25 @@ namespace BaeWynCouriersApp
             else
             {
                 MessageBox.Show("Select a Client record from the list to update.", "Invalid Selection...");
-            }            
+            }
+        }
+
+        private void btnSearchClients_Click(object sender, EventArgs e)
+        {
+            searchClients();
+        }
+
+        private void searchClients()
+        {
+            try
+            {
+                DataSet dsClients = db.ImportDbRecords("Clients");  //Get all clients set as dataset.
+                dgvClients.DataSource = dsClients.Tables[0];        //Populate gridview with clients dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
         }
 
         private void dgvClients_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -204,6 +235,11 @@ namespace BaeWynCouriersApp
                     chkContracted.Checked = (bool)dgvClients.SelectedCells[6].Value;
                 }
             }
+        }
+
+        private void btnClientClear_Click(object sender, EventArgs e)
+        {
+            clearClientFields();
         }
 
         //----------------------Deliveries----------------------//
@@ -238,6 +274,7 @@ namespace BaeWynCouriersApp
 
         private void btnAddDelivery_Click(object sender, EventArgs e)
         {
+            //ToDo: Fix american date issue. Use UTC?
             //Create delivery object from input fields.
             Delivery newDelivery = new Delivery { ClientId = (int)cmbDelClientId.SelectedValue, DeliveryDate = dtpDelDate.Value.Date, TimeBlockId = (int)cmbTimeBlockId.SelectedValue, UserId = (int)cmbDelUserId.SelectedValue, StatusCode = "U" };
 
@@ -253,7 +290,8 @@ namespace BaeWynCouriersApp
                         //Add delivery.
                         try
                         {
-                            db.AddDelivery(newDelivery);    //Add delivery using delivery object.
+                            //db.AddDelivery(newDelivery);    //Add delivery using delivery object.
+                            newDelivery.AddDelivery();    //Add delivery using delivery object.
 
                             MessageBox.Show("Delivery successfully created.", "System Information...");
                         }
@@ -276,6 +314,7 @@ namespace BaeWynCouriersApp
 
         private void btnUpdateDelivery_Click(object sender, EventArgs e)
         {
+            //ToDo: Fix american date issue. Use UTC?
             //Check DeliveryId is not null
             if (!string.IsNullOrEmpty(txtDeliveryId.Text))
             {
@@ -293,9 +332,9 @@ namespace BaeWynCouriersApp
                             //Update delivery.
                             try
                             {
-                                db.UpdateDelivery(currDelivery);    //Update delivery using delivery object.
+                                currDelivery.UpdateDelivery();    //Update delivery using delivery object.
 
-                                MessageBox.Show("Delivery successfully created.", "System Information...");
+                                MessageBox.Show("Delivery successfully updated.", "System Information...");
                             }
                             catch (Exception ex)
                             {
@@ -324,11 +363,16 @@ namespace BaeWynCouriersApp
             //ToDo: extract into method to be called after add and update Delivery.
             try
             {
-                //ToDo: if user not courier
-                DataSet dsDeliveries = db.ImportDbRecords("Deliveries");  //Get all deliveries set as dataset.
-                dgvDeliveries.DataSource = dsDeliveries.Tables[0];        //Populate gridview with deliveries dataset
-
-                //ToDo: else only populate deliveries assigned to current user where StatusCode in ('A', 'I')
+                if (currentUser.AccessLevel < 4) //If user not courier.
+                {
+                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries");  //Get all deliveries set as dataset.
+                    dgvDeliveries.DataSource = dsDeliveries.Tables[0];        //Populate gridview with deliveries dataset
+                }
+                else
+                {
+                    DataSet dsDeliveries = db.GetCourierDeliveries(currentUser.UserId);  //Get current courier's unaccepted and accepted deliveries set as dataset.
+                    dgvDeliveries.DataSource = dsDeliveries.Tables[0];                   //Populate gridview with deliveries dataset
+                }
             }
             catch (Exception ex)
             {
@@ -359,7 +403,8 @@ namespace BaeWynCouriersApp
                 try
                 {
                     Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), StatusCode = statuscode };
-                    db.UpdateDeliveryStatus(currDelivery);
+                    //db.UpdateDeliveryStatus(currDelivery);
+                    currDelivery.UpdateDeliveryStatus();
                     MessageBox.Show(message, "System Information...");
                 }
                 catch (Exception ex)

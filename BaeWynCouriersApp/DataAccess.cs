@@ -35,7 +35,7 @@ namespace BaeWynCouriersApp
             }
         }
 
-        public void AddClient(Client newClient)
+        public void UpdateDbRecord(string sqlstr)
         {
             try
             {
@@ -45,9 +45,9 @@ namespace BaeWynCouriersApp
                 SqlCommand command = new SqlCommand();
                 command.Connection = mySQLCon;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Insert Into Clients (BusinessName, Address, PhoneNumber, Email, Notes, Contracted) Values ('" + newClient.BusinessName + "', '" + newClient.Address + "', '" + newClient.PhoneNumber + "', '" + newClient.Email + "', '" + newClient.Notes + "', '" + newClient.Contracted + "')";
+                command.CommandText = sqlstr;
                 command.ExecuteNonQuery();
-                
+
                 mySQLCon.Close();
             }
             catch (Exception)
@@ -56,8 +56,10 @@ namespace BaeWynCouriersApp
             }
         }
 
-        public void UpdateClient(Client currClient)
+        public bool CheckDbRecord(string sqlstr)
         {
+            bool check = false;
+
             try
             {
                 SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
@@ -66,10 +68,17 @@ namespace BaeWynCouriersApp
                 SqlCommand command = new SqlCommand();
                 command.Connection = mySQLCon;
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Update Clients Set BusinessName = '" + currClient.BusinessName + "', Address = '" + currClient.Address + "', PhoneNumber = '" + currClient.PhoneNumber + "', Email = '" + currClient.Email + "', Notes = '" + currClient.Notes + "', Contracted = '" + currClient.Contracted + "' Where ClientId = " + currClient.ClientId;
-                command.ExecuteNonQuery();
+                command.CommandText = sqlstr;
+                SqlDataReader SqlDr = command.ExecuteReader();
+
+                if (SqlDr.HasRows)
+                {
+                    check = true;
+                }
 
                 mySQLCon.Close();
+
+                return check;
             }
             catch (Exception)
             {
@@ -102,62 +111,24 @@ namespace BaeWynCouriersApp
             }
         }
 
-        public void AddDelivery(Delivery newDelivery)
+        public DataSet GetCourierDeliveries(int userId)
         {
+            DataSet ds = new DataSet();
+
             try
             {
-                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
-                mySQLCon.Open();
-
-                SqlCommand command = new SqlCommand();
-                command.Connection = mySQLCon;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCode) Values (" + newDelivery.ClientId + ", '" + newDelivery.DeliveryDate + "', " + newDelivery.TimeBlockId + ", " + newDelivery.UserId + ", '" + newDelivery.StatusCode + "')";
-                command.ExecuteNonQuery();
-
-                mySQLCon.Close();
-            }
-            catch (Exception)
-            {
-                throw;  //Any errors are caught and thrown up the stack.
-            }
-        }
-
-        public void UpdateDelivery(Delivery currDelivery)
-        {
-            try
-            {
-                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
-                mySQLCon.Open();
-
-                SqlCommand command = new SqlCommand();
-                command.Connection = mySQLCon;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Update Deliveries Set ClientId = " + currDelivery.ClientId + ", DeliveryDate = '" + currDelivery.DeliveryDate + "', TimeBlockId = " + currDelivery.TimeBlockId + ", UserId = " + currDelivery.UserId + " Where DeliveryId = " + currDelivery.DeliveryId;
-                command.ExecuteNonQuery();
-
-                mySQLCon.Close();
-            }
-            catch (Exception)
-            {
-                throw;  //Any errors are caught and thrown up the stack.
-            }
-        }
-
-        public void UpdateDeliveryStatus(Delivery currDelivery)
-        {
-            try
-            {
-                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
-                mySQLCon.Open();
-
-                SqlCommand command = new SqlCommand();
-                command.Connection = mySQLCon;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Update Deliveries Set StatusCode = '" + currDelivery.StatusCode + "' Where DeliveryId = " + currDelivery.DeliveryId;
-                command.ExecuteNonQuery();
-
-                mySQLCon.Close();
+                using (SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB")))
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = mySQLCon;
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "Select * From Deliveries Where UserId = " + userId + " and StatusCode In ('A', 'U')";
+                    using (SqlDataAdapter SqlDa = new SqlDataAdapter(command))
+                    {
+                        SqlDa.Fill(ds);
+                    }
+                }
+                return ds;
             }
             catch (Exception)
             {

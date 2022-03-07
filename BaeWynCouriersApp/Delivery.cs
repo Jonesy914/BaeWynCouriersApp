@@ -21,94 +21,52 @@ namespace BaeWynCouriersApp
         {
         }
 
-        public bool CheckDeliveryExistsAdd()
+        public void AddDelivery()
         {
-            bool check = false;
+            DataAccess db = new DataAccess();
+            string str = "Insert Into Deliveries (ClientId, DeliveryDate, TimeBlockId, UserId, StatusCode) Values (" + ClientId + ", '" + DeliveryDate + "', " + TimeBlockId + ", " + UserId + ", '" + StatusCode + "')";
+            db.UpdateDbRecord(str);
+        }
 
-            try
-            {
-                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
-                mySQLCon.Open();
+        public void UpdateDelivery()
+        {
+            DataAccess db = new DataAccess();
+            string str = "Update Deliveries Set ClientId = " + ClientId + ", DeliveryDate = '" + DeliveryDate + "', TimeBlockId = " + TimeBlockId + ", UserId = " + UserId + " Where DeliveryId = " + DeliveryId;
+            db.UpdateDbRecord(str);
+        }
 
-                SqlCommand command = new SqlCommand();
-                command.Connection = mySQLCon;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId;
-                SqlDataReader SqlDr = command.ExecuteReader();
+        public void UpdateDeliveryStatus()
+        {
+            DataAccess db = new DataAccess();
+            string str = "Update Deliveries Set StatusCode = '" + StatusCode + "' Where DeliveryId = " + DeliveryId;
+            db.UpdateDbRecord(str);
+        }
 
-                if (SqlDr.HasRows)
-                {
-                    check = true;
-                }
+        public  bool CheckDeliveryExistsAdd()
+        {
+            DataAccess db = new DataAccess();
+            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId;
+            bool check = db.CheckDbRecord(str);
 
-                mySQLCon.Close();
-
-                return check;
-            }
-            catch (Exception)
-            {
-                throw;  //Any errors are caught and thrown up the stack.
-            }
+            return check;
         }
 
         public bool CheckDeliveryExistsUpdate() //Record needs to not check for itself to allow Client Id to be changed when other criteria stays the same.
         {
-            bool check = false;
+            DataAccess db = new DataAccess();
+            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and DeliveryId <> " + DeliveryId;
+            bool check = db.CheckDbRecord(str);
 
-            try
-            {
-                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
-                mySQLCon.Open();
-
-                SqlCommand command = new SqlCommand();
-                command.Connection = mySQLCon;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and DeliveryId <> " + DeliveryId;
-                SqlDataReader SqlDr = command.ExecuteReader();
-
-                if (SqlDr.HasRows)
-                {
-                    check = true;
-                }
-
-                mySQLCon.Close();
-
-                return check;
-            }
-            catch (Exception)
-            {
-                throw;  //Any errors are caught and thrown up the stack.
-            }
+            return check;
         }
 
         public bool CheckUserLunch()
         {
-            bool check = false;
+            DataAccess db = new DataAccess();
+            string str = "Select * From TimeBlocks As T Inner Join Users As U On T.LunchBlock = U.LunchBlock Where T.TimeBlockId = " + TimeBlockId + " and U.UserId = " + UserId;
+            bool check = db.CheckDbRecord(str);
 
-            try
-            {
-                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
-                mySQLCon.Open();
-
-                SqlCommand command = new SqlCommand();
-                command.Connection = mySQLCon;
-                command.CommandType = CommandType.Text;
-                command.CommandText = "Select * From TimeBlocks As T Inner Join Users As U On T.LunchBlock = U.LunchBlock Where T.TimeBlockId = " + TimeBlockId + " and U.UserId = " + UserId;
-                SqlDataReader SqlDr = command.ExecuteReader();
-
-                if (SqlDr.HasRows)
-                {
-                    check = true;
-                }
-
-                mySQLCon.Close();
-
-                return check;
-            }
-            catch (Exception)
-            {
-                throw;  //Any errors are caught and thrown up the stack.
-            }
+            return check;
         }
     }
 }

@@ -412,6 +412,7 @@ namespace BaeWynCouriersApp
                     Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), StatusCode = statuscode };
                     currDelivery.UpdateDeliveryStatus();
                     MessageBox.Show(message, "System Information...");
+                    searchDeliveries();
                 }
                 catch (Exception ex)
                 {

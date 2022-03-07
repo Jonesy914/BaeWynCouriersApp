@@ -335,7 +335,7 @@ namespace BaeWynCouriersApp
             // 
             // txtDelStatus
             // 
-            this.txtDelStatus.Location = new System.Drawing.Point(371, 57);
+            this.txtDelStatus.Location = new System.Drawing.Point(666, 119);
             this.txtDelStatus.Name = "txtDelStatus";
             this.txtDelStatus.ReadOnly = true;
             this.txtDelStatus.Size = new System.Drawing.Size(23, 22);
@@ -343,9 +343,9 @@ namespace BaeWynCouriersApp
             // 
             // btnCancelDelivery
             // 
-            this.btnCancelDelivery.Location = new System.Drawing.Point(0, 80);
+            this.btnCancelDelivery.Location = new System.Drawing.Point(310, 136);
             this.btnCancelDelivery.Name = "btnCancelDelivery";
-            this.btnCancelDelivery.Size = new System.Drawing.Size(147, 34);
+            this.btnCancelDelivery.Size = new System.Drawing.Size(138, 34);
             this.btnCancelDelivery.TabIndex = 25;
             this.btnCancelDelivery.Tag = "";
             this.btnCancelDelivery.Text = "Cancel Delivery";
@@ -354,7 +354,7 @@ namespace BaeWynCouriersApp
             // 
             // txtDeliveryId
             // 
-            this.txtDeliveryId.Location = new System.Drawing.Point(371, 28);
+            this.txtDeliveryId.Location = new System.Drawing.Point(513, 163);
             this.txtDeliveryId.Name = "txtDeliveryId";
             this.txtDeliveryId.ReadOnly = true;
             this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
@@ -529,6 +529,7 @@ namespace BaeWynCouriersApp
             // 
             // pnlDelAdminControl
             // 
+            this.pnlDelAdminControl.Controls.Add(this.btnCancelDelivery);
             this.pnlDelAdminControl.Controls.Add(this.btnUpdateDelivery);
             this.pnlDelAdminControl.Controls.Add(this.label1);
             this.pnlDelAdminControl.Controls.Add(this.cmbDelClientId);
@@ -541,18 +542,17 @@ namespace BaeWynCouriersApp
             this.pnlDelAdminControl.Controls.Add(this.cmbDelUserId);
             this.pnlDelAdminControl.Location = new System.Drawing.Point(14, 21);
             this.pnlDelAdminControl.Name = "pnlDelAdminControl";
-            this.pnlDelAdminControl.Size = new System.Drawing.Size(351, 177);
+            this.pnlDelAdminControl.Size = new System.Drawing.Size(462, 177);
             this.pnlDelAdminControl.TabIndex = 27;
             this.pnlDelAdminControl.Visible = false;
             // 
             // pnlDelCourierControl
             // 
-            this.pnlDelCourierControl.Controls.Add(this.btnCancelDelivery);
             this.pnlDelCourierControl.Controls.Add(this.btnAcceptDelivery);
             this.pnlDelCourierControl.Controls.Add(this.btnCompleteDelivery);
             this.pnlDelCourierControl.Location = new System.Drawing.Point(542, 34);
             this.pnlDelCourierControl.Name = "pnlDelCourierControl";
-            this.pnlDelCourierControl.Size = new System.Drawing.Size(147, 117);
+            this.pnlDelCourierControl.Size = new System.Drawing.Size(147, 76);
             this.pnlDelCourierControl.TabIndex = 28;
             this.pnlDelCourierControl.Visible = false;
             // 

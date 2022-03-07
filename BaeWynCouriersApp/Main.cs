@@ -290,10 +290,11 @@ namespace BaeWynCouriersApp
                         //Add delivery.
                         try
                         {
-                            //db.AddDelivery(newDelivery);    //Add delivery using delivery object.
                             newDelivery.AddDelivery();    //Add delivery using delivery object.
 
                             MessageBox.Show("Delivery successfully created.", "System Information...");
+
+                            searchDeliveries(); //Refresh data grid.
                         }
                         catch (Exception ex)
                         {
@@ -335,6 +336,8 @@ namespace BaeWynCouriersApp
                                 currDelivery.UpdateDelivery();    //Update delivery using delivery object.
 
                                 MessageBox.Show("Delivery successfully updated.", "System Information...");
+
+                                searchDeliveries(); //Refresh data grid.
                             }
                             catch (Exception ex)
                             {
@@ -360,7 +363,11 @@ namespace BaeWynCouriersApp
 
         private void btnSearchDeliveries_Click(object sender, EventArgs e)
         {
-            //ToDo: extract into method to be called after add and update Delivery.
+            searchDeliveries();
+        }
+
+        private void searchDeliveries()
+        {
             try
             {
                 if (currentUser.AccessLevel < 4) //If user not courier.
@@ -403,7 +410,6 @@ namespace BaeWynCouriersApp
                 try
                 {
                     Delivery currDelivery = new Delivery { DeliveryId = int.Parse(txtDeliveryId.Text), StatusCode = statuscode };
-                    //db.UpdateDeliveryStatus(currDelivery);
                     currDelivery.UpdateDeliveryStatus();
                     MessageBox.Show(message, "System Information...");
                 }

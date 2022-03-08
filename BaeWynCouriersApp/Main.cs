@@ -457,5 +457,21 @@ namespace BaeWynCouriersApp
                 displayErrorMessage(ex);
             }
         }
+
+        private void btnRep2Search_Click(object sender, EventArgs e)
+        {
+            DateTime currentDate = DateTime.Today;                                      //Get today's date.
+            DateTime startDate = new DateTime(currentDate.Year, currentDate.Month, 1);  //Get start of current month.
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);                      //Work out end of current month.
+            try
+            {
+                DataSet dsRep2 = db.ImportDbRecords("Deliveries", "DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
+                dgvRep2.DataSource = dsRep2.Tables[0];  //Populate gridview with dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
     }
 }

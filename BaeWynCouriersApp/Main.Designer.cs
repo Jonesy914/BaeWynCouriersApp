@@ -78,6 +78,12 @@ namespace BaeWynCouriersApp
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbRep1Courier = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtpRep1Date = new System.Windows.Forms.DateTimePicker();
+            this.btnRep1Search = new System.Windows.Forms.Button();
+            this.dgvRep1 = new System.Windows.Forms.DataGridView();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpReports.SuspendLayout();
@@ -86,6 +92,8 @@ namespace BaeWynCouriersApp
             this.pnlDelAdminControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             this.tabReports.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRep1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -345,7 +353,7 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.ForeColor = System.Drawing.Color.Navy;
             this.grpDeliveries.Location = new System.Drawing.Point(217, 9);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(13, 21);
+            this.grpDeliveries.Size = new System.Drawing.Size(51, 14);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -578,6 +586,12 @@ namespace BaeWynCouriersApp
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dgvRep1);
+            this.tabPage1.Controls.Add(this.btnRep1Search);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.dtpRep1Date);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.cmbRep1Courier);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -616,19 +630,78 @@ namespace BaeWynCouriersApp
             this.tabPage4.Text = "Month\'s Client Value";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(60, 29);
+            this.label11.Name = "label11";
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label11.Size = new System.Drawing.Size(58, 16);
+            this.label11.TabIndex = 18;
+            this.label11.Tag = "";
+            this.label11.Text = "Courier";
+            // 
+            // cmbRep1Courier
+            // 
+            this.cmbRep1Courier.FormattingEnabled = true;
+            this.cmbRep1Courier.Location = new System.Drawing.Point(124, 26);
+            this.cmbRep1Courier.Name = "cmbRep1Courier";
+            this.cmbRep1Courier.Size = new System.Drawing.Size(227, 24);
+            this.cmbRep1Courier.TabIndex = 19;
+            this.cmbRep1Courier.Tag = "";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 70);
+            this.label12.Name = "label12";
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label12.Size = new System.Drawing.Size(103, 16);
+            this.label12.TabIndex = 20;
+            this.label12.Tag = "";
+            this.label12.Text = "Delivery Date";
+            // 
+            // dtpRep1Date
+            // 
+            this.dtpRep1Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRep1Date.Location = new System.Drawing.Point(124, 66);
+            this.dtpRep1Date.Name = "dtpRep1Date";
+            this.dtpRep1Date.Size = new System.Drawing.Size(227, 22);
+            this.dtpRep1Date.TabIndex = 21;
+            this.dtpRep1Date.Tag = "";
+            // 
+            // btnRep1Search
+            // 
+            this.btnRep1Search.Location = new System.Drawing.Point(542, 62);
+            this.btnRep1Search.Name = "btnRep1Search";
+            this.btnRep1Search.Size = new System.Drawing.Size(147, 34);
+            this.btnRep1Search.TabIndex = 24;
+            this.btnRep1Search.Text = "Search";
+            this.btnRep1Search.UseVisualStyleBackColor = true;
+            this.btnRep1Search.Click += new System.EventHandler(this.btnRep1Search_Click);
+            // 
+            // dgvRep1
+            // 
+            this.dgvRep1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRep1.Location = new System.Drawing.Point(18, 111);
+            this.dgvRep1.Name = "dgvRep1";
+            this.dgvRep1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRep1.Size = new System.Drawing.Size(671, 278);
+            this.dgvRep1.TabIndex = 25;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 490);
             this.ControlBox = false;
+            this.Controls.Add(this.grpDeliveries);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.grpReports);
             this.Controls.Add(this.grpClients);
             this.Controls.Add(this.lstMenu);
             this.Controls.Add(this.lblCurrentUser);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.grpDeliveries);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaeWyn Couriers";
@@ -644,6 +717,9 @@ namespace BaeWynCouriersApp
             this.pnlDelAdminControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             this.tabReports.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRep1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,5 +776,11 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView dgvRep1;
+        private System.Windows.Forms.Button btnRep1Search;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpRep1Date;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbRep1Courier;
     }
 }

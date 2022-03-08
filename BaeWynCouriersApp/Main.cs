@@ -98,6 +98,10 @@ namespace BaeWynCouriersApp
                     setupGroupBox(grpDeliveries);
                     break;
                 case "Reports":
+
+                    DataSet dsRep1Couriers = db.ImportDbRecords("Users", "AccessLevel = 4");
+                    setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
+
                     setupGroupBox(grpReports);
                     break;
             }
@@ -376,7 +380,7 @@ namespace BaeWynCouriersApp
                 else
                 {
                     //Get current courier's unaccepted and accepted deliveries set as dataset.
-                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries", "UserId = " + currentUser.UserId + " and StatusCode In('A', 'U')");
+                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries", "UserId = " + currentUser.UserId + " and StatusCode In ('A', 'U')");
                     dgvDeliveries.DataSource = dsDeliveries.Tables[0];  //Populate gridview with deliveries dataset
                 }
             }
@@ -437,6 +441,21 @@ namespace BaeWynCouriersApp
         private void btnCancelDelivery_Click(object sender, EventArgs e)
         {
             updateDeliveryStatus("X", "Delivery cancelled.");
+        }
+
+        //----------------------Reports----------------------//
+
+        private void btnRep1Search_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSet dsRep1 = db.ImportDbRecords("Deliveries", "UserId = " + cmbRep1Courier.SelectedValue + " and DeliveryDate = '" + dtpRep1Date.Value.Date.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
+                dgvRep1.DataSource = dsRep1.Tables[0];  //Populate gridview with dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
         }
     }
 }

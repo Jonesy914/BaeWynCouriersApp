@@ -73,12 +73,19 @@ namespace BaeWynCouriersApp
             this.btnSearchDeliveries = new System.Windows.Forms.Button();
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.tabReports = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
+            this.grpReports.SuspendLayout();
             this.grpDeliveries.SuspendLayout();
             this.pnlDelCourierControl.SuspendLayout();
             this.pnlDelAdminControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
+            this.tabReports.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -315,11 +322,12 @@ namespace BaeWynCouriersApp
             // 
             // grpReports
             // 
+            this.grpReports.Controls.Add(this.tabReports);
             this.grpReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReports.ForeColor = System.Drawing.Color.Navy;
-            this.grpReports.Location = new System.Drawing.Point(158, 7);
+            this.grpReports.Location = new System.Drawing.Point(241, 29);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(16, 26);
+            this.grpReports.Size = new System.Drawing.Size(719, 449);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
@@ -335,9 +343,9 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Controls.Add(this.dgvDeliveries);
             this.grpDeliveries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDeliveries.ForeColor = System.Drawing.Color.Navy;
-            this.grpDeliveries.Location = new System.Drawing.Point(262, 12);
+            this.grpDeliveries.Location = new System.Drawing.Point(217, 9);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(726, 466);
+            this.grpDeliveries.Size = new System.Drawing.Size(13, 21);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -556,6 +564,58 @@ namespace BaeWynCouriersApp
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // tabReports
+            // 
+            this.tabReports.Controls.Add(this.tabPage1);
+            this.tabReports.Controls.Add(this.tabPage2);
+            this.tabReports.Controls.Add(this.tabPage3);
+            this.tabReports.Controls.Add(this.tabPage4);
+            this.tabReports.Location = new System.Drawing.Point(3, 18);
+            this.tabReports.Name = "tabReports";
+            this.tabReports.SelectedIndex = 0;
+            this.tabReports.Size = new System.Drawing.Size(716, 431);
+            this.tabReports.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(708, 402);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Courier Assignments";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(708, 402);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Month\'s Assignments";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(708, 402);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Contract/Non-Contract";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(708, 402);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Month\'s Client Value";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,12 +636,14 @@ namespace BaeWynCouriersApp
             this.grpClients.ResumeLayout(false);
             this.grpClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
+            this.grpReports.ResumeLayout(false);
             this.grpDeliveries.ResumeLayout(false);
             this.grpDeliveries.PerformLayout();
             this.pnlDelCourierControl.ResumeLayout(false);
             this.pnlDelAdminControl.ResumeLayout(false);
             this.pnlDelAdminControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
+            this.tabReports.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -633,5 +695,10 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.Button btnClientClear;
         private System.Windows.Forms.Panel pnlDelAdminControl;
         private System.Windows.Forms.Panel pnlDelCourierControl;
+        private System.Windows.Forms.TabControl tabReports;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

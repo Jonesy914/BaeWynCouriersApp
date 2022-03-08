@@ -86,6 +86,15 @@ namespace BaeWynCouriersApp
             this.btnLogout = new System.Windows.Forms.Button();
             this.dgvRep2 = new System.Windows.Forms.DataGridView();
             this.btnRep2Search = new System.Windows.Forms.Button();
+            this.btnRep3Search = new System.Windows.Forms.Button();
+            this.dgvRep3Con = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtpRep3Date = new System.Windows.Forms.DateTimePicker();
+            this.txtRep3Month = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dgvRep3Non = new System.Windows.Forms.DataGridView();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpReports.SuspendLayout();
@@ -93,11 +102,14 @@ namespace BaeWynCouriersApp
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.grpDeliveries.SuspendLayout();
             this.pnlDelCourierControl.SuspendLayout();
             this.pnlDelAdminControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Con)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Non)).BeginInit();
             this.SuspendLayout();
             // 
             // lstMenu
@@ -156,9 +168,9 @@ namespace BaeWynCouriersApp
             this.grpClients.Controls.Add(this.txtBusinessName);
             this.grpClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
-            this.grpClients.Location = new System.Drawing.Point(189, 7);
+            this.grpClients.Location = new System.Drawing.Point(130, 9);
             this.grpClients.Name = "grpClients";
-            this.grpClients.Size = new System.Drawing.Size(22, 26);
+            this.grpClients.Size = new System.Drawing.Size(25, 19);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
@@ -446,6 +458,15 @@ namespace BaeWynCouriersApp
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.dgvRep3Non);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.txtRep3Month);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.dtpRep3Date);
+            this.tabPage3.Controls.Add(this.dgvRep3Con);
+            this.tabPage3.Controls.Add(this.btnRep3Search);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -714,6 +735,98 @@ namespace BaeWynCouriersApp
             this.btnRep2Search.UseVisualStyleBackColor = true;
             this.btnRep2Search.Click += new System.EventHandler(this.btnRep2Search_Click);
             // 
+            // btnRep3Search
+            // 
+            this.btnRep3Search.Location = new System.Drawing.Point(543, 50);
+            this.btnRep3Search.Name = "btnRep3Search";
+            this.btnRep3Search.Size = new System.Drawing.Size(147, 34);
+            this.btnRep3Search.TabIndex = 27;
+            this.btnRep3Search.Text = "Search";
+            this.btnRep3Search.UseVisualStyleBackColor = true;
+            this.btnRep3Search.Click += new System.EventHandler(this.btnRep3Search_Click);
+            // 
+            // dgvRep3Con
+            // 
+            this.dgvRep3Con.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRep3Con.Location = new System.Drawing.Point(19, 134);
+            this.dgvRep3Con.Name = "dgvRep3Con";
+            this.dgvRep3Con.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRep3Con.Size = new System.Drawing.Size(332, 253);
+            this.dgvRep3Con.TabIndex = 28;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(25, 30);
+            this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label13.Size = new System.Drawing.Size(103, 16);
+            this.label13.TabIndex = 29;
+            this.label13.Tag = "";
+            this.label13.Text = "Delivery Date";
+            // 
+            // dtpRep3Date
+            // 
+            this.dtpRep3Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRep3Date.Location = new System.Drawing.Point(134, 25);
+            this.dtpRep3Date.Name = "dtpRep3Date";
+            this.dtpRep3Date.Size = new System.Drawing.Size(227, 22);
+            this.dtpRep3Date.TabIndex = 30;
+            this.dtpRep3Date.Tag = "";
+            this.dtpRep3Date.ValueChanged += new System.EventHandler(this.dtpRep3Date_ValueChanged);
+            // 
+            // txtRep3Month
+            // 
+            this.txtRep3Month.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRep3Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep3Month.Location = new System.Drawing.Point(134, 56);
+            this.txtRep3Month.Name = "txtRep3Month";
+            this.txtRep3Month.ReadOnly = true;
+            this.txtRep3Month.Size = new System.Drawing.Size(227, 22);
+            this.txtRep3Month.TabIndex = 31;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 59);
+            this.label14.Name = "label14";
+            this.label14.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label14.Size = new System.Drawing.Size(115, 16);
+            this.label14.TabIndex = 32;
+            this.label14.Tag = "";
+            this.label14.Text = "Selected Month";
+            // 
+            // dgvRep3Non
+            // 
+            this.dgvRep3Non.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRep3Non.Location = new System.Drawing.Point(358, 134);
+            this.dgvRep3Non.Name = "dgvRep3Non";
+            this.dgvRep3Non.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRep3Non.Size = new System.Drawing.Size(332, 253);
+            this.dgvRep3Non.TabIndex = 33;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 110);
+            this.label15.Name = "label15";
+            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label15.Size = new System.Drawing.Size(175, 16);
+            this.label15.TabIndex = 34;
+            this.label15.Tag = "";
+            this.label15.Text = "Contracted Assignments";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(355, 110);
+            this.label16.Name = "label16";
+            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label16.Size = new System.Drawing.Size(208, 16);
+            this.label16.TabIndex = 35;
+            this.label16.Tag = "";
+            this.label16.Text = "Non-Contracted Assignments";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -740,6 +853,8 @@ namespace BaeWynCouriersApp
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.grpDeliveries.ResumeLayout(false);
             this.grpDeliveries.PerformLayout();
             this.pnlDelCourierControl.ResumeLayout(false);
@@ -747,6 +862,8 @@ namespace BaeWynCouriersApp
             this.pnlDelAdminControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeliveries)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Con)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Non)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -811,5 +928,14 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.ComboBox cmbRep1Courier;
         private System.Windows.Forms.DataGridView dgvRep2;
         private System.Windows.Forms.Button btnRep2Search;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtRep3Month;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpRep3Date;
+        private System.Windows.Forms.DataGridView dgvRep3Con;
+        private System.Windows.Forms.Button btnRep3Search;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dgvRep3Non;
     }
 }

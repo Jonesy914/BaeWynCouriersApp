@@ -473,5 +473,28 @@ namespace BaeWynCouriersApp
                 displayErrorMessage(ex);
             }
         }
+
+        private void dtpRep3Date_ValueChanged(object sender, EventArgs e)
+        {
+            txtRep3Month.Text = dtpRep3Date.Value.Date.ToString("MMMM") + " " + dtpRep3Date.Value.Date.ToString("yyyy");
+        }
+
+        private void btnRep3Search_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = new DateTime(dtpRep3Date.Value.Date.Year, dtpRep3Date.Value.Date.Month, 1);    //Get start of selected month.
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);                                              //Work out end of selected month.
+            try
+            {
+                DataSet dsRep3Con = db.ImportDbRecordsJoin("DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'True'");  //Get deliveries set as dataset.
+                dgvRep3Con.DataSource = dsRep3Con.Tables[0];  //Populate Contracted gridview with dataset
+
+                DataSet dsRep3Non = db.ImportDbRecordsJoin("DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'False'");  //Get deliveries set as dataset.
+                dgvRep3Non.DataSource = dsRep3Non.Tables[0];  //Populate Non-Contracted gridview with dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
     }
 }

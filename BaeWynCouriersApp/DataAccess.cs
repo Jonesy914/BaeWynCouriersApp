@@ -116,5 +116,28 @@ namespace BaeWynCouriersApp
                 throw;  //Any errors are caught and thrown up the stack.
             }
         }
+
+        public double GetDbRecordCount(string sqlstr)
+        {
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = sqlstr;
+                int recordCount = Convert.ToInt32(command.ExecuteScalar());
+
+                mySQLCon.Close();
+
+                return recordCount;
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
     }
 }

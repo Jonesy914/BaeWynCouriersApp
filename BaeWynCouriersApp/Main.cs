@@ -496,5 +496,36 @@ namespace BaeWynCouriersApp
                 displayErrorMessage(ex);
             }
         }
+
+        private void dtpRep4Date_ValueChanged(object sender, EventArgs e)
+        {
+            txtRep4Month.Text = dtpRep3Date.Value.Date.ToString("MMMM") + " " + dtpRep3Date.Value.Date.ToString("yyyy");
+        }
+
+        private void btnRep4Search_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = new DateTime(dtpRep4Date.Value.Date.Year, dtpRep3Date.Value.Date.Month, 1);    //Get start of selected month.
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);                                              //Work out end of selected month.
+            double allClientValue = 0;
+            double delConValue = 0;
+            double delNonValue = 0;
+            try
+            {
+                allClientValue = db.GetDbRecordCount("Select Count(*) From Clients Where Contracted = 'True'") * 50;
+                txtRep4ClientVal.Text = allClientValue.ToString("C");
+
+                delConValue = (db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True'") * 2.5);
+                txtRep4DelConVal.Text = delConValue.ToString("C");
+
+                delNonValue = (db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False'") * 10);
+                txtRep4DelNonVal.Text = delNonValue.ToString("C");
+
+                txtRep4MonthVal.Text = (allClientValue + delConValue + delNonValue).ToString("C");
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
     }
 }

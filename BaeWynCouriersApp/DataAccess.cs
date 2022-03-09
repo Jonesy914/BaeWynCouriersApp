@@ -117,7 +117,7 @@ namespace BaeWynCouriersApp
             }
         }
 
-        public double GetDbRecordCount(string sqlstr)
+        public int GetDbRecordCount(string sqlstr)
         {
             try
             {

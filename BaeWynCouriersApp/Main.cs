@@ -98,6 +98,10 @@ namespace BaeWynCouriersApp
                     setupGroupBox(grpDeliveries);
                     break;
                 case "Reports":
+
+                    DataSet dsRep1Couriers = db.ImportDbRecords("Users", "AccessLevel = 4");
+                    setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
+
                     setupGroupBox(grpReports);
                     break;
             }
@@ -376,7 +380,7 @@ namespace BaeWynCouriersApp
                 else
                 {
                     //Get current courier's unaccepted and accepted deliveries set as dataset.
-                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries", "UserId = " + currentUser.UserId + " and StatusCode In('A', 'U')");
+                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries", "UserId = " + currentUser.UserId + " and StatusCode In ('A', 'U')");
                     dgvDeliveries.DataSource = dsDeliveries.Tables[0];  //Populate gridview with deliveries dataset
                 }
             }
@@ -437,6 +441,91 @@ namespace BaeWynCouriersApp
         private void btnCancelDelivery_Click(object sender, EventArgs e)
         {
             updateDeliveryStatus("X", "Delivery cancelled.");
+        }
+
+        //----------------------Reports----------------------//
+
+        private void btnRep1Search_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSet dsRep1 = db.ImportDbRecords("Deliveries", "UserId = " + cmbRep1Courier.SelectedValue + " and DeliveryDate = '" + dtpRep1Date.Value.Date.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
+                dgvRep1.DataSource = dsRep1.Tables[0];  //Populate gridview with dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
+
+        private void btnRep2Search_Click(object sender, EventArgs e)
+        {
+            DateTime currentDate = DateTime.Today;                                      //Get today's date.
+            DateTime startDate = new DateTime(currentDate.Year, currentDate.Month, 1);  //Get start of current month.
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);                      //Work out end of current month.
+            try
+            {
+                DataSet dsRep2 = db.ImportDbRecords("Deliveries", "DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
+                dgvRep2.DataSource = dsRep2.Tables[0];  //Populate gridview with dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
+
+        private void dtpRep3Date_ValueChanged(object sender, EventArgs e)
+        {
+            txtRep3Month.Text = dtpRep3Date.Value.Date.ToString("MMMM") + " " + dtpRep3Date.Value.Date.ToString("yyyy");
+        }
+
+        private void btnRep3Search_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = new DateTime(dtpRep3Date.Value.Date.Year, dtpRep3Date.Value.Date.Month, 1);    //Get start of selected month.
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);                                              //Work out end of selected month.
+            try
+            {
+                DataSet dsRep3Con = db.ImportDbRecordsJoin("DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'True'");  //Get deliveries set as dataset.
+                dgvRep3Con.DataSource = dsRep3Con.Tables[0];  //Populate Contracted gridview with dataset
+
+                DataSet dsRep3Non = db.ImportDbRecordsJoin("DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'False'");  //Get deliveries set as dataset.
+                dgvRep3Non.DataSource = dsRep3Non.Tables[0];  //Populate Non-Contracted gridview with dataset
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
+        }
+
+        private void dtpRep4Date_ValueChanged(object sender, EventArgs e)
+        {
+            txtRep4Month.Text = dtpRep3Date.Value.Date.ToString("MMMM") + " " + dtpRep3Date.Value.Date.ToString("yyyy");
+        }
+
+        private void btnRep4Search_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = new DateTime(dtpRep4Date.Value.Date.Year, dtpRep3Date.Value.Date.Month, 1);    //Get start of selected month.
+            DateTime endDate = startDate.AddMonths(1).AddDays(-1);                                              //Work out end of selected month.
+            double allClientValue = 0;
+            double delConValue = 0;
+            double delNonValue = 0;
+            try
+            {
+                allClientValue = db.GetDbRecordCount("Select Count(*) From Clients Where Contracted = 'True'") * 50;
+                txtRep4ClientVal.Text = allClientValue.ToString("C");
+
+                delConValue = (db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True'") * 2.5);
+                txtRep4DelConVal.Text = delConValue.ToString("C");
+
+                delNonValue = (db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False'") * 10);
+                txtRep4DelNonVal.Text = delNonValue.ToString("C");
+
+                txtRep4MonthVal.Text = (allClientValue + delConValue + delNonValue).ToString("C");
+            }
+            catch (Exception ex)
+            {
+                displayErrorMessage(ex);
+            }
         }
     }
 }

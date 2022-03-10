@@ -16,20 +16,5 @@ namespace BaeWynCouriersApp
         TimeBlock()
         {
         }
-
-        public DataSet GetTimeBlocks()
-        {
-            DataAccess db = new DataAccess();
-
-            try
-            {
-                DataSet dsTimeBlocks = db.ImportDbRecords("TimeBlocks");
-                return dsTimeBlocks;
-            }
-            catch (Exception)
-            {
-                throw;  //Any errors are caught and thrown up the stack.
-            }
-        }
     }
 }

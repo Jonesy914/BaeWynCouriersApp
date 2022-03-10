@@ -91,5 +91,53 @@ namespace BaeWynCouriersApp
                 throw;  //Any errors are caught and thrown up the stack.
             }
         }
+
+        public DataSet ImportDbRecordsJoin(string whereClause)
+        {
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB")))
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = mySQLCon;
+                    command.CommandType = CommandType.Text;
+                    command.CommandText = "Select D.* From Deliveries As D Inner Join Clients C On D.ClientId = C.ClientId Where " + whereClause;
+                    using (SqlDataAdapter SqlDa = new SqlDataAdapter(command))
+                    {
+                        SqlDa.Fill(ds);
+                    }
+                }
+                return ds;
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
+
+        public int GetDbRecordCount(string sqlstr)
+        {
+            try
+            {
+                SqlConnection mySQLCon = new SqlConnection(Helper.CnnVal("BaeWynDB"));
+                mySQLCon.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = mySQLCon;
+                command.CommandType = CommandType.Text;
+                command.CommandText = sqlstr;
+                int recordCount = Convert.ToInt32(command.ExecuteScalar());
+
+                mySQLCon.Close();
+
+                return recordCount;
+            }
+            catch (Exception)
+            {
+                throw;  //Any errors are caught and thrown up the stack.
+            }
+        }
     }
 }

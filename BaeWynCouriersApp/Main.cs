@@ -76,13 +76,13 @@ namespace BaeWynCouriersApp
                 case "Deliveries":
 
                     //Populate combo boxes.
-                    DataSet dsClients = db.ImportDbRecords("Clients");
+                    DataSet dsClients = db.ImportDbRecords("Select * From Clients");
                     setupComboBox(cmbDelClientId, dsClients, "ClientId", "BusinessName");
 
-                    DataSet dsTimeBlocks = db.ImportDbRecords("TimeBlocks");
+                    DataSet dsTimeBlocks = db.ImportDbRecords("Select * From TimeBlocks");
                     setupComboBox(cmbTimeBlockId, dsTimeBlocks, "TimeBlockId", "BlockDetail");
 
-                    DataSet dsUsers = db.ImportDbRecords("Users", "AccessLevel = 4");
+                    DataSet dsUsers = db.ImportDbRecords("Select * From Users Where AccessLevel = 4");
                     setupComboBox(cmbDelUserId, dsUsers, "UserId", "Name");
 
                     //Set which controls are visible to user based on access level.
@@ -99,7 +99,7 @@ namespace BaeWynCouriersApp
                     break;
                 case "Reports":
 
-                    DataSet dsRep1Couriers = db.ImportDbRecords("Users", "AccessLevel = 4");
+                    DataSet dsRep1Couriers = db.ImportDbRecords("Select * From Users Where AccessLevel = 4");
                     setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
 
                     setupGroupBox(grpReports);
@@ -215,7 +215,7 @@ namespace BaeWynCouriersApp
         {
             try
             {
-                DataSet dsClients = db.ImportDbRecords("Clients");  //Get all clients set as dataset.
+                DataSet dsClients = db.ImportDbRecords("Select * From Clients");  //Get all clients set as dataset.
                 dgvClients.DataSource = dsClients.Tables[0];        //Populate gridview with clients dataset
             }
             catch (Exception ex)
@@ -374,13 +374,13 @@ namespace BaeWynCouriersApp
             {
                 if (currentUser.AccessLevel < 4) //If user not courier.
                 {
-                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries");  //Get all deliveries set as dataset.
+                    DataSet dsDeliveries = db.ImportDbRecords("Select * From Deliveries");  //Get all deliveries set as dataset.
                     dgvDeliveries.DataSource = dsDeliveries.Tables[0];        //Populate gridview with deliveries dataset
                 }
                 else
                 {
                     //Get current courier's unaccepted and accepted deliveries set as dataset.
-                    DataSet dsDeliveries = db.ImportDbRecords("Deliveries", "UserId = " + currentUser.UserId + " and StatusCode In ('A', 'U')");
+                    DataSet dsDeliveries = db.ImportDbRecords("Select * From Deliveries Where UserId = " + currentUser.UserId + " and StatusCode In ('A', 'U')");
                     dgvDeliveries.DataSource = dsDeliveries.Tables[0];  //Populate gridview with deliveries dataset
                 }
             }
@@ -449,7 +449,7 @@ namespace BaeWynCouriersApp
         {
             try
             {
-                DataSet dsRep1 = db.ImportDbRecords("Deliveries", "UserId = " + cmbRep1Courier.SelectedValue + " and DeliveryDate = '" + dtpRep1Date.Value.Date.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
+                DataSet dsRep1 = db.ImportDbRecords("Select * From Deliveries Where UserId = " + cmbRep1Courier.SelectedValue + " and DeliveryDate = '" + dtpRep1Date.Value.Date.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
                 dgvRep1.DataSource = dsRep1.Tables[0];  //Populate gridview with dataset
             }
             catch (Exception ex)
@@ -465,7 +465,7 @@ namespace BaeWynCouriersApp
             DateTime endDate = startDate.AddMonths(1).AddDays(-1);                      //Work out end of current month.
             try
             {
-                DataSet dsRep2 = db.ImportDbRecords("Deliveries", "DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
+                DataSet dsRep2 = db.ImportDbRecords("Select * From Deliveries Where DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "'");  //Get deliveries set as dataset.
                 dgvRep2.DataSource = dsRep2.Tables[0];  //Populate gridview with dataset
             }
             catch (Exception ex)
@@ -485,10 +485,10 @@ namespace BaeWynCouriersApp
             DateTime endDate = startDate.AddMonths(1).AddDays(-1);                                              //Work out end of selected month.
             try
             {
-                DataSet dsRep3Con = db.ImportDbRecordsJoin("DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'True'");  //Get deliveries set as dataset.
+                DataSet dsRep3Con = db.ImportDbRecords("Select D.* From Deliveries As D Inner Join Clients C On D.ClientId = C.ClientId Where DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'True'");  //Get deliveries set as dataset.
                 dgvRep3Con.DataSource = dsRep3Con.Tables[0];  //Populate Contracted gridview with dataset
 
-                DataSet dsRep3Non = db.ImportDbRecordsJoin("DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'False'");  //Get deliveries set as dataset.
+                DataSet dsRep3Non = db.ImportDbRecords("Select D.* From Deliveries As D Inner Join Clients C On D.ClientId = C.ClientId Where DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And Contracted = 'False'");  //Get deliveries set as dataset.
                 dgvRep3Non.DataSource = dsRep3Non.Tables[0];  //Populate Non-Contracted gridview with dataset
             }
             catch (Exception ex)

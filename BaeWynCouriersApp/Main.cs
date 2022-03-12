@@ -288,7 +288,7 @@ namespace BaeWynCouriersApp
                 if (!newDelivery.CheckUserLunch())
                 {
                     //Check delivery record with selected date, time slot and users exists.
-                    if (!newDelivery.CheckDeliveryExistsAdd())
+                    if (!newDelivery.CheckDeliveryExists())
                     {
                         //Add delivery.
                         try

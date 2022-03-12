@@ -42,7 +42,7 @@ namespace BaeWynCouriersApp
             db.UpdateDbRecord(str);
         }
 
-        public  bool CheckDeliveryExistsAdd()
+        public  bool CheckDeliveryExists()
         {
             DataAccess db = new DataAccess();
             string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId;

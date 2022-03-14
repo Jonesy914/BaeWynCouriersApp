@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BaeWynCouriersApp
 {
-    class DataAccess
+    public class DataAccess
     {
         public DataSet ImportDbRecords(string sqlstr)
         {

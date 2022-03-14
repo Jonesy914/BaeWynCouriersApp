@@ -182,9 +182,9 @@ namespace BaeWynCouriersApp
             this.grpClients.Controls.Add(this.txtBusinessName);
             this.grpClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
-            this.grpClients.Location = new System.Drawing.Point(130, 9);
+            this.grpClients.Location = new System.Drawing.Point(144, 12);
             this.grpClients.Name = "grpClients";
-            this.grpClients.Size = new System.Drawing.Size(25, 19);
+            this.grpClients.Size = new System.Drawing.Size(26, 22);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
@@ -363,9 +363,9 @@ namespace BaeWynCouriersApp
             this.grpReports.Controls.Add(this.tabReports);
             this.grpReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReports.ForeColor = System.Drawing.Color.Navy;
-            this.grpReports.Location = new System.Drawing.Point(241, 29);
+            this.grpReports.Location = new System.Drawing.Point(240, 38);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(719, 449);
+            this.grpReports.Size = new System.Drawing.Size(733, 440);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";

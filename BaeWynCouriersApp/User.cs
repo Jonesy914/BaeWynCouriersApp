@@ -18,6 +18,10 @@ namespace BaeWynCouriersApp
         public int AccessLevel { get; set; }
         public int LunchBlock { get; set; }
 
+        public double calc(double x, double y)
+        {
+            return x + y;
+        }
         public bool Login()
         {
             bool userCheck = false;

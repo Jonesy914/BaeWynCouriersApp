@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BaeWynCouriersApp
 {
-    class Delivery
+    public class Delivery
     {
         public int DeliveryId { get; set; }
         public int ClientId { get; set; }

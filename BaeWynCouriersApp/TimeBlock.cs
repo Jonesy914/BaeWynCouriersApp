@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaeWynCouriersApp
 {
-    class TimeBlock
+    public class TimeBlock
     {
         public int TimeBlockId { get; set; }
         public string BlockDetail { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaeWynCouriersApp
 {
-    class Client
+    public class Client
     {
         public int ClientId { get; set; }
         public string BusinessName { get; set; }

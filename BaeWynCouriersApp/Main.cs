@@ -103,6 +103,12 @@ namespace BaeWynCouriersApp
                     setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
 
                     setupGroupBox(grpReports);
+
+                    if (currentUser.AccessLevel == 3)   //Logistics Coordinator can only see Courier reports.
+                    {
+                        tabReports.TabPages.Remove(tabRep3);
+                        tabReports.TabPages.Remove(tabRep4);
+                    }
                     break;
             }
         }

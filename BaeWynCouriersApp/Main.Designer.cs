@@ -53,17 +53,17 @@ namespace BaeWynCouriersApp
             this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.grpReports = new System.Windows.Forms.GroupBox();
             this.tabReports = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabRep1 = new System.Windows.Forms.TabPage();
             this.dgvRep1 = new System.Windows.Forms.DataGridView();
             this.btnRep1Search = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dtpRep1Date = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbRep1Courier = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabRep2 = new System.Windows.Forms.TabPage();
             this.dgvRep2 = new System.Windows.Forms.DataGridView();
             this.btnRep2Search = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabRep3 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dgvRep3Non = new System.Windows.Forms.DataGridView();
@@ -73,7 +73,20 @@ namespace BaeWynCouriersApp
             this.dtpRep3Date = new System.Windows.Forms.DateTimePicker();
             this.dgvRep3Con = new System.Windows.Forms.DataGridView();
             this.btnRep3Search = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabRep4 = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtRep4MonthVal = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtRep4ClientVal = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtRep4DelNonVal = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtRep4DelConVal = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtRep4Month = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dtpRep4Date = new System.Windows.Forms.DateTimePicker();
+            this.btnRep4Search = new System.Windows.Forms.Button();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
             this.pnlDelCourierControl = new System.Windows.Forms.Panel();
             this.btnAcceptDelivery = new System.Windows.Forms.Button();
@@ -95,31 +108,18 @@ namespace BaeWynCouriersApp
             this.btnSearchDeliveries = new System.Windows.Forms.Button();
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtRep4Month = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dtpRep4Date = new System.Windows.Forms.DateTimePicker();
-            this.btnRep4Search = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtRep4DelConVal = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtRep4DelNonVal = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtRep4ClientVal = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtRep4MonthVal = new System.Windows.Forms.TextBox();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpReports.SuspendLayout();
             this.tabReports.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabRep1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep1)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabRep2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep2)).BeginInit();
-            this.tabPage3.SuspendLayout();
+            this.tabRep3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Non)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Con)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.tabRep4.SuspendLayout();
             this.grpDeliveries.SuspendLayout();
             this.pnlDelCourierControl.SuspendLayout();
             this.pnlDelAdminControl.SuspendLayout();
@@ -373,31 +373,31 @@ namespace BaeWynCouriersApp
             // 
             // tabReports
             // 
-            this.tabReports.Controls.Add(this.tabPage1);
-            this.tabReports.Controls.Add(this.tabPage2);
-            this.tabReports.Controls.Add(this.tabPage3);
-            this.tabReports.Controls.Add(this.tabPage4);
+            this.tabReports.Controls.Add(this.tabRep1);
+            this.tabReports.Controls.Add(this.tabRep2);
+            this.tabReports.Controls.Add(this.tabRep3);
+            this.tabReports.Controls.Add(this.tabRep4);
             this.tabReports.Location = new System.Drawing.Point(3, 18);
             this.tabReports.Name = "tabReports";
             this.tabReports.SelectedIndex = 0;
             this.tabReports.Size = new System.Drawing.Size(716, 431);
             this.tabReports.TabIndex = 0;
             // 
-            // tabPage1
+            // tabRep1
             // 
-            this.tabPage1.Controls.Add(this.dgvRep1);
-            this.tabPage1.Controls.Add(this.btnRep1Search);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.dtpRep1Date);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.cmbRep1Courier);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(708, 402);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Courier Assignments";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabRep1.Controls.Add(this.dgvRep1);
+            this.tabRep1.Controls.Add(this.btnRep1Search);
+            this.tabRep1.Controls.Add(this.label12);
+            this.tabRep1.Controls.Add(this.dtpRep1Date);
+            this.tabRep1.Controls.Add(this.label11);
+            this.tabRep1.Controls.Add(this.cmbRep1Courier);
+            this.tabRep1.Location = new System.Drawing.Point(4, 25);
+            this.tabRep1.Name = "tabRep1";
+            this.tabRep1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRep1.Size = new System.Drawing.Size(708, 402);
+            this.tabRep1.TabIndex = 0;
+            this.tabRep1.Text = "Courier Assignments";
+            this.tabRep1.UseVisualStyleBackColor = true;
             // 
             // dgvRep1
             // 
@@ -458,17 +458,17 @@ namespace BaeWynCouriersApp
             this.cmbRep1Courier.TabIndex = 19;
             this.cmbRep1Courier.Tag = "";
             // 
-            // tabPage2
+            // tabRep2
             // 
-            this.tabPage2.Controls.Add(this.dgvRep2);
-            this.tabPage2.Controls.Add(this.btnRep2Search);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(708, 402);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Month\'s Assignments";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabRep2.Controls.Add(this.dgvRep2);
+            this.tabRep2.Controls.Add(this.btnRep2Search);
+            this.tabRep2.Location = new System.Drawing.Point(4, 25);
+            this.tabRep2.Name = "tabRep2";
+            this.tabRep2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRep2.Size = new System.Drawing.Size(708, 402);
+            this.tabRep2.TabIndex = 1;
+            this.tabRep2.Text = "Month\'s Assignments";
+            this.tabRep2.UseVisualStyleBackColor = true;
             // 
             // dgvRep2
             // 
@@ -489,24 +489,24 @@ namespace BaeWynCouriersApp
             this.btnRep2Search.UseVisualStyleBackColor = true;
             this.btnRep2Search.Click += new System.EventHandler(this.btnRep2Search_Click);
             // 
-            // tabPage3
+            // tabRep3
             // 
-            this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.dgvRep3Non);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.txtRep3Month);
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.dtpRep3Date);
-            this.tabPage3.Controls.Add(this.dgvRep3Con);
-            this.tabPage3.Controls.Add(this.btnRep3Search);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(708, 402);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Contract/Non-Contract";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabRep3.Controls.Add(this.label16);
+            this.tabRep3.Controls.Add(this.label15);
+            this.tabRep3.Controls.Add(this.dgvRep3Non);
+            this.tabRep3.Controls.Add(this.label14);
+            this.tabRep3.Controls.Add(this.txtRep3Month);
+            this.tabRep3.Controls.Add(this.label13);
+            this.tabRep3.Controls.Add(this.dtpRep3Date);
+            this.tabRep3.Controls.Add(this.dgvRep3Con);
+            this.tabRep3.Controls.Add(this.btnRep3Search);
+            this.tabRep3.Location = new System.Drawing.Point(4, 25);
+            this.tabRep3.Name = "tabRep3";
+            this.tabRep3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRep3.Size = new System.Drawing.Size(708, 402);
+            this.tabRep3.TabIndex = 2;
+            this.tabRep3.Text = "Contract/Non-Contract";
+            this.tabRep3.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -600,28 +600,164 @@ namespace BaeWynCouriersApp
             this.btnRep3Search.UseVisualStyleBackColor = true;
             this.btnRep3Search.Click += new System.EventHandler(this.btnRep3Search_Click);
             // 
-            // tabPage4
+            // tabRep4
             // 
-            this.tabPage4.Controls.Add(this.label22);
-            this.tabPage4.Controls.Add(this.txtRep4MonthVal);
-            this.tabPage4.Controls.Add(this.label21);
-            this.tabPage4.Controls.Add(this.txtRep4ClientVal);
-            this.tabPage4.Controls.Add(this.label20);
-            this.tabPage4.Controls.Add(this.txtRep4DelNonVal);
-            this.tabPage4.Controls.Add(this.label19);
-            this.tabPage4.Controls.Add(this.txtRep4DelConVal);
-            this.tabPage4.Controls.Add(this.label17);
-            this.tabPage4.Controls.Add(this.txtRep4Month);
-            this.tabPage4.Controls.Add(this.label18);
-            this.tabPage4.Controls.Add(this.dtpRep4Date);
-            this.tabPage4.Controls.Add(this.btnRep4Search);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(708, 402);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Month\'s Client Value";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabRep4.Controls.Add(this.label22);
+            this.tabRep4.Controls.Add(this.txtRep4MonthVal);
+            this.tabRep4.Controls.Add(this.label21);
+            this.tabRep4.Controls.Add(this.txtRep4ClientVal);
+            this.tabRep4.Controls.Add(this.label20);
+            this.tabRep4.Controls.Add(this.txtRep4DelNonVal);
+            this.tabRep4.Controls.Add(this.label19);
+            this.tabRep4.Controls.Add(this.txtRep4DelConVal);
+            this.tabRep4.Controls.Add(this.label17);
+            this.tabRep4.Controls.Add(this.txtRep4Month);
+            this.tabRep4.Controls.Add(this.label18);
+            this.tabRep4.Controls.Add(this.dtpRep4Date);
+            this.tabRep4.Controls.Add(this.btnRep4Search);
+            this.tabRep4.Location = new System.Drawing.Point(4, 25);
+            this.tabRep4.Name = "tabRep4";
+            this.tabRep4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRep4.Size = new System.Drawing.Size(708, 402);
+            this.tabRep4.TabIndex = 3;
+            this.tabRep4.Text = "Month\'s Client Value";
+            this.tabRep4.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(212, 280);
+            this.label22.Name = "label22";
+            this.label22.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label22.Size = new System.Drawing.Size(133, 16);
+            this.label22.TabIndex = 45;
+            this.label22.Tag = "";
+            this.label22.Text = "Total Month Value";
+            // 
+            // txtRep4MonthVal
+            // 
+            this.txtRep4MonthVal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRep4MonthVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4MonthVal.Location = new System.Drawing.Point(351, 277);
+            this.txtRep4MonthVal.Name = "txtRep4MonthVal";
+            this.txtRep4MonthVal.ReadOnly = true;
+            this.txtRep4MonthVal.Size = new System.Drawing.Size(144, 22);
+            this.txtRep4MonthVal.TabIndex = 44;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(167, 154);
+            this.label21.Name = "label21";
+            this.label21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label21.Size = new System.Drawing.Size(178, 16);
+            this.label21.TabIndex = 43;
+            this.label21.Tag = "";
+            this.label21.Text = "Contracted Clients Value";
+            // 
+            // txtRep4ClientVal
+            // 
+            this.txtRep4ClientVal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRep4ClientVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4ClientVal.Location = new System.Drawing.Point(351, 151);
+            this.txtRep4ClientVal.Name = "txtRep4ClientVal";
+            this.txtRep4ClientVal.ReadOnly = true;
+            this.txtRep4ClientVal.Size = new System.Drawing.Size(144, 22);
+            this.txtRep4ClientVal.TabIndex = 42;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(110, 238);
+            this.label20.Name = "label20";
+            this.label20.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label20.Size = new System.Drawing.Size(235, 16);
+            this.label20.TabIndex = 41;
+            this.label20.Tag = "";
+            this.label20.Text = "Non-Contracted Deliveries Value";
+            // 
+            // txtRep4DelNonVal
+            // 
+            this.txtRep4DelNonVal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRep4DelNonVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4DelNonVal.Location = new System.Drawing.Point(351, 235);
+            this.txtRep4DelNonVal.Name = "txtRep4DelNonVal";
+            this.txtRep4DelNonVal.ReadOnly = true;
+            this.txtRep4DelNonVal.Size = new System.Drawing.Size(144, 22);
+            this.txtRep4DelNonVal.TabIndex = 40;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(143, 196);
+            this.label19.Name = "label19";
+            this.label19.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label19.Size = new System.Drawing.Size(202, 16);
+            this.label19.TabIndex = 39;
+            this.label19.Tag = "";
+            this.label19.Text = "Contracted Deliveries Value";
+            // 
+            // txtRep4DelConVal
+            // 
+            this.txtRep4DelConVal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRep4DelConVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4DelConVal.Location = new System.Drawing.Point(351, 193);
+            this.txtRep4DelConVal.Name = "txtRep4DelConVal";
+            this.txtRep4DelConVal.ReadOnly = true;
+            this.txtRep4DelConVal.Size = new System.Drawing.Size(144, 22);
+            this.txtRep4DelConVal.TabIndex = 38;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(13, 59);
+            this.label17.Name = "label17";
+            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label17.Size = new System.Drawing.Size(115, 16);
+            this.label17.TabIndex = 37;
+            this.label17.Tag = "";
+            this.label17.Text = "Selected Month";
+            // 
+            // txtRep4Month
+            // 
+            this.txtRep4Month.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRep4Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4Month.Location = new System.Drawing.Point(134, 56);
+            this.txtRep4Month.Name = "txtRep4Month";
+            this.txtRep4Month.ReadOnly = true;
+            this.txtRep4Month.Size = new System.Drawing.Size(227, 22);
+            this.txtRep4Month.TabIndex = 36;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(25, 30);
+            this.label18.Name = "label18";
+            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label18.Size = new System.Drawing.Size(103, 16);
+            this.label18.TabIndex = 34;
+            this.label18.Tag = "";
+            this.label18.Text = "Delivery Date";
+            // 
+            // dtpRep4Date
+            // 
+            this.dtpRep4Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRep4Date.Location = new System.Drawing.Point(134, 25);
+            this.dtpRep4Date.Name = "dtpRep4Date";
+            this.dtpRep4Date.Size = new System.Drawing.Size(227, 22);
+            this.dtpRep4Date.TabIndex = 35;
+            this.dtpRep4Date.Tag = "";
+            this.dtpRep4Date.ValueChanged += new System.EventHandler(this.dtpRep4Date_ValueChanged);
+            // 
+            // btnRep4Search
+            // 
+            this.btnRep4Search.Location = new System.Drawing.Point(543, 50);
+            this.btnRep4Search.Name = "btnRep4Search";
+            this.btnRep4Search.Size = new System.Drawing.Size(147, 34);
+            this.btnRep4Search.TabIndex = 33;
+            this.btnRep4Search.Text = "Search";
+            this.btnRep4Search.UseVisualStyleBackColor = true;
+            this.btnRep4Search.Click += new System.EventHandler(this.btnRep4Search_Click);
             // 
             // grpDeliveries
             // 
@@ -854,142 +990,6 @@ namespace BaeWynCouriersApp
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(13, 59);
-            this.label17.Name = "label17";
-            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label17.Size = new System.Drawing.Size(115, 16);
-            this.label17.TabIndex = 37;
-            this.label17.Tag = "";
-            this.label17.Text = "Selected Month";
-            // 
-            // txtRep4Month
-            // 
-            this.txtRep4Month.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRep4Month.Location = new System.Drawing.Point(134, 56);
-            this.txtRep4Month.Name = "txtRep4Month";
-            this.txtRep4Month.ReadOnly = true;
-            this.txtRep4Month.Size = new System.Drawing.Size(227, 22);
-            this.txtRep4Month.TabIndex = 36;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(25, 30);
-            this.label18.Name = "label18";
-            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label18.Size = new System.Drawing.Size(103, 16);
-            this.label18.TabIndex = 34;
-            this.label18.Tag = "";
-            this.label18.Text = "Delivery Date";
-            // 
-            // dtpRep4Date
-            // 
-            this.dtpRep4Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRep4Date.Location = new System.Drawing.Point(134, 25);
-            this.dtpRep4Date.Name = "dtpRep4Date";
-            this.dtpRep4Date.Size = new System.Drawing.Size(227, 22);
-            this.dtpRep4Date.TabIndex = 35;
-            this.dtpRep4Date.Tag = "";
-            this.dtpRep4Date.ValueChanged += new System.EventHandler(this.dtpRep4Date_ValueChanged);
-            // 
-            // btnRep4Search
-            // 
-            this.btnRep4Search.Location = new System.Drawing.Point(543, 50);
-            this.btnRep4Search.Name = "btnRep4Search";
-            this.btnRep4Search.Size = new System.Drawing.Size(147, 34);
-            this.btnRep4Search.TabIndex = 33;
-            this.btnRep4Search.Text = "Search";
-            this.btnRep4Search.UseVisualStyleBackColor = true;
-            this.btnRep4Search.Click += new System.EventHandler(this.btnRep4Search_Click);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(143, 196);
-            this.label19.Name = "label19";
-            this.label19.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label19.Size = new System.Drawing.Size(202, 16);
-            this.label19.TabIndex = 39;
-            this.label19.Tag = "";
-            this.label19.Text = "Contracted Deliveries Value";
-            // 
-            // txtRep4DelConVal
-            // 
-            this.txtRep4DelConVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4DelConVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRep4DelConVal.Location = new System.Drawing.Point(351, 193);
-            this.txtRep4DelConVal.Name = "txtRep4DelConVal";
-            this.txtRep4DelConVal.ReadOnly = true;
-            this.txtRep4DelConVal.Size = new System.Drawing.Size(144, 22);
-            this.txtRep4DelConVal.TabIndex = 38;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(110, 238);
-            this.label20.Name = "label20";
-            this.label20.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label20.Size = new System.Drawing.Size(235, 16);
-            this.label20.TabIndex = 41;
-            this.label20.Tag = "";
-            this.label20.Text = "Non-Contracted Deliveries Value";
-            // 
-            // txtRep4DelNonVal
-            // 
-            this.txtRep4DelNonVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4DelNonVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRep4DelNonVal.Location = new System.Drawing.Point(351, 235);
-            this.txtRep4DelNonVal.Name = "txtRep4DelNonVal";
-            this.txtRep4DelNonVal.ReadOnly = true;
-            this.txtRep4DelNonVal.Size = new System.Drawing.Size(144, 22);
-            this.txtRep4DelNonVal.TabIndex = 40;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(167, 154);
-            this.label21.Name = "label21";
-            this.label21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label21.Size = new System.Drawing.Size(178, 16);
-            this.label21.TabIndex = 43;
-            this.label21.Tag = "";
-            this.label21.Text = "Contracted Clients Value";
-            // 
-            // txtRep4ClientVal
-            // 
-            this.txtRep4ClientVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4ClientVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRep4ClientVal.Location = new System.Drawing.Point(351, 151);
-            this.txtRep4ClientVal.Name = "txtRep4ClientVal";
-            this.txtRep4ClientVal.ReadOnly = true;
-            this.txtRep4ClientVal.Size = new System.Drawing.Size(144, 22);
-            this.txtRep4ClientVal.TabIndex = 42;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(212, 280);
-            this.label22.Name = "label22";
-            this.label22.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label22.Size = new System.Drawing.Size(133, 16);
-            this.label22.TabIndex = 45;
-            this.label22.Tag = "";
-            this.label22.Text = "Total Month Value";
-            // 
-            // txtRep4MonthVal
-            // 
-            this.txtRep4MonthVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4MonthVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRep4MonthVal.Location = new System.Drawing.Point(351, 277);
-            this.txtRep4MonthVal.Name = "txtRep4MonthVal";
-            this.txtRep4MonthVal.ReadOnly = true;
-            this.txtRep4MonthVal.Size = new System.Drawing.Size(144, 22);
-            this.txtRep4MonthVal.TabIndex = 44;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1012,17 +1012,17 @@ namespace BaeWynCouriersApp
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.grpReports.ResumeLayout(false);
             this.tabReports.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabRep1.ResumeLayout(false);
+            this.tabRep1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep1)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tabRep2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep2)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tabRep3.ResumeLayout(false);
+            this.tabRep3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Non)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRep3Con)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.tabRep4.ResumeLayout(false);
+            this.tabRep4.PerformLayout();
             this.grpDeliveries.ResumeLayout(false);
             this.grpDeliveries.PerformLayout();
             this.pnlDelCourierControl.ResumeLayout(false);
@@ -1081,10 +1081,10 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.Panel pnlDelAdminControl;
         private System.Windows.Forms.Panel pnlDelCourierControl;
         private System.Windows.Forms.TabControl tabReports;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabRep1;
+        private System.Windows.Forms.TabPage tabRep2;
+        private System.Windows.Forms.TabPage tabRep3;
+        private System.Windows.Forms.TabPage tabRep4;
         private System.Windows.Forms.DataGridView dgvRep1;
         private System.Windows.Forms.Button btnRep1Search;
         private System.Windows.Forms.Label label12;

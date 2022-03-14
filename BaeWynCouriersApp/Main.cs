@@ -102,13 +102,13 @@ namespace BaeWynCouriersApp
                     DataSet dsRep1Couriers = db.ImportDbRecords("Select * From Users Where AccessLevel = 4");
                     setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
 
-                    setupGroupBox(grpReports);
-
                     if (currentUser.AccessLevel == 3)   //Logistics Coordinator can only see Courier reports.
                     {
                         tabReports.TabPages.Remove(tabRep3);
                         tabReports.TabPages.Remove(tabRep4);
                     }
+
+                    setupGroupBox(grpReports);                    
                     break;
             }
         }

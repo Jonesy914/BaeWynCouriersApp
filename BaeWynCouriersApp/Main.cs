@@ -102,7 +102,13 @@ namespace BaeWynCouriersApp
                     DataSet dsRep1Couriers = db.ImportDbRecords("Select * From Users Where AccessLevel = 4");
                     setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
 
-                    setupGroupBox(grpReports);
+                    if (currentUser.AccessLevel == 3)   //Logistics Coordinator can only see Courier reports.
+                    {
+                        tabReports.TabPages.Remove(tabRep3);
+                        tabReports.TabPages.Remove(tabRep4);
+                    }
+
+                    setupGroupBox(grpReports);                    
                     break;
             }
         }
@@ -506,21 +512,23 @@ namespace BaeWynCouriersApp
         {
             DateTime startDate = new DateTime(dtpRep4Date.Value.Date.Year, dtpRep3Date.Value.Date.Month, 1);    //Get start of selected month.
             DateTime endDate = startDate.AddMonths(1).AddDays(-1);                                              //Work out end of selected month.
-            double allClientValue = 0;
-            double delConValue = 0;
-            double delNonValue = 0;
+
+            int allClientCount = 0;
+            int delConCount = 0;
+            int delNonCount = 0;
+
             try
             {
-                allClientValue = db.GetDbRecordCount("Select Count(*) From Clients Where Contracted = 'True'") * 50;
-                txtRep4ClientVal.Text = allClientValue.ToString("C");
+                allClientCount = db.GetDbRecordCount("Select Count(*) From Clients Where Contracted = 'True'");
+                delConCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True'");
+                delNonCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False'");
 
-                delConValue = (db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True'") * 2.5);
-                txtRep4DelConVal.Text = delConValue.ToString("C");
+                ReportsLogic report = new ReportsLogic { AllClientCount = allClientCount, DelConCount = delConCount, DelNonCount = delConCount };
 
-                delNonValue = (db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False'") * 10);
-                txtRep4DelNonVal.Text = delNonValue.ToString("C");
-
-                txtRep4MonthVal.Text = (allClientValue + delConValue + delNonValue).ToString("C");
+                txtRep4ClientVal.Text = report.ClientValue(allClientCount).ToString("C");
+                txtRep4DelConVal.Text = report.ContractDeliveryValue(delConCount).ToString("C");
+                txtRep4DelNonVal.Text = report.NonContractDeliveryValue(delNonCount).ToString("C");
+                txtRep4MonthVal.Text = report.TotalMonthValue(allClientCount, delConCount, delNonCount).ToString("C");
             }
             catch (Exception ex)
             {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaeWynCouriersApp
 {
-    class Helper
+    public class Helper
     {       
         public static string CnnVal(string name)
         {

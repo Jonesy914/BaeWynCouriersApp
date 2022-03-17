@@ -42,25 +42,32 @@ namespace BaeWynCouriersApp
             db.UpdateDbRecord(str);
         }
 
-        public  bool CheckDeliveryExists()
+        /// <summary>
+        /// Checks database table Deliveries to see if a record exists with inputted details. Current record excluded from query if updating.
+        /// </summary>
+        /// <param name="isUpdate">Determines which SQL query to use.</param>
+        /// <returns>Bool depending on delivery record existing.</returns>
+        public  bool CheckDeliveryExists(bool isUpdate)  
         {
             DataAccess db = new DataAccess();
-            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId;
+            string str;
+
+            if (isUpdate)
+            {
+                //Check if active delivery record exists for chosen date, time slot and user.
+                str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and StatusCode Not In ('C', 'X') and DeliveryId <> " + DeliveryId;
+            }
+            else
+            {
+                //Simliar to CheckDeliveryEXists but excludes current DeliveryId to allow ClientId to be changed when other criteria stays the same.
+                str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and StatusCode Not In ('C', 'X')";
+            }
             bool check = db.CheckDbRecord(str);
 
             return check;
         }
 
-        public bool CheckDeliveryExistsUpdate() //Record needs to not check for itself to allow Client Id to be changed when other criteria stays the same.
-        {
-            DataAccess db = new DataAccess();
-            string str = "Select * From Deliveries Where DeliveryDate = '" + DeliveryDate.ToString("yyyy-MM-dd") + "' and TimeBlockId = " + TimeBlockId + " and UserId = " + UserId + " and DeliveryId <> " + DeliveryId;
-            bool check = db.CheckDbRecord(str);
-
-            return check;
-        }
-
-        public bool CheckUserLunch()
+        public bool CheckUserLunch()    //Joins TimeBlocks and Users tables to check if the LunchBlock field is the same for the chosen criteria
         {
             DataAccess db = new DataAccess();
             string str = "Select * From TimeBlocks As T Inner Join Users As U On T.LunchBlock = U.LunchBlock Where T.TimeBlockId = " + TimeBlockId + " and U.UserId = " + UserId;

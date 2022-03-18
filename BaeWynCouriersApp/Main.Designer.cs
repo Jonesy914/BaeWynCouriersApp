@@ -108,6 +108,8 @@ namespace BaeWynCouriersApp
             this.btnSearchDeliveries = new System.Windows.Forms.Button();
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpReports.SuspendLayout();
@@ -182,9 +184,9 @@ namespace BaeWynCouriersApp
             this.grpClients.Controls.Add(this.txtBusinessName);
             this.grpClients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpClients.ForeColor = System.Drawing.Color.Navy;
-            this.grpClients.Location = new System.Drawing.Point(144, 12);
+            this.grpClients.Location = new System.Drawing.Point(152, 9);
             this.grpClients.Name = "grpClients";
-            this.grpClients.Size = new System.Drawing.Size(26, 22);
+            this.grpClients.Size = new System.Drawing.Size(18, 26);
             this.grpClients.TabIndex = 4;
             this.grpClients.TabStop = false;
             this.grpClients.Text = "Clients";
@@ -202,6 +204,7 @@ namespace BaeWynCouriersApp
             // 
             // txtClientId
             // 
+            this.txtClientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClientId.Location = new System.Drawing.Point(350, 170);
             this.txtClientId.Name = "txtClientId";
             this.txtClientId.ReadOnly = true;
@@ -319,7 +322,7 @@ namespace BaeWynCouriersApp
             // 
             // txtNotes
             // 
-            this.txtNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNotes.Location = new System.Drawing.Point(416, 23);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
@@ -328,7 +331,7 @@ namespace BaeWynCouriersApp
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(141, 107);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(193, 22);
@@ -336,7 +339,7 @@ namespace BaeWynCouriersApp
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhoneNumber.Location = new System.Drawing.Point(141, 79);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(193, 22);
@@ -344,7 +347,7 @@ namespace BaeWynCouriersApp
             // 
             // txtAddress
             // 
-            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddress.Location = new System.Drawing.Point(141, 51);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(193, 22);
@@ -352,7 +355,7 @@ namespace BaeWynCouriersApp
             // 
             // txtBusinessName
             // 
-            this.txtBusinessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusinessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusinessName.Location = new System.Drawing.Point(141, 23);
             this.txtBusinessName.Name = "txtBusinessName";
             this.txtBusinessName.Size = new System.Drawing.Size(193, 22);
@@ -363,9 +366,9 @@ namespace BaeWynCouriersApp
             this.grpReports.Controls.Add(this.tabReports);
             this.grpReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReports.ForeColor = System.Drawing.Color.Navy;
-            this.grpReports.Location = new System.Drawing.Point(241, 39);
+            this.grpReports.Location = new System.Drawing.Point(181, 10);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(731, 448);
+            this.grpReports.Size = new System.Drawing.Size(24, 22);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
@@ -554,7 +557,7 @@ namespace BaeWynCouriersApp
             // txtRep3Month
             // 
             this.txtRep3Month.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep3Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep3Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRep3Month.Location = new System.Drawing.Point(134, 56);
             this.txtRep3Month.Name = "txtRep3Month";
             this.txtRep3Month.ReadOnly = true;
@@ -638,7 +641,7 @@ namespace BaeWynCouriersApp
             // txtRep4MonthVal
             // 
             this.txtRep4MonthVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4MonthVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4MonthVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRep4MonthVal.Location = new System.Drawing.Point(351, 277);
             this.txtRep4MonthVal.Name = "txtRep4MonthVal";
             this.txtRep4MonthVal.ReadOnly = true;
@@ -659,7 +662,7 @@ namespace BaeWynCouriersApp
             // txtRep4ClientVal
             // 
             this.txtRep4ClientVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4ClientVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4ClientVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRep4ClientVal.Location = new System.Drawing.Point(351, 151);
             this.txtRep4ClientVal.Name = "txtRep4ClientVal";
             this.txtRep4ClientVal.ReadOnly = true;
@@ -680,7 +683,7 @@ namespace BaeWynCouriersApp
             // txtRep4DelNonVal
             // 
             this.txtRep4DelNonVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4DelNonVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4DelNonVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRep4DelNonVal.Location = new System.Drawing.Point(351, 235);
             this.txtRep4DelNonVal.Name = "txtRep4DelNonVal";
             this.txtRep4DelNonVal.ReadOnly = true;
@@ -701,7 +704,7 @@ namespace BaeWynCouriersApp
             // txtRep4DelConVal
             // 
             this.txtRep4DelConVal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4DelConVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4DelConVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRep4DelConVal.Location = new System.Drawing.Point(351, 193);
             this.txtRep4DelConVal.Name = "txtRep4DelConVal";
             this.txtRep4DelConVal.ReadOnly = true;
@@ -722,7 +725,7 @@ namespace BaeWynCouriersApp
             // txtRep4Month
             // 
             this.txtRep4Month.BackColor = System.Drawing.SystemColors.Window;
-            this.txtRep4Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRep4Month.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRep4Month.Location = new System.Drawing.Point(134, 56);
             this.txtRep4Month.Name = "txtRep4Month";
             this.txtRep4Month.ReadOnly = true;
@@ -762,6 +765,8 @@ namespace BaeWynCouriersApp
             // 
             // grpDeliveries
             // 
+            this.grpDeliveries.Controls.Add(this.label24);
+            this.grpDeliveries.Controls.Add(this.label23);
             this.grpDeliveries.Controls.Add(this.pnlDelCourierControl);
             this.grpDeliveries.Controls.Add(this.pnlDelAdminControl);
             this.grpDeliveries.Controls.Add(this.txtDelStatus);
@@ -770,9 +775,9 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Controls.Add(this.dgvDeliveries);
             this.grpDeliveries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDeliveries.ForeColor = System.Drawing.Color.Navy;
-            this.grpDeliveries.Location = new System.Drawing.Point(216, 11);
+            this.grpDeliveries.Location = new System.Drawing.Point(211, 12);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(17, 22);
+            this.grpDeliveries.Size = new System.Drawing.Size(19, 22);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -782,7 +787,7 @@ namespace BaeWynCouriersApp
             // 
             this.pnlDelCourierControl.Controls.Add(this.btnAcceptDelivery);
             this.pnlDelCourierControl.Controls.Add(this.btnCompleteDelivery);
-            this.pnlDelCourierControl.Location = new System.Drawing.Point(542, 34);
+            this.pnlDelCourierControl.Location = new System.Drawing.Point(542, 19);
             this.pnlDelCourierControl.Name = "pnlDelCourierControl";
             this.pnlDelCourierControl.Size = new System.Drawing.Size(147, 76);
             this.pnlDelCourierControl.TabIndex = 28;
@@ -948,18 +953,18 @@ namespace BaeWynCouriersApp
             // 
             // txtDelStatus
             // 
-            this.txtDelStatus.Location = new System.Drawing.Point(666, 119);
+            this.txtDelStatus.Location = new System.Drawing.Point(644, 129);
             this.txtDelStatus.Name = "txtDelStatus";
             this.txtDelStatus.ReadOnly = true;
-            this.txtDelStatus.Size = new System.Drawing.Size(23, 22);
+            this.txtDelStatus.Size = new System.Drawing.Size(41, 22);
             this.txtDelStatus.TabIndex = 26;
             // 
             // txtDeliveryId
             // 
-            this.txtDeliveryId.Location = new System.Drawing.Point(513, 163);
+            this.txtDeliveryId.Location = new System.Drawing.Point(644, 101);
             this.txtDeliveryId.Name = "txtDeliveryId";
             this.txtDeliveryId.ReadOnly = true;
-            this.txtDeliveryId.Size = new System.Drawing.Size(23, 22);
+            this.txtDeliveryId.Size = new System.Drawing.Size(41, 22);
             this.txtDeliveryId.TabIndex = 24;
             // 
             // btnSearchDeliveries
@@ -993,6 +998,28 @@ namespace BaeWynCouriersApp
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(555, 104);
+            this.label23.Name = "label23";
+            this.label23.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label23.Size = new System.Drawing.Size(83, 16);
+            this.label23.TabIndex = 26;
+            this.label23.Tag = "";
+            this.label23.Text = "Delivery Id";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(587, 132);
+            this.label24.Name = "label24";
+            this.label24.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label24.Size = new System.Drawing.Size(51, 16);
+            this.label24.TabIndex = 29;
+            this.label24.Tag = "";
+            this.label24.Text = "Status";
             // 
             // Main
             // 
@@ -1119,5 +1146,7 @@ namespace BaeWynCouriersApp
         private System.Windows.Forms.TextBox txtRep4ClientVal;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox txtRep4MonthVal;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
     }
 }

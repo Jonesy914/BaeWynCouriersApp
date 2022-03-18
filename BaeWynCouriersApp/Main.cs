@@ -254,6 +254,21 @@ namespace BaeWynCouriersApp
 
         //----------------------Deliveries----------------------//
 
+        private void cmbDelClientId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;   //Disables user editing the value in the combo box. Referenced from https://stackoverflow.com/questions/598447/how-to-disable-editing-of-elements-in-combobox-for-c
+        }
+
+        private void cmbTimeBlockId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbDelUserId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         private void dtpDelDate_Leave(object sender, EventArgs e)
         {
             _ = checkInvalidDate();
@@ -450,6 +465,11 @@ namespace BaeWynCouriersApp
         }
 
         //----------------------Reports----------------------//
+
+        private void cmbRep1Courier_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
 
         private void btnRep1Search_Click(object sender, EventArgs e)
         {

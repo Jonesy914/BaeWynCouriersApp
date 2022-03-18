@@ -363,9 +363,9 @@ namespace BaeWynCouriersApp
             this.grpReports.Controls.Add(this.tabReports);
             this.grpReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReports.ForeColor = System.Drawing.Color.Navy;
-            this.grpReports.Location = new System.Drawing.Point(240, 38);
+            this.grpReports.Location = new System.Drawing.Point(241, 39);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(733, 440);
+            this.grpReports.Size = new System.Drawing.Size(731, 448);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
@@ -457,6 +457,7 @@ namespace BaeWynCouriersApp
             this.cmbRep1Courier.Size = new System.Drawing.Size(227, 24);
             this.cmbRep1Courier.TabIndex = 19;
             this.cmbRep1Courier.Tag = "";
+            this.cmbRep1Courier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbRep1Courier_KeyPress);
             // 
             // tabRep2
             // 
@@ -769,9 +770,9 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Controls.Add(this.dgvDeliveries);
             this.grpDeliveries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpDeliveries.ForeColor = System.Drawing.Color.Navy;
-            this.grpDeliveries.Location = new System.Drawing.Point(217, 9);
+            this.grpDeliveries.Location = new System.Drawing.Point(216, 11);
             this.grpDeliveries.Name = "grpDeliveries";
-            this.grpDeliveries.Size = new System.Drawing.Size(51, 14);
+            this.grpDeliveries.Size = new System.Drawing.Size(17, 22);
             this.grpDeliveries.TabIndex = 0;
             this.grpDeliveries.TabStop = false;
             this.grpDeliveries.Text = "Deliveries";
@@ -869,6 +870,7 @@ namespace BaeWynCouriersApp
             this.cmbDelClientId.Size = new System.Drawing.Size(227, 24);
             this.cmbDelClientId.TabIndex = 11;
             this.cmbDelClientId.Tag = "";
+            this.cmbDelClientId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbDelClientId_KeyPress);
             // 
             // label8
             // 
@@ -910,6 +912,7 @@ namespace BaeWynCouriersApp
             this.cmbTimeBlockId.Size = new System.Drawing.Size(227, 24);
             this.cmbTimeBlockId.TabIndex = 15;
             this.cmbTimeBlockId.Tag = "";
+            this.cmbTimeBlockId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbTimeBlockId_KeyPress);
             // 
             // label10
             // 
@@ -941,6 +944,7 @@ namespace BaeWynCouriersApp
             this.cmbDelUserId.Size = new System.Drawing.Size(227, 24);
             this.cmbDelUserId.TabIndex = 17;
             this.cmbDelUserId.Tag = "";
+            this.cmbDelUserId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbDelUserId_KeyPress);
             // 
             // txtDelStatus
             // 

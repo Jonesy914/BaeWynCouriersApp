@@ -48,7 +48,7 @@ namespace BaeWynCouriersApp
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Name or Password");
+                    MessageBox.Show("Incorrect Name or Password.\nPlease try again.", "Invalid input...");
                 }
             }
             catch (Exception ex)

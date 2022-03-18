@@ -108,6 +108,10 @@ namespace BaeWynCouriersApp
                         tabReports.TabPages.Remove(tabRep4);
                     }
 
+                    //Set text for report 3 and 4 month boxes to display current month.
+                    txtRep3Month.Text = DateTime.Now.Date.ToString("MMMM") + " " + DateTime.Now.Date.ToString("yyyy");
+                    txtRep4Month.Text = DateTime.Now.Date.ToString("MMMM") + " " + DateTime.Now.Date.ToString("yyyy");
+
                     setupGroupBox(grpReports);                    
                     break;
             }
@@ -540,8 +544,8 @@ namespace BaeWynCouriersApp
             try
             {
                 allClientCount = db.GetDbRecordCount("Select Count(*) From Clients Where Contracted = 'True'");
-                delConCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True'");
-                delNonCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False'");
+                delConCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True' And D.StatusCode = 'C'");
+                delNonCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False' And D.StatusCode = 'C'");
 
                 ReportsLogic report = new ReportsLogic { AllClientCount = allClientCount, DelConCount = delConCount, DelNonCount = delConCount };
 

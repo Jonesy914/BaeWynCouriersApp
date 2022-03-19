@@ -11,7 +11,6 @@ namespace BaeWynCouriersApp.Tests
 {
     public class UserTests
     {
-
         [Fact]
         public void Login_ValidUser()
         {
@@ -25,17 +24,6 @@ namespace BaeWynCouriersApp.Tests
 
             Assert.Equal(expected, actual);
         }
-
-        //[Fact]
-        //public void Calc_Test()
-        //{
-        //    double expected = 5;
-
-        //    User testUser = new User();
-        //    double actual = testUser.calc(2, 3);
-
-        //    Assert.Equal(expected, actual);
-        //}
 
         [Fact]
         public void CheckDbRecord_True()

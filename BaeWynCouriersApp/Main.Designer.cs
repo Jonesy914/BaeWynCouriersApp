@@ -88,6 +88,8 @@ namespace BaeWynCouriersApp
             this.dtpRep4Date = new System.Windows.Forms.DateTimePicker();
             this.btnRep4Search = new System.Windows.Forms.Button();
             this.grpDeliveries = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.pnlDelCourierControl = new System.Windows.Forms.Panel();
             this.btnAcceptDelivery = new System.Windows.Forms.Button();
             this.btnCompleteDelivery = new System.Windows.Forms.Button();
@@ -108,8 +110,6 @@ namespace BaeWynCouriersApp
             this.btnSearchDeliveries = new System.Windows.Forms.Button();
             this.dgvDeliveries = new System.Windows.Forms.DataGridView();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.grpClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.grpReports.SuspendLayout();
@@ -366,9 +366,9 @@ namespace BaeWynCouriersApp
             this.grpReports.Controls.Add(this.tabReports);
             this.grpReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpReports.ForeColor = System.Drawing.Color.Navy;
-            this.grpReports.Location = new System.Drawing.Point(181, 10);
+            this.grpReports.Location = new System.Drawing.Point(229, 37);
             this.grpReports.Name = "grpReports";
-            this.grpReports.Size = new System.Drawing.Size(24, 22);
+            this.grpReports.Size = new System.Drawing.Size(686, 441);
             this.grpReports.TabIndex = 5;
             this.grpReports.TabStop = false;
             this.grpReports.Text = "Reports";
@@ -783,6 +783,28 @@ namespace BaeWynCouriersApp
             this.grpDeliveries.Text = "Deliveries";
             this.grpDeliveries.Visible = false;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(587, 132);
+            this.label24.Name = "label24";
+            this.label24.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label24.Size = new System.Drawing.Size(51, 16);
+            this.label24.TabIndex = 29;
+            this.label24.Tag = "";
+            this.label24.Text = "Status";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(555, 104);
+            this.label23.Name = "label23";
+            this.label23.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label23.Size = new System.Drawing.Size(83, 16);
+            this.label23.TabIndex = 26;
+            this.label23.Tag = "";
+            this.label23.Text = "Delivery Id";
+            // 
             // pnlDelCourierControl
             // 
             this.pnlDelCourierControl.Controls.Add(this.btnAcceptDelivery);
@@ -998,28 +1020,6 @@ namespace BaeWynCouriersApp
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(555, 104);
-            this.label23.Name = "label23";
-            this.label23.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label23.Size = new System.Drawing.Size(83, 16);
-            this.label23.TabIndex = 26;
-            this.label23.Tag = "";
-            this.label23.Text = "Delivery Id";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(587, 132);
-            this.label24.Name = "label24";
-            this.label24.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label24.Size = new System.Drawing.Size(51, 16);
-            this.label24.TabIndex = 29;
-            this.label24.Tag = "";
-            this.label24.Text = "Status";
             // 
             // Main
             // 

@@ -49,19 +49,14 @@ namespace BaeWynCouriersApp
             }
             catch (Exception ex)
             {
-                //Any errors thrown further down the stack are caught here.
-                DialogResult msgErr = MessageBox.Show("Error getting data. \n Do you want more info?", "System Message...", MessageBoxButtons.YesNoCancel);
-
-                //If user selected yes or no for more info.
-                if (msgErr == DialogResult.Yes)
-                {
-                    MessageBox.Show(ex.ToString());    //Display error message as a message box.
-                }
+                displayErrorMessage(ex);
             }
         }
 
         private void lstMenu_Click(object sender, EventArgs e)
         {
+            //Shows groupbox of the selected menu item and sets up relevant controls if necessary.
+
             grpClients.Visible = false;
             grpDeliveries.Visible = false;
             grpReports.Visible = false;
@@ -75,7 +70,7 @@ namespace BaeWynCouriersApp
                     break;
                 case "Deliveries":
 
-                    //Populate combo boxes.
+                    //Populate delivery detail combo boxes.
                     DataSet dsClients = db.ImportDbRecords("Select * From Clients");
                     setupComboBox(cmbDelClientId, dsClients, "ClientId", "BusinessName");
 
@@ -99,10 +94,12 @@ namespace BaeWynCouriersApp
                     break;
                 case "Reports":
 
+                    //Populate courier combo box.
                     DataSet dsRep1Couriers = db.ImportDbRecords("Select * From Users Where AccessLevel = 4");
                     setupComboBox(cmbRep1Courier, dsRep1Couriers, "UserId", "Name");
 
-                    if (currentUser.AccessLevel == 3)   //Logistics Coordinator can only see Courier reports.
+                    //Logistics Coordinator can only see courier reports.
+                    if (currentUser.AccessLevel == 3)
                     {
                         tabReports.TabPages.Remove(tabRep3);
                         tabReports.TabPages.Remove(tabRep4);
@@ -119,6 +116,7 @@ namespace BaeWynCouriersApp
 
         public void setupComboBox(ComboBox combobox, DataSet dataSet, string valueMember, string displayMember)
         {
+            //Generic method to set a combo box with a given dataset.
             combobox.DataSource = dataSet.Tables[0];
             combobox.ValueMember = valueMember;
             combobox.DisplayMember = displayMember;            
@@ -126,6 +124,7 @@ namespace BaeWynCouriersApp
 
         public void setupGroupBox(GroupBox groupbox)
         {
+            //Generic method to set the properties in order to display a given groupbox.
             groupbox.Location = new Point(241, 29);
             groupbox.Size = new Size(719, 449);
             groupbox.Visible = true;
@@ -275,7 +274,8 @@ namespace BaeWynCouriersApp
 
         private void dtpDelDate_Leave(object sender, EventArgs e)
         {
-            _ = checkInvalidDate();
+            //Run method to check for valid date after clicking away from the date time picker, set as discarded bool.
+            _ = checkInvalidDate(); 
         }
 
         private bool checkInvalidDate()
@@ -547,7 +547,7 @@ namespace BaeWynCouriersApp
                 delConCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'True' And D.StatusCode = 'C'");
                 delNonCount = db.GetDbRecordCount("Select Count(*) From Deliveries As D Inner Join Clients As C On D.ClientId = C.ClientId Where D.DeliveryDate Between '" + startDate.ToString("yyyy-MM-dd") + "' and '" + endDate.ToString("yyyy-MM-dd") + "' And C.Contracted = 'False' And D.StatusCode = 'C'");
 
-                ReportsLogic report = new ReportsLogic { AllClientCount = allClientCount, DelConCount = delConCount, DelNonCount = delConCount };
+                ReportsLogic report = new ReportsLogic();
 
                 txtRep4ClientVal.Text = report.ClientValue(allClientCount).ToString("C");
                 txtRep4DelConVal.Text = report.ContractDeliveryValue(delConCount).ToString("C");

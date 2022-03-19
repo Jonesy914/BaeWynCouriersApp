@@ -10,6 +10,11 @@ namespace BaeWynCouriersApp
 {
     public class DataAccess
     {
+        /// <summary>
+        /// Retreives records as a dataset from the database using a given SQL query.
+        /// </summary>
+        /// <param name="sqlstr">SQL query as a string.</param>
+        /// <returns>Database records as a DataSet.</returns>
         public DataSet ImportDbRecords(string sqlstr)
         {
             DataSet ds = new DataSet();
@@ -35,6 +40,10 @@ namespace BaeWynCouriersApp
             }
         }
 
+        /// <summary>
+        /// Generic execute command used to Insert or Update a single record in the database.
+        /// </summary>
+        /// <param name="sqlstr">SQL query as a string.</param>
         public void UpdateDbRecord(string sqlstr)
         {
             try
@@ -56,6 +65,11 @@ namespace BaeWynCouriersApp
             }
         }
 
+        /// <summary>
+        /// Generic call to the database to check if a record exists with the given SQL query.
+        /// </summary>
+        /// <param name="sqlstr">SQL query as a string.</param>
+        /// <returns>Bool to confirm if the record exists.</returns>
         public bool CheckDbRecord(string sqlstr)
         {
             bool check = false;
@@ -86,6 +100,11 @@ namespace BaeWynCouriersApp
             }
         }
 
+        /// <summary>
+        /// Counts the number of records in the database for the given SQL query.
+        /// </summary>
+        /// <param name="sqlstr">SQL query as a string.</param>
+        /// <returns>Integer for the number of records.</returns>
         public int GetDbRecordCount(string sqlstr)
         {
             try

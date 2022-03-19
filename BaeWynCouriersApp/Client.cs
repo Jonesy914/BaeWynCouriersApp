@@ -20,6 +20,9 @@ namespace BaeWynCouriersApp
         {
         }
 
+        /// <summary>
+        /// Adds a client record in the database for the current client object.
+        /// </summary>
         public void AddClient()
         {
             DataAccess db = new DataAccess();
@@ -27,6 +30,9 @@ namespace BaeWynCouriersApp
             db.UpdateDbRecord(str);
         }
 
+        /// <summary>
+        /// Updates the client record in the database for the current client object.
+        /// </summary>
         public void UpdateClient()
         {
             DataAccess db = new DataAccess();

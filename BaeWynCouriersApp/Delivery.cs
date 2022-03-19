@@ -21,6 +21,9 @@ namespace BaeWynCouriersApp
         {
         }
 
+        /// <summary>
+        /// Adds a delivery record in the database for the current delivery object.
+        /// </summary>
         public void AddDelivery()
         {
             DataAccess db = new DataAccess();
@@ -28,6 +31,9 @@ namespace BaeWynCouriersApp
             db.UpdateDbRecord(str);
         }
 
+        /// <summary>
+        /// Update the delivery record in the database for the current delivery object.
+        /// </summary>
         public void UpdateDelivery()
         {
             DataAccess db = new DataAccess();
@@ -35,6 +41,9 @@ namespace BaeWynCouriersApp
             db.UpdateDbRecord(str);
         }
 
+        /// <summary>
+        /// Specifically updates the StatusCode for a Delivery record.
+        /// </summary>
         public void UpdateDeliveryStatus()
         {
             DataAccess db = new DataAccess();
@@ -43,7 +52,7 @@ namespace BaeWynCouriersApp
         }
 
         /// <summary>
-        /// Checks database table Deliveries to see if a record exists with inputted details. Current record excluded from query if updating.
+        /// Checks database table Deliveries to see if a record exists with inputted details. Current record excluded from query if isUpdate set as true.
         /// </summary>
         /// <param name="isUpdate">Determines which SQL query to use.</param>
         /// <returns>Bool depending on delivery record existing.</returns>
@@ -67,7 +76,11 @@ namespace BaeWynCouriersApp
             return check;
         }
 
-        public bool CheckUserLunch()    //Joins TimeBlocks and Users tables to check if the LunchBlock field is the same for the chosen criteria
+        /// <summary>
+        /// Joins TimeBlocks and Users tables to check if the LunchBlock field is the same for the chosen criteria
+        /// </summary>
+        /// <returns>Bool confirming if record exists.</returns>
+        public bool CheckUserLunch()
         {
             DataAccess db = new DataAccess();
             string str = "Select * From TimeBlocks As T Inner Join Users As U On T.LunchBlock = U.LunchBlock Where T.TimeBlockId = " + TimeBlockId + " and U.UserId = " + UserId;

@@ -18,10 +18,10 @@ namespace BaeWynCouriersApp
         public int AccessLevel { get; set; }
         public int LunchBlock { get; set; }
 
-        //public double calc(double x, double y)
-        //{
-        //    return x + y;
-        //}
+        /// <summary>
+        /// Checks if a record exists in the Users table in the database using the Name and Password properties.
+        /// </summary>
+        /// <returns>Bool to confirm if the record exists. User properties are initialised if true.</returns>
         public bool Login()
         {
             bool userCheck = false;
@@ -64,6 +64,10 @@ namespace BaeWynCouriersApp
             }
         }
 
+        /// <summary>
+        /// Get MenuItems as a list for the User object using the AccessLevel property.
+        /// </summary>
+        /// <returns>List of MenuItem.</returns>
         public List<MenuItem> GetMenuItemsByAccessLevel()
         {
 

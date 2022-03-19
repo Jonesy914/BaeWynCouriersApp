@@ -43,12 +43,56 @@ namespace BaeWynCouriersApp.Tests
         }
 
         [Fact]
-        public void TotalMonthValue_ForAboveCriteria()
+        public void TotalMonthValue_ForTotalWorthOf165()
         {
             double expected = 165;
 
             ReportsLogic testReport = new ReportsLogic();
             double actual = testReport.TotalMonthValue(2, 10, 4);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ClientValue_IncorrectValue()
+        {
+            double expected = 50;
+
+            ReportsLogic testReport = new ReportsLogic();
+            double actual = testReport.ClientValue(2);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ContractDeliveryValue_IncorrectValue()
+        {
+            double expected = 5;
+
+            ReportsLogic testReport = new ReportsLogic();
+            double actual = testReport.ContractDeliveryValue(10);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void NonContractDeliveryValue_IncorrectValue()
+        {
+            double expected = 30;
+
+            ReportsLogic testReport = new ReportsLogic();
+            double actual = testReport.NonContractDeliveryValue(4);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void TotalMonthValue_IncorrectValue()
+        {
+            double expected = 25;
+
+            ReportsLogic testReport = new ReportsLogic();
+            double actual = testReport.TotalMonthValue(2, 1, 0);
 
             Assert.Equal(expected, actual);
         }
